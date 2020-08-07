@@ -7,16 +7,26 @@ const favicon = require('serve-favicon')
 const sqlite3 = require('sqlite3')
 
 const db = new sqlite3.Database(path.join(__dirname, 'database.db'))
-console.log(db)
+
 const template = fs.readFileSync('template.html').toString()
 
 app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')))
 app.use('/static', express.static(path.join(__dirname, 'static')))
 
 app.get('/*', (req, res) => {
-  const article = marked('# Header!\n\n*and* other stuff')
-  const page = template.replace('%%', article)
-  res.send(page)
+  const sql = `select content from pages where page_name = ? limit 1`
+
+  db.get(sql, req.params[0], (err, row) => {
+    if (err) {
+      const page = template.replace('%%', `Database error <pre>${err.message}</pre>`)
+      res.send(page)
+      return
+    }
+
+    const raw = row ? marked(row.content) : marked('Page not found')
+    const page = template.replace('%%', marked(raw))
+    res.send(page)
+  })
 })
 
 
