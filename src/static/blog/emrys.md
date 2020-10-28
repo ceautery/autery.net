@@ -1,4 +1,4 @@
-![First picture of Emrys](https://farm4.staticflickr.com/3675/9789110283%5Fd84675e343.jpg)
+![First picture of Emrys](/images/9789110283%5Fd84675e343.jpg)
 
 I'm 42 years old, and starting fatherhood anew with a glad heart. My 4th daughter, Emrys Hadley Allerding, was born this Sunday, September 15, 2013, at 9:30pm, weighing 8 lbs, 4 oz, 21" long. As an archetypal Sunday's child, she is bonnie and blithe, and good and gay. "Blithe" is a trait that I share with my wife and our children, and which is typically not meant as a complement. However, I think of being blithe about things that don't matter to be healthy and enlightened... it's just that the Clan Autery list of what doesn't matter is much more extensive than is typical. Emrys hasn't actually shown any blithe behavior yet, because, well, she's a baby. But it's coming, and we welcome it.
 
@@ -62,11 +62,11 @@ So that was just one day in the vortex of standard medicine. It could have been 
 
 In the end, we left with a healthy baby, and no overt concerns from the hospital that we were anything but pains in the ass. Here's a few shots of Emrys, at home and in the hospital, with various family members cooing over her:
 
-![Scout and Addie meet their sister](https://farm4.staticflickr.com/3830/9789036436%5F7ba81e000d.jpg)  
-![Grandma](https://farm8.staticflickr.com/7337/9788994774%5F5dfb7ec902.jpg)  
-![Addie and mom at home](https://farm4.staticflickr.com/3776/9788953355%5F06d17928c8.jpg)  
-![All my ladies](https://farm3.staticflickr.com/2846/9788972306%5Faf8678c912.jpg)  
-![Me](https://farm6.staticflickr.com/5541/9853394466%5F0251e34086.jpg)  
+![Scout and Addie meet their sister](/images/9789036436%5F7ba81e000d.jpg)  
+![Grandma](/images/9788994774%5F5dfb7ec902.jpg)  
+![Addie and mom at home](/images/9788953355%5F06d17928c8.jpg)  
+![All my ladies](/images/9788972306%5Faf8678c912.jpg)  
+![Me](/images/9853394466%5F0251e34086.jpg)  
 
 A final illustration of the differing viewpoints between natural parenting advocates and the medical community is this: At one point during the all-night defensive struggle to keep hospital staff from whisking the baby away to do God knows what to her, Liberty and I were both getting pretty thirsty. Mom was tired, so I picked up baby Emrys and toted her down to the nurse's station in my arms, to inquire where the snack room with the orange juice was. The nurses looked like they were going to have a heart attack. One of them finally stammered out "in the future, please use the cart to transport the baby; you can't just walk around with her in your arms."
 

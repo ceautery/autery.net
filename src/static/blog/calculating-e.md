@@ -251,7 +251,7 @@ _e_ to 50 digits is 2.71828182845904523536028747135266249775724709369995, howeve
 
 One method of calculating _e_ is as follows:
 
-![](http://farm4.staticflickr.com/3769/11059902465%5F34745ebaf8%5Fo.png)
+![](/images/11059902465%5F34745ebaf8%5Fo.png)
 
 In English, _e_ is the limit as n approaches infinity of 1 and an nth raised to the nth power. You can see below how progressively larger values for n begin to converge on the value above:
 

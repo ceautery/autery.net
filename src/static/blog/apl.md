@@ -2,11 +2,11 @@ A few years back, I stumbled across [this video](https://www.youtube.com/watch?v
 
 It shows a man live-coding Conway's Game of Life as a way of introducing the viewer to the APL language. He seemlessly types the greek characters iota and omega, set theory symbols, and unicode symbols that are specific to APL, such as a tilde with an umlaut over it. He expresses concepts such as rotation of columns and rows around a matrix's axes, outer products of logic operations, and shows us how flexible the APL language is at doing things like generating a list of boolean matrices that can be combined to get a cell's neighbor count. He ends up with essentially an abstract one-liner that can take any Life board and return its next generation. The end result is similar to, but not exactly, this output from a session of mine on the [repl.it](https://repl.it/) site:
 
-![](https://c2.staticflickr.com/2/1610/24610510689%5Fc01d59f6c9%5Fc.jpg)
+![](/images/24610510689%5Fc01d59f6c9%5Fc.jpg)
 
 The overall effect of the video is very impressive, even by the jaded standards of someone like me, who has been in the professional IT world for over 20 years. Equally as impressive is how spotty information on the Internet is regarding the language. There are many duplicate links to a bootleg copy of the current ISO spec for the language (normally $200), each presenting itself as a PDF file, while in actuality being a gzipped file. The comp.lang.apl Usenet group gets around 5 - 10 posts per month, and the APL subreddit is lucky to get 2. A Wiki on the language has only a small handful of user-submitted articles. Tutorials on the language are incomplete or have errors, e.g.:
 
-![](https://c2.staticflickr.com/2/1663/24951823546%5F80fc2e4e15%5Fz.jpg)
+![](/images/24951823546%5F80fc2e4e15%5Fz.jpg)
 
 Assumedly there are supposed to be more backslashes in there somewhere. To make matters worse, there are competing APL interpreters that implement different feature sets. The most popular, Dyalog, took a page from the old Microsoft playbook, by embracing and extending the language, adding features that aren't in the official spec, and then selling their own interpreter.
 
@@ -16,7 +16,7 @@ I settled on the [GNU implementation](https://www.gnu.org/software/apl/), for th
 
 I currently use a MacBook with iTerm2 as my primary terminal program. Homebrew made the GNU interpreter as easy to build as "brew install gnu-apl". iTerm allows easy keyboard mapping (with the caveat that too many non-ASCII symbols in the buffer makes fontd blow a gasket, bringing performance to a crawl), so I set about copy/pasting symbols from docs as I needed them into iTerm hotkey definitions, and ended up with a fairly complete set:
 
-![](https://c2.staticflickr.com/2/1476/24860145372%5Fb5af80e5ff%5Fb.jpg)
+![](/images/24860145372%5Fb5af80e5ff%5Fb.jpg)
 
 What follows is a somewhat detailed introduction to the language, learning new functions and their associated symbols as we go. We're going to use APL to find primes numbers a couple different ways, list the Fibonacci sequence, find credit card numbers in a file and validate them with the Luhn algorithm, read some rows from a SQLite database, and do math with the results.
 

@@ -2,7 +2,7 @@ Recently I've been checking out coding tutorial sites, including Hour of Code, K
 
 The fCC tutorial includes incremental instructions on how to write basic HTML and JavaScript, challenges to solve, and links to Wikipedia pages or other sources on topics that will be needed for the exercise. When presented with a problem, you type JavaScript code to solve it right into the page and submit it, where a number of test assertions are run against your code. For example, the [Symmetric Difference](http://www.freecodecamp.com/challenges/bonfire-symmetric-difference) algorithm problem looks like this:
 
-![](https://c2.staticflickr.com/2/1526/23415855964%5F3bd10273be%5Fc.jpg)
+![](/images/23415855964%5F3bd10273be%5Fc.jpg)
 
 (The warning triangle is there because the library fCC uses for its syntax checks doesn't like arrow functions, but whatever your browser can execute runs fine against the test assertions.)
 
@@ -206,7 +206,7 @@ After some experimentation, I found that the numbers all divided evenly by the f
 
 Searching for that sequence on OEIS didn't return an existing entry, but did run some math on the sequence and displayed the message "Your sequence appears to be: +1x3 + 1x2 + 4x". Since the first value is from n=5, "x" is n-4. Using that, we can ask Wolfram Alpha to verify our results [with a table](http://www.wolframalpha.com/input/?i=Table%5B%28n-3%29%21+%2A+%28%28n-4%29%5E3+%2B+%28n-4%29%5E2+%2B+4%28n-4%29%29%2C+%7Bn%2C+5%2C+12%7D%5D):
 
-![](https://c2.staticflickr.com/2/1594/24044066025%5Fbb2e3fc661%5Fz.jpg)
+![](/images/24044066025%5Fbb2e3fc661%5Fz.jpg)
 
 After verifying the equation, I generated the sequence up to 17 values (n from 5 to 21), and submitted it to OEIS [as a draft](https://oeis.org/draft/A266393), describing the sequence as "Permutations of n letters where there are exactly 3 A's and 2 B's, where no A's are adjacent and no B's are adjacent". Hopefully it will be accepted as a permanent entry, pushing someone more stubborn than me in the future closer to finding a general equation to handle all input types for this problem.
 
@@ -218,15 +218,15 @@ B. R. Heap, who has thusfar resisted my attempts to identify him or her, publish
 
 The algorithm is very efficient, is cited in [45 other papers](https://scholar.google.com/scholar?cites=13253158272816423306), and made it's way into Knuth's section of combinatorial algorithms:
 
-![](https://c2.staticflickr.com/2/1468/23676236999%5Ffc28179302%5Fz.jpg)
+![](/images/23676236999%5Ffc28179302%5Fz.jpg)
 
 Knuth's notation is describing a nested loop, swapping a list's first item and current outer position if the outer position is even (0 indexed), or the outer position and inner position if the outer position is odd. Heap's own paper describes using a pre-generated list of swaps, and then pitches the odd/even algorithm at the end almost as an afterthought:
 
-![](https://c2.staticflickr.com/2/1669/23748399500%5F8804367e6a%5Fc.jpg)
+![](/images/23748399500%5F8804367e6a%5Fc.jpg)
 
 Here is an animation of Heap's algorithm running on a 4 character string:
 
-![](https://c2.staticflickr.com/6/5733/23749076690%5F49eed0933f%5Fo.gif)
+![](/images/23749076690%5F49eed0933f%5Fo.gif)
 
 All the implementations I found wrote this out as a recursive function, some using a global array of position indices to increment and set back to 0. My implementation is a single, non-recursive loop, using modular arithmetic to determine what items get swapped. It uses a callback function reference to be run after every swap, which in the case of the fCC exercise is comparing adjacent characters, and incrementing a counter if no duplicates are found:
 
