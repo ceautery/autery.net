@@ -1,4 +1,5 @@
 const navLinks = document.querySelectorAll('nav a')
+const uri = document.location.pathname.replace(/(\/(projects|about)?).*/, "$1")
 const liveLink = Array.from(navLinks)
-  .find(a => a.pathname == document.location.pathname)
+  .find(a => a.pathname == uri)
 if (liveLink) liveLink.classList.add('live')

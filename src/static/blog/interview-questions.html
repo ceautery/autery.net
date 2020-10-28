@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="//archive.org/includes/analytics.js?v=cf34f82" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app39.us.archive.org';v.server_ms=2430;archive_analytics.send_pageview({});});</script><script type="text/javascript" src="/_static/js/playback.bundle.js?v=BsQ6byDz" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=cRqOKCOw" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://curtisautery.appspot.com/5865619656278016","20170702094845","https://web.archive.org/","web","/_static/",
+	      "1498988925");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=NHuXCfBH" />
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+
+	<meta charset="utf-8">
+	
+		
+		<title>5 coding interview questions</title>
+		<meta name="description" content="Curtis' take on 5 traditional coding interview problems, using Go, Lisp, PHP, Perl, Java, and Javascript">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Curtis Autery">
+
+	<link href="/web/20170702094845cs_/http://curtisautery.appspot.com/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<style type="text/css">
+		#cover {
+			background-size: 100% auto;
+			background-image: url(/web/20170702094845im_/http://curtisautery.appspot.com/static/cover.jpg);
+			border-radius: 6px;
+			margin-top: -20px;
+		}
+
+		#cover h1 {
+			color: #fff;
+			background: rgba(0, 0, 0, 0.4);
+			line-height: 1.5;
+			font-size: 2em;
+		}
+
+		@media screen and (min-width: 768px) {
+			#cover h1 {
+			    font-size: 63px;
+			}
+
+			#body {
+				text-align: justify;
+			}
+		}
+
+		hr {
+			border-top: 1px solid gray;
+		}
+
+		img {
+			margin-bottom: 5px;
+		}
+	</style>
+
+	<script type="text/javascript">
+		function populate_entries( entries ) {
+			$( '#entries' ).empty();
+			for ( var e in entries ) add_entry( entries[e].Title, entries[e].ID );
+		}
+
+		function add_entry( title, key ) {
+			var html = '<li><a href="/' + key + '">' + title + '</a></li>';
+			$( '#entries' ).append( html );
+		}
+
+		function init() {
+			if (document.location.pathname == "/1") $('#About').addClass("active");
+			if (document.location.pathname == "/") {
+				$('#Home').addClass("active");
+				$('#latest').empty();
+			} else {
+				$.ajax({
+					url: '/list',
+					type: 'GET',
+					success: function( results ) {
+						populate_entries( $.parseJSON( results ) );
+					},
+					error: function( xhr, ajaxOptions, thrownError ) {
+						console.log( xhr );
+						console.log( ajaxOptions );
+						alert( thrownError );
+					}
+				});
+			}
+		}
+	</script>
+</head>
+<body onload="init()"><!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<style type="text/css">
+body {
+  margin-top:0 !important;
+  padding-top:0 !important;
+  /*min-width:800px !important;*/
+}
+</style>
+<script>__wm.rw(0);</script>
+<div id="wm-ipp-base" lang="en" style="display:none;direction:ltr;">
+<div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;">
+<div id="wm-ipp-inside">
+  <div style="position:relative;">
+    <div id="wm-logo" style="float:left;width:110px;padding-top:12px;">
+      <a href="/web/" title="Wayback Machine home page"><img src="/_static/images/toolbar/wayback-toolbar-logo-200.png" srcset="/_static/images/toolbar/wayback-toolbar-logo-100.png, /_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, /_static/images/toolbar/wayback-toolbar-logo-200.png 2x" alt="Wayback Machine" style="width:100px" border="0" /></a>
+    </div>
+    <div class="r" style="float:right;">
+      <div id="wm-btns" style="text-align:right;height:25px;">
+                  <div id="wm-save-snapshot-success">success</div>
+          <div id="wm-save-snapshot-fail">fail</div>
+          <a id="wm-save-snapshot-open" href="#"
+	     title="Share via My Web Archive" >
+            <span class="iconochive-web"></span>
+          </a>
+          <a href="https://archive.org/account/login.php"
+             title="Sign In"
+             id="wm-sign-in"
+          >
+            <span class="iconochive-person"></span>
+          </a>
+          <span id="wm-save-snapshot-in-progress" class="iconochive-web"></span>
+        	<a href="http://faq.web.archive.org/" title="Get some help using the Wayback Machine" style="top:-6px;"><span class="iconochive-question" style="color:rgb(87,186,244);font-size:160%;"></span></a>
+	<a id="wm-tb-close" href="#close" onclick="__wm.h(event);return false;" style="top:-2px;" title="Close the toolbar"><span class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span></a>
+      </div>
+      <div id="wm-share">
+          <a href="/web/20170702094845/http://web.archive.org/screenshot/http://curtisautery.appspot.com/5865619656278016"
+             id="wm-screenshot"
+             title="screenshot">
+            <span class="wm-icon-screen-shot"></span>
+          </a>
+	<a id="wm-share-facebook" href="#" data-url="https://web.archive.org/web/20170702094845/http://curtisautery.appspot.com/5865619656278016" title="Share on Facebook" style="margin-right:5px;" target="_blank"><span class="iconochive-facebook" style="color:#3b5998;font-size:160%;"></span></a>
+	<a id="wm-share-twitter" href="#" data-url="https://web.archive.org/web/20170702094845/http://curtisautery.appspot.com/5865619656278016" title="Share on Twitter" style="margin-right:5px;" target="_blank"><span class="iconochive-twitter" style="color:#1dcaff;font-size:160%;"></span></a>
+      </div>
+    </div>
+    <table class="c" style="">
+      <tbody>
+	<tr>
+	  <td class="u" colspan="2">
+	    <form target="_top" method="get" action="/web/submit" name="wmtb" id="wmtb"><input type="text" name="url" id="wmtbURL" value="http://curtisautery.appspot.com/5865619656278016" onfocus="this.focus();this.select();" /><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20170702094845" /><input type="submit" value="Go" /></form>
+	  </td>
+	  <td class="n" rowspan="2" style="width:110px;">
+	    <table>
+	      <tbody>
+		<!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+		<tr class="m">
+		  <td class="b" nowrap="nowrap"><a href="https://web.archive.org/web/20161018084437/http://curtisautery.appspot.com/5865619656278016" title="18 Oct 2016"><strong>Oct</strong></a></td>
+		  <td class="c" id="displayMonthEl" title="You are here: 09:48:45 Jul 02, 2017">JUL</td>
+		  <td class="f" nowrap="nowrap">Aug</td>
+		</tr>
+		<!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+		<tr class="d">
+		  <td class="b" nowrap="nowrap"><a href="https://web.archive.org/web/20161018084437/http://curtisautery.appspot.com/5865619656278016" title="08:44:37 Oct 18, 2016"><img src="/_static/images/toolbar/wm_tb_prv_on.png" alt="Previous capture" width="14" height="16" border="0" /></a></td>
+		  <td class="c" id="displayDayEl" style="width:34px;font-size:24px;white-space:nowrap;" title="You are here: 09:48:45 Jul 02, 2017">02</td>
+		  <td class="f" nowrap="nowrap"><img src="/_static/images/toolbar/wm_tb_nxt_off.png" alt="Next capture" width="14" height="16" border="0" /></td>
+		</tr>
+		<!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+		<tr class="y">
+		  <td class="b" nowrap="nowrap"><a href="https://web.archive.org/web/20160604065321/http://curtisautery.appspot.com:80/5865619656278016" title="04 Jun 2016"><strong>2016</strong></a></td>
+		  <td class="c" id="displayYearEl" title="You are here: 09:48:45 Jul 02, 2017">2017</td>
+		  <td class="f" nowrap="nowrap">2018</td>
+		</tr>
+	      </tbody>
+	    </table>
+	  </td>
+	</tr>
+	<tr>
+	  <td class="s">
+	    	    <div id="wm-nav-captures">
+	      	      <a class="t" href="/web/20170702094845*/http://curtisautery.appspot.com/5865619656278016" title="See a list of every capture for this URL">7 captures</a>
+	      <div class="r" title="Timespan for captures of this URL">27 Mar 2016 - 02 Jul 2017</div>
+	      </div>
+	  </td>
+	  <td class="k">
+	    <a href="" id="wm-graph-anchor">
+	      <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
+		<canvas id="wm-sparkline-canvas" width="625" height="27" border="0"></canvas>
+	      </div>
+	    </a>
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+    <div style="position:absolute;bottom:0;right:2px;text-align:right;">
+      <a id="wm-expand" class="wm-btn wm-closed" href="#expand" onclick="__wm.ex(event);return false;"><span id="wm-expand-icon" class="iconochive-down-solid"></span> <span style="font-size:80%">About this capture</span></a>
+    </div>
+  </div>
+    <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
+                    <div id="wm-capinfo-collected-by">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center">COLLECTED BY</div>
+    <div style="padding:3px;position:relative" id="wm-collected-by-content">
+            <div style="display:inline-block;vertical-align:top;width:50%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/webwidecrawl);"></span>
+		Organization: <a style="color:#33f;" href="https://archive.org/details/webwidecrawl" target="_new"><span class="wm-title">Internet Archive</span></a>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  The Internet Archive discovers and captures web pages through many different web crawls.
+
+At any given time several distinct crawls are running, some for months, and some every day or longer.
+
+View the web archive through the <a href="http://archive.org/web/web.php">Wayback Machine</a>.
+	</div>
+	      </div>
+      <div style="display:inline-block;vertical-align:top;width:49%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/survey_00005)"></span>
+		<div>Collection: <a style="color:#33f;" href="https://archive.org/details/survey_00005" target="_new"><span class="wm-title">Survey Crawl Number 5: Oct 21st, 2016 to Sep 10th, 2017</span></a></div>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  <p>The seed for this crawl was a list of every host in the Wayback Machine</p>
+
+<p>This crawl was run at a level 1 (URLs including their embeds, plus the URLs of all outbound links including their embeds)</p>
+
+<p>The WARC files associated with this crawl are not currently available to the general public.</p>
+	</div>
+	      </div>
+    </div>
+    </div>
+    <div id="wm-capinfo-timestamps">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center" title="Timestamps for the elements of this page">TIMESTAMPS</div>
+    <div>
+      <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
+      <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img src="/_static/images/loading.gif" alt="loading" /></div>
+    </div>
+    </div>
+  </div></div></div></div><div id="donato" style="position:relative;width:100%;">
+  <div id="donato-base">
+    <iframe id="donato-if" src="https://archive.org/includes/donate.php?as_page=1&amp;transpiled=0&amp;referer=https%3A//web.archive.org/web/20170702094845/http%3A//curtisautery.appspot.com/5865619656278016"
+	    scrolling="no" frameborder="0" style="width:100%; height:100%">
+    </iframe>
+  </div>
+</div><script type="text/javascript">
+__wm.bt(625,27,25,2,"web","http://curtisautery.appspot.com/5865619656278016","20170702094845",1996,"/_static/",["/_static/css/banner-styles.css?v=NHuXCfBH","/_static/css/iconochive.css?v=qtvMKcIJ"]);
+  __wm.rw(1);
+</script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+	<div class="navbar navbar-inverse navbar-static-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li id="Home"><a href="/web/20170702094845/http://curtisautery.appspot.com/">Home</a></li>
+					<li id="latest" class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							Latest
+							<b class="caret"></b>
+						</a>
+						<ul id="entries" class="dropdown-menu">
+							<li class="muted"><a href="javascript:blur()">loading...</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li id="About"><a href="/web/20170702094845/http://curtisautery.appspot.com/1">About</a></li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container col-xs-12 col-md-8 col-md-offset-2">
+		<div id="cover">
+			<h1 class="text-center jumbotron">Stories for Outcasts</h1>
+		</div>
+
+		
+			<h3 class="text-center">
+				
+					5 coding interview questions
+				
+			</h3>
+			<h4>Thursday, October 24, 2013</h4>
+			<div id="body">
+				<p>Recently I took a contract with Automattic to build a WordPress plugin for them. We parted amicably with a Dear John letter instead of an offer letter, as the friction between our operating styles was greater in reality than it should have been on paper. I'll spare you the details.</p>
+
+<p>Part of their onboarding ordeal is a coding challenge. In my case, it was to modify a dummy plugin to add a feature to it, with 7 days to polish it up. I bring this up only because what I expected, but which apparently wasn't part of the process, was a series of coding questions like the ones that follow. In fact none of the software dev interviews I've ever had have included questions like these. Granted I haven't applied to Google or Microsoft, and I don't live in The Valley, but still... nothing?</p>
+
+<p>I sort of feel cheated, and because of that, I've decided to take the current first 5 questions from <a href="https://web.archive.org/web/20170702094845/http://www.careercup.com/page?pid=coding-interview-questions">Career Cup</a> and give my take on them (actually at the time of this writing, this was the first 4 questions, skipping a few (design a web crawler, convert a float without using built-in functions, and remove an unsorted list's dups in O(n) time without using sorting or space - that last exceeds polite levels of ridiculous), and then the Goldman Sachs chess problem, since it looked interesting. Most coding questions like this don't require deep computer science knowledge so much as simply critical thinking, knowledge of basic set theory and data structures, and of course familiarity with the syntax of a programming language or two.</p>
+
+<p>I'm not very familiar with Career Cup, but it was the top hit for coding interview questions on Google. It appears to be used by people seeking specific "right answers" to interview questions meant to glean deep subject knowledge, and hence defeating the entire exercise.</p>
+
+<p>As I understand it, the point of a tech or coding interview is to feel out a candidate's style and general tack on problem solving, with the ideal question being a surprise out of left field that they need to ad lib to get through - sort of a Kobayashi Maru test. Finding that your exact set of questions has been studied for I don't imagine would go over very well. In most ways, I think the process Automattic uses is superior: Give someone a random one-time task that you won't give the next candidate.</p>
+
+<p>And yet, sites like Career Cup are in abundance, trying to game the system. CC uses user-submitted questions purportedly from interviews they've had, most of which name the company the question belongs to. I'm uncertain how accurate that assumption is, or if it really matters. At any rate, here are the questions exactly as they appeared on CC, my interpretation of them, and my answers, spanning Go, Perl, Lisp, Java, PHP, JavaScript, and 18 years of experience in IT:</p>
+
+<blockquote>
+<p>1) From Amazon.com:<br/>
+Find if all the leaf nodes are at same level in binary tree. Recursive and non-recursive approach?</p>
+
+
+</blockquote>
+
+<p>Leaf? Node? Binary Tree? Alright, let's start with this completely pointless example:</p>
+
+
+
+<pre><code>        Beatles
+          / &#92;
+         /   &#92;
+        /     &#92;
+       /       &#92;
+      /         &#92;
+   Alive     Not Alive
+    / &#92;         / &#92;
+   /   &#92;       /   &#92;
+Paul  Ringo  John  George
+</code></pre>
+
+
+
+<p>A "tree" in computer science jargon, is a collection of objects, each of whom contain links to other objects. Each object + links is a node. A leaf is a node with no links, which I'm sure you already intuited, since we're talking about trees, after all.</p>
+
+<p>In the tree above, each of our Beatles objects is simply a string, and a link to two other objects, until you get to the bottom. Each node having two links to other nodes makes this a binary tree. There are specialized types of trees (e.g., "cover trees" for nearest neighbor searches), and specialized binary trees (e.g, binary search trees whose insert functions reorder nodes to keep them sorted), but this isn't a tutorial on the concept, so I'd recommend this Google search if you want more theory and examples:</p>
+
+<p><a href="https://web.archive.org/web/20170702094845/https://www.google.com/#q=tree+programming+site:.edu">tree programming site:.edu</a></p>
+
+<p>There are libraries for most programming lanuages for different tree types, but you don't need them for simple examples like this. Programming a tree is really just a design pattern; all you need is your language's variation on a struct or an object, and functions for managing inserts, searches, and deletes. I'll use Go, with the following declaration of a node:</p>
+
+
+
+<pre><code>type Person struct &#123;
+    name  string
+    mom   &#42;Person
+    dad   &#42;Person
+&#125;
+</code></pre>
+
+
+
+<p>Yes, we're making a family tree of sorts, and yes the declaration of a node is really that simple. Adding to a tree is similarly easy:</p>
+
+
+
+<pre><code>func (p &#42;Person) addParent(name string, mom bool) &#123;
+    parent := Person&#123; name: name &#125;
+    if mom &#123;
+        p.mom = &amp;parent
+    &#125; else &#123;
+        p.dad = &amp;parent
+    &#125;
+&#125;
+</code></pre>
+
+
+
+<p>Our question wants us to determine if all the leaves are at the same depth. If I build a tree with the following:</p>
+
+
+
+<pre><code>func main() &#123;
+    root := Person &#123; name: &#34;Self&#34; &#125;
+    root.addParent(&#34;Mom&#34;, true)
+    root.addParent(&#34;Dad&#34;, false)
+    root.mom.addParent(&#34;Maternal Grandma&#34;, true)
+    root.mom.addParent(&#34;Maternal Grandpa&#34;, false)
+&#125;
+</code></pre>
+
+
+
+<p>...then my tree looks like this:</p>
+
+
+
+<pre><code>         Self
+          / &#92;
+         /   &#92;
+        /     &#92;
+       /       &#92;
+      /         &#92;
+    Mom         Dad
+    / &#92; 
+   /   &#92;
+Grams  Gramps
+</code></pre>
+
+
+
+<p>In this example, "Dad" is a leaf, and so are Grams and Gramps, but they are at different depths. So if I look at "Self" as the root node, the tree doesn't have all leaves at the same depth. However, if I start with "Mom", it does. So we need a way to programmatically iterate through all the nodes, find out if they're leaves, and track their depths. As the question suggested, this can be done both recursively and non-recursively.</p>
+
+<p>Let's start with the recursive approach. I'm using a global variable, depth, which I set to the depth level of the first leaf I see. I iterate through the nodes with a recursive function call, and the first time I hit a leaf with a different depth than my global variable, I return false back through the call stack:</p>
+
+
+
+<pre><code>package main
+
+import (
+    &#34;fmt&#34;
+)
+
+type Person struct &#123;
+    name  string
+    mom   &#42;Person
+    dad   &#42;Person
+&#125;
+
+var depth int
+
+func main() &#123;
+    root := Person &#123; name: &#34;Self&#34; &#125;
+    root.addParent(&#34;Mom&#34;, true)
+    root.addParent(&#34;Dad&#34;, false)
+    root.mom.addParent(&#34;Maternal Grandma&#34;, true)
+    root.mom.addParent(&#34;Maternal Grandpa&#34;, false)
+
+    fmt.Println(checkDepths(&amp;root, 0))
+    fmt.Println(checkDepths(root.mom, 0))
+&#125;
+
+func (p &#42;Person) addParent(name string, mom bool) &#123;
+    parent := Person&#123; name: name &#125;
+    if mom &#123;
+        p.mom = &amp;parent
+    &#125; else &#123;
+        p.dad = &amp;parent
+    &#125;
+&#125;
+
+func checkDepths(p &#42;Person, d int) bool &#123;
+    if (p == nil) &#123;
+        return true
+    &#125;
+
+    if (d == 0) &#123;
+        depth = -1
+    &#125;
+
+    if (p.mom == nil &amp;&amp; p.dad == nil) &#123; // On a leaf
+        if (depth == -1) &#123;
+            depth = d // init depth on first leaf
+        &#125;
+        return (d == depth)
+    &#125;
+
+    d++ // Not a leaf node, increment depth
+    return ( checkDepths(p.mom, d) &amp;&amp; checkDepths(p.dad, d) )
+&#125;
+</code></pre>
+
+
+
+<p>Results:</p>
+
+
+
+<pre><code>C:&#92;gae&#95;go&#92;test&gt;go run bintree.go
+false
+true
+
+C:&#92;gae&#95;go&#92;test&gt;
+</code></pre>
+
+
+
+<p>Just as expected. Now, how can we do the same thing without recursion? Another way to represent a binary tree is with a simple array. An object's index on the array implies where it is on the tree. Here is a simple tree of index positions:</p>
+
+
+
+<pre><code>           0
+          / &#92;
+         /   &#92;
+        /     &#92;
+       /       &#92;
+      /         &#92;
+     1           2
+    / &#92;         / &#92;
+   /   &#92;       /   &#92;
+  3     4     5     6
+ / &#92;   / &#92;   / &#92;   / &#92;
+7   8 9  10 11 12 13 14
+</code></pre>
+
+
+
+<p>Nodes that aren't used on the tree are just empty (or "", since I'm using an array of Go strings here... slices, really, but there's an array under there somewhere). So if I wanted to represent the binary tree from the previous example, these indices would be used:</p>
+
+
+
+<pre><code>           0
+          / &#92;
+         /   &#92;
+        /     &#92;
+       1       2
+      / &#92;
+     3   4
+</code></pre>
+
+
+
+<p>Now I can iterate through the array sequentially, and use a little math to check whether or not I'm looking at a leaf. The following psuedocode performs the same checks as the Go program above:</p>
+
+
+
+<pre><code>Find the row number of the last index of the array
+Set l to the first index on that row
+
+Set n to 0
+Increment n from 0 to l - 1
+    if array index n is not empty, but indices 2n + 1 and 2n + 2 are, fail
+If the loop exits without failing, return success
+</code></pre>
+
+
+
+<p>Why does that work? The last row contains all leaves (otherwise it wouldn't be the last row). I'm checking all the elements on rows above that for leaves. If I find any, then the leaves aren't all on the same depth. An element at index n is a leaf if it isn't empty, but indices 2n+1 and 2n+2 are.</p>
+
+<p>Here's the psuedocode converted to working Go:</p>
+
+
+
+<pre><code>func checkDepths() bool &#123;
+    lastIdx := float64(len(people) - 1)
+    lastRow := int(math.Log2(lastIdx))
+    l := int(math.Pow(2, float64(lastRow))) - 1 // Index of first elem in last row
+    for n := 0; n &lt; l; n++ &#123;
+        mom := 2 &#42; n + 1
+        if ( !isEmpty(n) &amp;&amp; isEmpty(mom) &amp;&amp; isEmpty(mom+1) ) &#123;
+            return false
+        &#125;
+    &#125;
+    return true
+&#125;
+</code></pre>
+
+
+
+<p>The "isEmpty" function will check for the empty string at the given index, or the index being out of range of the array. Other than that, I'm using logs base 2 and raising 2 to powers to search for row numbers and indices, respectively. I'll trust that you can decode the math if you're so inclined.</p>
+
+<p>What we can't do easily with a non-recursive function is pick a node other than root to drill down through, as I did in the recursive example. So to show a failure and a success with the new method, I'll call checkDepths, watch it fail, then finish fleshing out the binary tree and call it again. Here's the final code and results:</p>
+
+
+
+<pre><code>package main
+
+import (
+    &#34;fmt&#34;
+    &#34;math&#34;
+)
+
+var people &#91;&#93;string
+
+func main() &#123;
+    people = make(&#91;&#93;string, 1, 126) // 7 rows, but an initial slice length of 1
+    self:= 0
+    people&#91;self&#93; = &#34;Self&#34;
+    mom := addParent(&#34;Mom&#34;, self, true)
+    dad := addParent(&#34;Dad&#34;, self, false)
+    addParent(&#34;Maternal Grandma&#34;, mom, true)
+    addParent(&#34;Maternal Grandpa&#34;, mom, false)
+    fmt.Println(checkDepths())
+
+
+    // Add remaining grandparents
+    addParent(&#34;Paternal Grandma&#34;, dad, true)
+    addParent(&#34;Paternal Grandpa&#34;, dad, false)
+    fmt.Println(checkDepths())
+&#125;
+
+func addParent(name string, parentOf int, mom bool) int &#123;
+    index := parentOf &#42; 2 + 1
+    if ! mom &#123;
+        index++
+    &#125;
+
+    if len(people) &lt; index + 1 &#123;
+        people = people&#91;:index + 1&#93;
+    &#125;
+    people&#91;index&#93; = name
+    return index
+&#125;
+
+func checkDepths() bool &#123;
+    lastIdx := float64(len(people) - 1)
+    lastRow := int(math.Log2(lastIdx))
+    l := int(math.Pow(2, float64(lastRow))) - 1 // Index of first elem in last row
+    for n := 0; n &lt; l; n++ &#123;
+        mom := 2 &#42; n + 1
+        if ( !isEmpty(n) &amp;&amp; isEmpty(mom) &amp;&amp; isEmpty(mom+1) ) &#123;
+            return false
+        &#125;
+    &#125;
+    return true
+&#125;
+
+func isEmpty(index int) bool &#123;
+    if index &gt;= len(people) &#123;
+        return true
+    &#125;
+    return people&#91;index&#93; == &#34;&#34;
+&#125;
+</code></pre>
+
+
+
+<p>Results:</p>
+
+
+
+<pre><code>C:&#92;gae&#95;go&#92;test&gt;go run bintree2.go
+false
+true
+
+C:&#92;gae&#95;go&#92;test&gt;
+</code></pre>
+
+
+
+<blockquote>
+<p>2) From Cadence inc:
+Given a positive int "N". and an array of numbers ranging from 0-9 (say array name is arr). print all numbers from 0 to N which include any number from "arr".</p>
+
+<p>example: 
+i/p: N=20 
+arr={2,3}</p>
+
+<p>o/p: 2,3,12,13,20</p>
+
+
+</blockquote>
+
+<p>Again, these are the questions as-is on Career Cup. Let's re-describe what's being asked for:</p>
+
+<p>Given a list of digits, and a count N, iterate from 0 to N, and print any number that contains any of the digits in the list.</p>
+
+<p>So if my list of digits is:</p>
+
+
+
+<pre><code>&#91;2, 3&#93;
+</code></pre>
+
+
+
+<p>...and my count is:</p>
+
+
+
+<pre><code>20
+</code></pre>
+
+
+
+<p>...then the lines I return should be:</p>
+
+
+
+<pre><code>2
+3
+12
+13
+20
+</code></pre>
+
+
+
+<p>...because each of those numbers contains a digit in the list.</p>
+
+<p>I posted a solution to this with regular expressions and Javascript, and then looked at the several answers posted before mine. Sadly, none of them used regular expressions, which is pretty sad, since they are especially well-suited to a problem like this. This won't serve as an intro into the power of regular expressions, but they make life a lot easier, and you should go make yourself an expert in them. You'll thank me.</p>
+
+<p>Regex syntax allows for matching characters in a group. e.g., if I turn my list of 2 and 3 into a regex group match, it looks like this:</p>
+
+
+
+<pre><code>/&#91;23&#93;/
+</code></pre>
+
+
+
+<p>If I iterate from 0 to N, and turn each of those numbers into strings, I can bind that regex to them, and let the parser tell me if the current number matches anything in the group. The steps involved are remarkably simple, and most of the overhead in the code is creating the RegExp object with the array.join business:</p>
+
+
+
+<pre><code>function matches(N, arr) &#123;
+    var m = &#91;&#93;;
+    var re = new RegExp(&#39;&#91;&#39; + arr.join(&#39;&#39;) + &#39;&#93;&#39;);
+    for (var n = 0; n &lt;= N; n++) &#123;
+        if ((&#34;&#34;+n).match(re) != null) m.push(n);
+    &#125;
+    return m;
+&#125;
+</code></pre>
+
+
+
+<p>Results:</p>
+
+
+
+<pre><code>matches(20, &#91;2, 3&#93;)
+
+&#91;2, 3, 12, 13, 20&#93;
+</code></pre>
+
+
+
+<p>The syntax for doing the same thing on commandline perl is a great illustration of why it is my favorite language. Here I'm using perl's marvelous grep function and range operator, simple regular expression syntax, and the "automagic" conversion of numbers to strings as needed:</p>
+
+
+
+<pre><code>$ perl -le &#39;$N=shift; $re=join(&#34;&#34;, @ARGV); print for grep &#123;/&#91;$re&#93;/&#125; 0..$N&#39; 20 2 3
+2
+3
+12
+13
+20
+</code></pre>
+
+
+
+<blockquote>
+<p>3) From Facebook:</p>
+
+<p>We are given a set of integers with repeated occurences of elements. For Example, S={1,2,2}.<br/>
+We need to print the power set of S ensuring that the repeated elements of the power set are printed only once.<br/>
+For the above S, the power set will be {NULL, {1}, {2}, {2}, {1,2}, {1,2}, {2,2}, {1,2,2}}. So, as per the question requirements, we need to print {NULL, {1}, {2}, {1,2}, {2,2}, {1,2,2}}</p>
+
+
+</blockquote>
+
+<p>The "Power Set" of set S is basically the set of all subsets of S. Good detailed descriptions are all over the net, such as in <a href="https://web.archive.org/web/20170702094845/http://en.wikipedia.org/wiki/Power%5Fset">this Wikipedia page</a>.</p>
+
+<p>Essentially we're being asked here to take the set {1,2,2}, create a power set out of it, and filter out the dups. In this case, that involves creating:</p>
+
+
+
+<pre><code>&#123;NULL, &#123;1&#125;, &#123;2&#125;, &#123;2&#125;, &#123;1,2&#125;, &#123;1,2&#125;, &#123;2,2&#125;, &#123;1,2,2&#125;&#125;
+</code></pre>
+
+
+
+<p>...and filtering out the extra {2} and {1,2}, leaving:</p>
+
+
+
+<pre><code>&#123;NULL, &#123;1&#125;, &#123;2&#125;,      &#123;1,2&#125;,        &#123;2,2&#125;, &#123;1,2,2&#125;&#125;
+</code></pre>
+
+
+
+<p>A programming language family well-suited to create powersets is Lisp. It's a language I find very fun, partially for for how arcane it is (making seasoned .NET or Java developers blanch in terror is high comedy to me), and it is perhaps the only language type to match my beloved Perl in expressiveness, as the power set generator below (written in the Emacs flavor of Lisp) illustrates:</p>
+
+
+
+<pre><code>(require &#39;cl)
+
+(defun powerset(s)
+  (sort (delete-dups
+         (reduce #&#39;(lambda (one two) (append (mapcar #&#39;(lambda(i) (cons two i)) one) one))
+                 (sort s #&#39;&gt;)
+                 :initial-value &#39;(nil)
+                 ))
+        #&#39;(lambda(a b) (&lt; (length a) (length b)))
+))
+</code></pre>
+
+
+
+<p>Results:</p>
+
+
+
+<pre><code>(powerset &#39;(1 2 2)) =&gt; (nil (1) (2) (1 2) (2 2) (1 2 2))
+</code></pre>
+
+
+
+<p>So what's going on here? First I should mention that this isn't a method I came up with on the fly, rather the underlying call sequence:</p>
+
+
+
+<pre><code>reduce -&gt; append -&gt; mapcar -&gt; cons
+</code></pre>
+
+
+
+<p>...is a well known method to generate power sets using 4 powerful, idiomatic Lisp functions chained together. The method involves taking our source list S, and a working list W that starts empty. Iterate through each item in S, concatenating the item to everything in W, then appending the original W. Like so:</p>
+
+
+
+<pre><code>Init with S = (1 2 2), W = nil
+First pass
+  Take 1 from S, concatenate to everything in W, returning (1)
+  Append the return (1) to W, giving W = ((1) nil)
+Second pass
+  Take 2 from S, concat with W, returning ((2 1) (2))
+  Append the above return value to W, giving W = ((2 1) (2) (1) nil)
+Third pass
+  Take the final 2 from S, concat with W, returning ((2 2 1) (2 2) (2 1) (2))
+  Append the above to W, giving a final set of ((2 2 1) (2 2) (2 1) (2) (2 1) (2) (1) nil)
+</code></pre>
+
+
+
+<p>A couple sorting tweaks are needed, and the duplicates haven't been addressed, but first let's take apart how the Lisp functions accomplish the process I just described. This blog entry won't serve as a tutorial on Lisp or its underlying data structures, but I'll hum a few bars to get through the example. Note that my explanations are not perfectly canon. I'd suggest taking a peek at <a href="https://web.archive.org/web/20170702094845/http://www.gnu.org/software/emacs/manual/html%5Fnode/eintr/index.html">the GNU Emacs Lisp manual</a>, or <a href="https://web.archive.org/web/20170702094845/http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node1.html">Common Lisp the Language, 2nd Edition</a> for more in depth descriptions. Or if you happen to be a Douglas Hofstadter fan, his excellent book "Metamagical Themas" from the '80s has a <a href="https://web.archive.org/web/20170702094845/https://gist.github.com/jackrusher/5139396">wonderful Lisp introduction</a> that I can't recommend highly enough as a starting point.</p>
+
+<p>First, everything surrounded by parentheses is a space separated list. Lists fed to the expression evaluator can be a function name and its arguments, e.g. <code>(cons 1 nil)</code>, or a "quoted" list containing literal values, e.g. <code>'(1 2 3)</code>.</p>
+
+<p>cons: Create a "cons" out of the two variables passed. If the first variable is an atom and the second is a list, this prepends the list with the atom, returning the result as a new list.</p>
+
+
+
+<pre><code>(cons 1 &#39;(2 3)) =&gt; (1 2 3)
+(cons 1 nil) =&gt; (1)
+</code></pre>
+
+
+
+<p>mapcar: Perform a function on each element of a list, returning all the results as a new list.</p>
+
+
+
+<pre><code>(mapcar &#39;1+ &#39;(1 2 3)) =&gt; (2 3 4)
+</code></pre>
+
+
+
+<p>This can be combined with a "lambda" (anonymous function) that accepts one variable</p>
+
+
+
+<pre><code>(mapcar #&#39;(lambda(i) (cons i &#39;(1))) &#39;(1 2 3)) =&gt; ((1 1) (2 1) (3 1))
+</code></pre>
+
+
+
+<p>append: Combine the elements of multiple lists into one list.</p>
+
+
+
+<pre><code>(append &#39;(1 2 3) &#39;(4 5 6) &#39;(7 8 9)) =&gt; (1 2 3 4 5 6 7 8 9)
+</code></pre>
+
+
+
+<p>reduce: The doozy. Perform a two-parameter function across all elements of a list, keeping a running value as the first parameter in the next pass. This can start with the "running value" as the first list element, or a separate init value can be passed.</p>
+
+<p>The easiest example is addition. In Lisp, the '+' function takes two variables, and returns their sum. e.g.:</p>
+
+
+
+<pre><code>(+ 2 3) =&gt; 5
+(reduce &#39;+ &#39;(1 2 3)) =&gt; 6
+</code></pre>
+
+
+
+<p>As with mapcar, the function can be swapped out for a lambda, provided it accepts two parameters. This is the same reduce as above, explicitly declaring the maths involved:</p>
+
+
+
+<pre><code>(reduce #&#39;(lambda(a b) (+ a b)) &#39;(1 2 3)) =&gt; 6
+</code></pre>
+
+
+
+<p>Here is the syntax for setting an initial "running value", and the effect it has:</p>
+
+
+
+<pre><code>(reduce &#39;+ &#39;(1 2 3) :initial-value 7) =&gt; 13
+</code></pre>
+
+
+
+<p><code>reduce</code> is not a standard Emacs Lisp function, but can be imported by requring the "cl" (Common Lisp) library.</p>
+
+<p>Let's go back to the meat of our solution to the question:</p>
+
+
+
+<pre><code>(reduce #&#39;(lambda (one two) (append (mapcar #&#39;(lambda(i) (cons two i)) one) one))
+        :initial-value &#39;(nil)
+        ))
+</code></pre>
+
+
+
+<p>...and our original list to pass to it: <code>'(1 2 2)</code>. Reduce is going to pass <code>(nil)</code> (that is, a set containing nil as an element) and 1 to the <code>lambda (one two)</code> function, which will trickle down to the cons function the equivalent of:</p>
+
+
+
+<pre><code>(cons 1 nil) =&gt; (1)
+</code></pre>
+
+
+
+<p>...which will return to the mapcar the equivalent of:</p>
+
+
+
+<pre><code>(mapcar #&#39;(lambda(i) (cons 1 i)) &#39;(nil)) =&gt; ((1))
+</code></pre>
+
+
+
+<p>...then that will be appended back with the current "one" value of <code>(nil)</code>:</p>
+
+
+
+<pre><code>(append &#39;((1)) &#39;(nil)) =&gt; ((1) nil)
+</code></pre>
+
+
+
+<p>...and on the next pass we cons the first "2" to everything:</p>
+
+
+
+<pre><code>(mapcar #&#39;(lambda(i) (cons 2 i)) &#39;((1) nil)) =&gt; ((2 1) (2))
+</code></pre>
+
+
+
+<p>...and append the current "one" ((1) nil) back on:</p>
+
+
+
+<pre><code>(append &#39;((2 1) (2)) &#39;((1) nil)) =&gt; ((2 1) (2) (1) nil)
+</code></pre>
+
+
+
+<p>...and one more pass fleshes out the power set. After that we can use Emacs Lisp's built-in "delete-dups" to pull out the extra (2) and (1 2), and some sort functions to straighten out the output the way we want.</p>
+
+<p>If that's a little "out there" for your tastes, you don't need the power or expressiveness of Lisp (or the maddeningly nested parentheses) to answer this question, but you will need a straightforward method to generate a power set before you get mired in nested loops that don't quite spit out what you want. I'll demonstrate one such method in Javascript.</p>
+
+<p>An easy way to iterate through all the possibilities of a power set is with binary counting. For example, the power set of [1, 2, 3] Can be represented like so:</p>
+
+
+
+<pre><code>Subset        How many
+             3&#39;s 2&#39;s 1&#39;s
+Empty set     0   0   0
+1             0   0   1
+2             0   1   0
+1, 2          0   1   1
+3             1   0   0
+1, 3          1   0   1
+2, 3          1   1   0
+1, 2, 3       1   1   1
+</code></pre>
+
+
+
+<p>So if we iterate from 1 to 8 (2 ** 3, 3 being the set length), turn the number binary, and use each binary digit as a flag to determine what elements to include in each subset, we can easily generate the complete power set, including the empty set.</p>
+
+<p>To remove the duplicates, we can turn each subset into a hash key, and set the value at that key to 1. If we hit the same key twice, it won't create a new hash element. Combine this with Javascript's ability to define custom sorts, and we can return the results in the desired order:</p>
+
+
+
+<pre><code>function powerSet(arr) &#123;
+    var ps = &#123;&#125; // power set hash
+
+    for (var n = 0; n &lt; Math.pow(2, arr.length); n++) &#123;
+        var tmp = &#91;&#93;;
+        for (var f = 0; f &lt; arr.length; f++)
+            if ((n &gt;&gt; f) % 2 == 1) tmp.push(arr&#91;f&#93;)
+        ps&#91;tmp.sort().join(&#39;,&#39;)&#93; = 1;
+    &#125;
+
+    function cmp(a, b) &#123;
+        return a.length &lt; b.length ? -1 : a.length == b.length ? a-b : 1;
+    &#125;
+
+    return Object.keys(ps).sort(cmp);
+&#125;
+</code></pre>
+
+
+
+<p>Results:</p>
+
+
+
+<pre><code>powerSet(&#91;1,2,2&#93;)
+
+&#91;&#34;&#34;, &#34;1&#34;, &#34;2&#34;, &#34;1,2&#34;, &#34;2,2&#34;, &#34;1,2,2&#34;&#93;
+</code></pre>
+
+
+
+<blockquote>
+<p>4) Also from Facebook:</p>
+
+<p>Write a function which returns the square root of a given number up to a precision of 0.0001.
+Only arithematic operations like addition, subtraction, division and multiplication are allowed.</p>
+
+
+</blockquote>
+
+<p>Wikipedia has a <a href="https://web.archive.org/web/20170702094845/http://en.wikipedia.org/wiki/Methods%5Fof%5Fcomputing%5Fsquare%5Froots">nice article</a> on manual methods of computing square roots. Back in the days before Javascript was fast, I created a script called "CMath" (C being the first letter in Curtis), which performed math on string objects, including square roots, computing pi and e, and arbitrary precision decimals.</p>
+
+<p>This was before I was anything approaching a competent developer, and I did it solely for fun, not to solve any problem I was running into. The square root method I used is on the above Wikipedia page under "Decimal (base 10)". Essentially, you treat it as a long division problem, with the twist of building the next divisor digit based on 20x the current solution, and pulling down two digits at a time from the dividend. Here's an example of taking the square root of 1800:</p>
+
+
+
+<pre><code> 4
+1800.0000
+18  : first digit is largest digit whose square is less than 18
+16  : 4^2 = 16, 5^2 = 25, so 4 is the first digit
+ 2  : Remainder of 2
+
+ 4 2.
+1800.0000
+18
+16    : Answer so for is 4, 4 &#42; 20 = 80. Look for largest n where
+ 200  : n(80 + n) &lt; 200. 82 &#42; 2 = 164, 83 &#42; 3 = 249, so next is 2
+ 164  : 82 &#42; 2 = 164
+  36  : Remainder of 36
+
+ 4 2. 4
+1800.0000
+18
+16
+ 200
+ 164
+  3600  : 42 &#42; 20 = 840. Need largest n(840 + n) &lt; 3600
+  3387  : 844 &#42; 4 = 3387, 845 &#42; 4 = 4225, so next is 4
+   213  : Remainder of 213
+...etc.
+</code></pre>
+
+
+
+<p>As you get more decimal digits, the remainders grow, and eventually get unwieldy if you aren't using a large integer library of some sort. Our question only wants accuracy to .0001, so we should still be able to fit the last remainder into a standard int.</p>
+
+<p>Here's my implementation of that method in PHP, which takes copious advantage of the language's easy casting between strings and numbers:</p>
+
+
+
+<pre><code>&lt;?php
+
+$in = $argv&#91;1&#93;;
+if (preg&#95;match(&#39;/^&#92;d+$/&#39;, $in)) $in .= &#34;.00000000&#34;;
+else if (! preg&#95;match(&#39;/^&#92;d+&#92;.&#92;d+$/&#39;, $in) ) &#123;
+    echo &#34;Invalid number format. ### or ###.### only.&#92;n&#34;;
+    exit;
+&#125;
+
+// Split number into left and right parts
+list($l, $r) = explode(&#39;.&#39;, $in, 2);
+
+// Left part must have an even count, lead with 0 if needed
+if (strlen($l) % 2 == 1) $l = &#34;0&#34; . $l;
+
+// Make right part 8 digits, to give us 4 decimals in solution
+$r = substr( str&#95;pad($r, 8, &#34;0&#34;), 0, 8); // Trim or pad to 8 digits
+
+$ans = $remainder = &#34;&#34;;
+foreach(str&#95;split($l . $r, 2) as $chunk) &#123;
+    $remainder .= $chunk;
+    $tmp = $ans &#42; 20;
+    $n = $tmp == 0 ? 0 : (int)($remainder / $tmp);
+    while (($tmp + $n) &#42; $n &lt;= $remainder) $n++;
+    $n--;
+    $ans .= $n;
+    $remainder -= ($tmp + $n) &#42; $n;
+&#125;
+$ans = substr&#95;replace($ans, &#34;.&#34;, strlen($l) / 2, 0);
+print &#34;$ans&#92;n&#34;;
+
+?&gt;
+</code></pre>
+
+
+
+<p>Results:</p>
+
+
+
+<pre><code>$ php sqrt.php 1800
+42.4264
+$ php sqrt.php 43046721
+6561.0000
+$ php sqrt.php 2
+1.4142
+$
+</code></pre>
+
+
+
+<p>This method isn't exactly intuitive, and recalling the specifics without a reference might be a problem, however it's easy to build an equivalent solution from first principles. Simply, we're looking for the square root S of a number N, so a formula to express that without a radix is:</p>
+
+
+
+<pre><code>S^2 = N
+</code></pre>
+
+
+
+<p>We're also looking to build that up one part at a time with A's and B's, where:</p>
+
+
+
+<pre><code>(A + B)^2 = S^2
+</code></pre>
+
+
+
+<p>A simple algebraic expansion of the left side of that equation it:</p>
+
+
+
+<pre><code>A^2 + 2AB + B^2 = S^2
+</code></pre>
+
+
+
+<p>In fact, the <code>2AB</code> is where our 20x comes from above. If A is a digit of the solution, and B another, then in reality A is in a decimal place with 10 times the weight of B, e.g., digits "2" and "4" really represent "20" and "4", or "200" and "40".</p>
+
+<p>In the PHP solution above, our partial solution A is fed into the division problem as <code>A^2 + 2A</code>. To get to the correct equation, we need to take the <code>2A</code> part and add a little more to it:</p>
+
+
+
+<pre><code>(2A + B) &#42; B = 2AB + B^2
+</code></pre>
+
+
+
+<p>...which is exactly what the PHP solution above does. So this is another example of replacing a Google search with some basic maths to arrive at the same algorithm.</p>
+
+<blockquote>
+<p>5) From Goldman sachs:</p>
+
+<p>A standard chess knight (it moves in its standard way i.e. L shaped OR 2.5 moves) is sitting at the position a1 on an N x N chess board. What is the minimum number of moves it will take to reach the diagonally opposite corner? 
+P.S. - If it were a 8 x 8 chess board, the final destination for the knight would be h8</p>
+
+
+</blockquote>
+
+<p>This is a critical thinking problem, and doesn't explicity call for any code. Restating the question, if my chessboard is N squares on a side, how many optimal moves will it take to get a knight from one corner to the opposite one? On the off chance you're unfamiliar with chess, a knight move is two vertical squares + one horizontal, or two horizontals plus one vertical.</p>
+
+<p>Trying to tack diagonally across the board, each pair of moves puts the knight 3 squares up and 3 over. Finding the optimal <em>number</em> of moves is marginally simpler than finding the optimal moves themselves. Here are the optimal moves (as far as I know - I haven't checked this against anything but first principles) for boards of side 4 through 11.</p>
+
+<p>Optimal moves for board of size:</p>
+
+
+
+<pre><code> 4      5      6        7        8          9          10           11
+
+...2  ..2.4  .....4  ......4  .....4.6  ........6  .........6  ........6.8
+.1..  .....  ..2...  ....3..  ........  .....4...  .......5..  ...........
+....  .1.3.  ....3.  .......  ....3.5.  .......5.  ..........  .......5.7.
+0...  .....  .1....  ...2...  ........  ....3....  ......4...  ...........
+      0....  ......  .1.....  ...2....  .........  ....3.....  ......4....
+             0.....  .......  .1......  ...2.....  ..........  ....3......
+                     0......  ........  .1.......  ...2......  ...........
+                              0.......  .........  .1........  ...2.......
+                                        0........  ..........  .1.........
+                                                   0.........  ...........
+                                                               0..........
+</code></pre>
+
+
+
+<p>Our optimal move count is always even, and stays the same for three board lengths in a row, making the math much easier than the verification. Now, what's up with a 3 x 3 board?</p>
+
+
+
+<pre><code>.14
+3..
+0.2
+</code></pre>
+
+
+
+<p>By the previous equation, it should take two moves to move the knight from corner to corner. Unfortunately, though, you can't actually fit a double-move on the board, as that would put the knight here:</p>
+
+
+
+<pre><code>   2
+.1.
+...
+0..
+</code></pre>
+
+
+
+<p>So the math is pretty simple, and doesn't beg to be turned into code, but since the question was from a coding interview, I'll throw it into a simple Java class, taking advantage of Java's strong typing to find the size without needing to round:</p>
+
+
+
+<pre><code>package cea.demos;
+
+public class KnightMoves &#123;
+
+  private KnightMoves() &#123; &#125;
+
+  public static int getOptimalMoveNum(int size) throws Exception &#123;
+    if (size &lt; 3) throw new Exception(&#34;Size of board must be 3 or more&#34;);
+
+    return size == 3 ? 4 : (size + 1) / 3 &#42; 2;
+  &#125;
+
+  public static void main(String&#91;&#93; args) throws Exception &#123;
+    StringBuffer sb = new StringBuffer();
+    for (int n = 3; n &lt; 20; n++) &#123;
+      sb.append(&#34;Board Edge length: &#34;).append(n);
+      sb.append(&#34;, Optimal move count: &#34;).append(getOptimalMoveNum(n));
+      sb.append(&#39;&#92;n&#39;);
+    &#125;
+
+    System.out.print(sb.toString());
+  &#125;
+
+&#125;
+</code></pre>
+
+
+
+<p>Results:</p>
+
+
+
+<pre><code>Board Edge length: 3, Optimal move count: 4
+Board Edge length: 4, Optimal move count: 2
+Board Edge length: 5, Optimal move count: 4
+Board Edge length: 6, Optimal move count: 4
+Board Edge length: 7, Optimal move count: 4
+Board Edge length: 8, Optimal move count: 6
+Board Edge length: 9, Optimal move count: 6
+Board Edge length: 10, Optimal move count: 6
+Board Edge length: 11, Optimal move count: 8
+Board Edge length: 12, Optimal move count: 8
+Board Edge length: 13, Optimal move count: 8
+Board Edge length: 14, Optimal move count: 10
+Board Edge length: 15, Optimal move count: 10
+Board Edge length: 16, Optimal move count: 10
+Board Edge length: 17, Optimal move count: 12
+Board Edge length: 18, Optimal move count: 12
+Board Edge length: 19, Optimal move count: 12
+</code></pre>
+
+
+
+<p>It's tempting to include printouts for the actual optimal moves, since if you look at my manual method above, I hashed out a simple algorithm that wouldn't be hard to implement. However, it's easy to overreach to try to look a little cooler or impressive. Experience has calmed me some, and while I'm confident I could have a working solution in a pass or two, I'm not cocky enough to push the issue in an interview.</p>
+
+<p>Over the years my work has been solid under time pressure, with people hovering, with real money on the line, but it's a rookie move to dive into that situation when it's avoidable. It's better, I think, to answer the question that was asked, and not use it as a segue for showing off.</p>
+
+<p>So those are some of the coding answers I may have been able to give, had I been asked, in a variety of languages. Am I for hire? Absolutely. It's my hope that mentioning that after several pages of code will naturally weed out the hiring managers I wouldn't click with.</p>
+
+<p>Clicking, man... it's pretty damned important.</p>
+
+<p>Enjoy!<br/>
+<a href="https://web.archive.org/web/20170702094845/mailto:ceautery@gmail.com">Curtis</a></p>
+
+
+			</div>
+			<hr/>
+		
+
+	</div>
+	<script src="/web/20170702094845js_/http://curtisautery.appspot.com/static/jquery/jquery-2.0.3.min.js"></script>
+	<script src="/web/20170702094845js_/http://curtisautery.appspot.com/static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
+<!--
+     FILE ARCHIVED ON 09:48:45 Jul 02, 2017 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 17:36:41 Oct 26, 2020.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  exclusion.robots: 1.57
+  PetaboxLoader3.datanode: 1085.3 (4)
+  exclusion.robots.policy: 1.554
+  RedisCDXSource: 326.873
+  PetaboxLoader3.resolve: 802.555 (4)
+  load_resource: 524.843
+  esindex: 0.016
+  captures_list: 1887.717
+  CDXLines.iter: 25.083 (3)
+  LoadShardBlock: 1529.078 (3)
+-->

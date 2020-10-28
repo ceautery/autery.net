@@ -2,7 +2,7 @@
 
 Measuring time is more nebulous than you might imagine. The length of a year isn't constant, neither is the length of a day, owing to planetary physics, e.g. the pull of gravity from other planets, and the gyroscopic effect of the rotation of Earth's axis (think of a spinning top wobbling as it slows) approximately every 26,000 years. Neither a year nor a lunar month complete in a whole number of days, and to complicate matters, their lengths are very close to a quarter day and a half day, respectively. This caused the mathematically literate of ancient times to attempt calendars using these fractions, which would slowly stray. Efforts to standardize calendars caused as many problems as they tried to solve, mostly surrounding religious observances, which I'll get into below. Nature, indifferent to man's planning, doesn't cooperate by giving us easy time tables, but rather gave us teasingly close to usable fractions to work with, leading to much strife among the devout where numbers are concerned.
 
-Let's start with what we mean by "year". An anomalistic year is the time between the Earth twice reaching perihelion, the closest point to the sun on its elliptical orbit. A sidereal year is the time between the Earth twice reaching the same position with respect to fixed background stars. A tropical year, on the other hand, measures the time between the Earth twice reaching the same season, measured at the start of an equinox, where from our perspective the sun crosses the equator, our axial tilt is perpendicular to the sun's rays, and day and night are the same length. All three of these measurements vary slightly from each other, spanning a range of about 25 minutes, which you can see see in the various definitions for "year" at the [US Navy Astronomical Almanac](http://asa.usno.navy.mil/SecM/Glossary.html).
+Let's start with what we mean by "year". An anomalistic year is the time between the Earth twice reaching perihelion, the closest point to the sun on its elliptical orbit. A sidereal year is the time between the Earth twice reaching the same position with respect to fixed background stars. A tropical year, on the other hand, measures the time between the Earth twice reaching the same season, measured at the start of an equinox, where from our perspective the sun crosses the equator, our axial tilt is perpendicular to the sun's rays, and day and night are the same length. All three of these measurements vary slightly from each other, spanning a range of about 25 minutes, which you can see see in the various definitions for "year" at [Her Majesty's Nautical Almanac Office](http://asa.hmnao.com/SecM/Glossary.html).
 
 The creation of calendars to satisfy religious observances concerns itself with astronomical events, such as the phase of the moon (lunar months repeat a frustrating 44 minutes more than 29.5 days on average) and seasons, which would necessitate defining a tropical year. For example, the beginning of Spring is very important to Judaism and Christianity, as this is the "coming of the light", where Passover and the Fast of the Firstborn, and the resurrection of Jesus are celebrated (I won't cover the strictly lunar Islamic calendar here, whose months don't stay aligned with seasons), and other observances and feast days are based on distance from the Spring rituals, such as the movable feasts of the Catholic Paschal cycle, and, as far as I can tell, Jewish holidays are fixed at set distances from the start of Passover. A fixed yearly calendar that identifies the start of Spring isn't possible, as the number of days in a year isn't a whole number; it has a remainder of slightly more, or slightly less, than a quarter of a day, depending on what you're measuring.
 
@@ -90,7 +90,7 @@ In actuality, there are <a href="https://en.wikipedia.org/wiki/Epoch_(reference_
 
 Dennis refers to the "cal" calendar program understanding the Gregorian cutover of England, and by extension the United States. The manual page for the cal program mentions this as well:
 
-![](https://c2.staticflickr.com/6/5724/22585971682_910b0ffe37_c.jpg)
+![](/images/22585971682_910b0ffe37_c.jpg)
 
 True to form, if you call up the calendar for September 1752, you see a month with some missing days:
 
@@ -211,8 +211,8 @@ THH:mm:ss.sss</pre>
 
 Google Chrome was the first browser to attempt to implement the ES6 rule, which changed the value a Date returned with a simple year-only constructor:
 
-![](https://c2.staticflickr.com/6/5693/22411552840_289f8ea2ae_z.jpg)
-![](https://c1.staticflickr.com/1/772/22573487646_9c5dee31dc_z.jpg)
+![](/images/22411552840_289f8ea2ae_z.jpg)
+![](/images/22573487646_9c5dee31dc_z.jpg)
 
 As of version 46.0.2490.80, Chrome went back to the prior constructor rules, which I assume is due to either the ambiguity of the ES6 rule (the timezone offset is only mentioned in regard to the time part of the constructor, and isn't mentioned at all in the date-only constructor), or because it broke previously working websites that relied on the (undefined) behavior of casting Dates to UTC if the YYYY-MM-DD constructor was used without explicitly appending a Z on the end.
 
@@ -385,7 +385,7 @@ On closer inspection of the locale string function, we find that even browsers t
 This shows the 10 days removed in Oct 1582, however the US was a British territory, and hadn't adopted the Gregorian calendar yet. Their removed days should be in 1752.
 
 
-![](https://c2.staticflickr.com/6/5819/22411552350_4730c35d56_z.jpg)
+![](/images/22411552350_4730c35d56_z.jpg)
 
 How about London?
 
@@ -403,7 +403,7 @@ The 1 minute and 15 second adjustment needed to move London time to an even hour
     » new Date('1847-12-01T00:01:14Z').toLocaleString()
     « "11/30/1847, 11:59:59 PM"
 
-![](https://c1.staticflickr.com/1/739/21976725894_46655269bf_z.jpg)
+![](/images/21976725894_46655269bf_z.jpg)
 
 While Chrome has sided with Rome over England, Firefox has a different view: No Julian calendar ever existed. Here is how Firefox responds with my computer's locale set to Rome (which should **definitely** cut over to the Gregorian calendar in 1582):
 
@@ -434,7 +434,7 @@ While there is spotty support for Julian to Gregorian cutovers in browsers, they
 
 With my locale set to Columbus again, we can iterate over a few years to see the times DST observance changed. In both cases, the underlying cause was Middle East politics.
 
-![](https://c2.staticflickr.com/6/5787/22411552050_8e35a9308e_c.jpg)
+![](/images/22411552050_8e35a9308e_c.jpg)
 
 Why does 1974's daylight saving time start in January?
 
@@ -479,11 +479,11 @@ There are hundreds of interconnected systems, all needing to have their programs
 
 This is just a pair of examples from one utility company, and there are doubtless thousands of similar stories from 2007 of companies who were forced to devote thousands of man-hours to this unfunded mandate.
 
-![](https://c1.staticflickr.com/1/675/22585971382_aafdf8f32b_z.jpg)
+![](/images/22585971382_aafdf8f32b_z.jpg)
 
 If I switch my locale to Israel and run some years through my timezone offset parser, I see some interesting things:
 
-![](https://c1.staticflickr.com/1/659/22585971632_1c3e38f009_c.jpg)
+![](/images/22585971632_1c3e38f009_c.jpg)
 
 If we consult the IANA timezone database entries for Israel, we see some jumps:
 
