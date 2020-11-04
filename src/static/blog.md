@@ -10,3 +10,4 @@ Things I think about
 * `2013-10-24` - [5 coding interview questions](/blog/interview-questions)
 * `2013-09-16` - [Birth of my daughter Emrys](/blog/emrys)
 * `2013-03-13` - [Why Sheffer's Stroke is NAND instead of NOR](/blog/nand)
+* `2011-10-16` - [Birth of my daughter Adelaide](/blog/adelaide)
