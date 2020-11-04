@@ -7,4 +7,4 @@ Array.from(navLinks).find(a => a.pathname == uri)?.classList?.add('live')
 
 // Make all external anchors open in new tabs
 document.querySelectorAll('article a')
-  .forEach(a => { if (a => a.attributes?.href?.value?.startsWith('http')) a.target = '_blank' })
+  .forEach(a => { if (a.attributes?.href?.value?.startsWith('http')) a.target = '_blank' })
