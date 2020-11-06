@@ -2,6 +2,7 @@
 
 Things I think about
 
+* `2020-11-05` - [Covid, rebirth, jobs, and elections](/blog/rebirth)
 * `2017-06-01` - [How to download a web page](/blog/download-webpage)
 * `2016-02-12` - [A deep dive into APL](/blog/apl)
 * `2015-12-29` - [Combinatorics, brute force, and a surprising coding challenge](/blog/combinatorics)
