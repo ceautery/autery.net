@@ -4,7 +4,7 @@ body {
   height: 100%;
   margin: 0;
   font-family: system-ui;
-  font-size: 1.2em;
+  font-size: 1.25em;
   line-height: 1.5;
 }
 
@@ -63,12 +63,12 @@ a:hover {
 
 code, p.codez {
   font-family: "Menlo", monospace;
-  font-size: .9em;
+  font-size: .875em;
 }
 
 .codez {
   background-color: #333;
-  padding: 0.8em;
+  padding: 0.75em;
   color: white;
   overflow: scroll;
 }
@@ -114,27 +114,73 @@ th:last-of-type {
   width: 50%;
 }
 
+.math {
+  font-family: "Times";
+}
+
+.radical {
+    /*font-size: 1.25em;*/
+    /*position: relative;*/
+    /*top: -.0625em;*/
+}
+
+.radicand {
+  border-top: .046875em solid;
+  margin-left: .0625em;
+}
+
+.codez .radical {
+  font-size: 1em;
+}
+
+sup {
+  font-size: .625em;
+}
+
+.fraction {
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: .6875em;
+  line-height: 1.25;
+  top: -.1875em;
+  position: relative;
+}
+
+.radicand .fraction {
+  font-size: .375em;
+}
+
+p {
+  line-height: 1.75;
+}
+
+.numerator {
+  border-bottom: .09375em solid;
+  display: block;
+}
+
 @media screen and (max-width: 1200px) {
-  body { font-size:1.2em; }
+  body { font-size: 1.125em; }
   article { padding: 1em 10%; }
 }
 
 @media screen and (max-width: 1024px) {
-  body { font-size:1.1em; }
+  body { font-size: 1em; }
   article { padding: 1em 5%; }
 }
 
 @media screen and (max-width: 900px) {
-  body { font-size:1em; }
+  body { font-size: 1em; }
   article {
     padding: 1em 0;
     text-align: left;
   }
 
   article pre {
-    white-space:pre-wrap;
-    word-wrap:break-word;
-    overflow:auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: auto;
   }
 
   article img {

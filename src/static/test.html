@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=500">
 <meta charset="UTF-8">
 
@@ -11,477 +11,121 @@
 </nav>
 
 <article>
-<p>This post will show you:</p>
-<ul>
-<li>Linux/macOS shell commands</li>
-<li>Downloading a web resource with HTTP commands</li>
-<li>The OSI model</li>
-<li>JSON data</li>
-<li>How to make an AJAX request in a Chrome developer console</li>
-</ul>
-<h3 id="part-1-downloading-a-web-page-the-hard-way">Part 1: Downloading a web page, the hard way</h3>
-<table>
-<thead>
-<tr>
-<th align="left">Tools</th>
-<th align="left">Tech</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://en.wikipedia.org/wiki/MacOS_Sierra">macOS</a></td>
-<td align="left"><a href="https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29">Bash</a></td>
-</tr>
-<tr>
-<td align="left"><a href="https://en.wikipedia.org/wiki/ITerm2">iTerm2</a></td>
-<td align="left"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">HTTP</a></td>
-</tr>
-<tr>
-<td align="left"><a href="https://en.wikipedia.org/wiki/Telnet">Telnet</a></td>
-<td align="left"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></td>
-</tr>
-</tbody></table>
-<p>There exists a website, <a href="http://example.com">example.com</a>, which is exactly what its name suggests. It happens to be the easiest location on the Internet to show how basic <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a> requests work, and has a concise and spiffy example of good <a href="https://en.wikipedia.org/wiki/HTML">HTML</a> and <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a> usage. The site looks like this in a desktop-sized browser:</p>
-<p><img src="/images/example-normal.png" alt="example.com on a desktop browser"></p>
-<p>...and like this on a phone:</p>
-<p><img src="/images/example-mobile.png" alt="example.com on a mobile browser"></p>
-<p>The lack of a rounded border and larger grey background on the mobile version is done with a simple stylesheet rule, which we&#39;ll touch on very briefly below. It&#39;s beyond the scope of this post to teach web development, and besides, a better resource than I could write already exists, the Mozilla Developer Network&#39;s excellent series <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web">Getting started with the Web</a>.</p>
-<p>What follows is a shell session log of me downloading the example.com web page using the most primitive of tools: Telnet and manually-entered HTTP commands. I&#39;m using the iTerm 2 terminal emulator on a MacBook using the default Bash shell. If you&#39;re not familiar with all those terms, the table above has some Wikipedia links to them, but if you don&#39;t want to get sidetracked looking things up now, it&#39;s enough to know that I&#39;m using keyboard commands to do the same thing a web browser does.</p>
-<p>So here is me, asking to get the resource <code>/</code> (the root page) from example.com, that I&#39;ve connected to on <a href="https://en.wikipedia.org/wiki/Port_%28computer_networking%29">port</a> 80, the default port for web servers, and the response that the web server gives back:</p>
-<pre class="codez"><code><strong>~ $</strong> <em>telnet</em>
-<strong>telnet&gt;</strong> <em>open example.com 80</em>
-Trying 93.184.216.34...
-Connected to example.com.
-Escape character is &#39;^]&#39;.
-<em>GET / HTTP/1.1</em>
-<em>Host: example.com</em>
-<em>Connection: close</em>
-
-HTTP/1.1 200 OK
-Cache-Control: max-age=604800
-Content-Type: text/html
-Date: Thu, 01 Jun 2017 07:57:30 GMT
-Etag: &quot;359670651+gzip+ident&quot;
-Expires: Thu, 08 Jun 2017 07:57:30 GMT
-Last-Modified: Fri, 09 Aug 2013 23:54:35 GMT
-Server: ECS (mdw/1275)
-Vary: Accept-Encoding
-X-Cache: HIT
-Content-Length: 1270
-Connection: close
-
-&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Example Domain&lt;/title&gt;
-
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
-    &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
-    &lt;style type=&quot;text/css&quot;&gt;
-    body {
-        background-color: #f0f0f2;
-        margin: 0;
-        padding: 0;
-        font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
-
-    }
-    div {
-        width: 600px;
-        margin: 5em auto;
-        padding: 50px;
-        background-color: #fff;
-        border-radius: 1em;
-    }
-    a:link, a:visited {
-        color: #38488f;
-        text-decoration: none;
-    }
-    @media (max-width: 700px) {
-        body {
-            background-color: #fff;
-        }
-        div {
-            width: auto;
-            margin: 0 auto;
-            border-radius: 0;
-            padding: 1em;
-        }
-    }
-    &lt;/style&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;div&gt;
-    &lt;h1&gt;Example Domain&lt;/h1&gt;
-    &lt;p&gt;This domain is established to be used for illustrative examples in documents. You may use this
-    domain in examples without prior coordination or asking for permission.&lt;/p&gt;
-    &lt;p&gt;&lt;a href=&quot;http://www.iana.org/domains/example&quot;&gt;More information...&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-Connection closed by foreign host.
-<strong>~ $</strong></code></pre><p>Let&#39;s break this down into logical chunks.</p>
-<p class="codez"><strong>~ $</strong> <em>telnet</em>
-<strong>telnet&gt;</strong> <em>open example.com 80</em></p><p>The <code>~ $</code> in green is my system&#39;s command prompt. <code>~</code> in Unix-speak means your home directory, and <code>$</code> is a common symbol to show a user where to start typing their next command. I run the program &quot;telnet&quot;, which gives me its own prompt. I tell it to open a connection to the server &quot;example.com&quot; on port 80, the default server port for unencrypted web traffic.</p>
-<p class="codez">Trying 93.184.216.34...
-Connected to example.com.
-Escape character is &#39;^]&#39;.</p><p>The telnet program then tells me what IP address it is trying to connect to (it found the address by using a <a href="https://en.wikipedia.org/wiki/Domain_Name_System">DNS</a> lookup of the site name I gave it), and almost immediately that it had connected, and what to type to get back to a command prompt. In this case, <code>^]</code> means to hold down &quot;control&quot; and then press the right bracket key. Until I do that, everything I type gets sent to the example.com server.</p>
-<p class="codez"><em>GET / HTTP/1.1</em>
-<em>Host: example.com</em>
-<em>Connection: close</em></p><p>This is what I typed after connecting, to request the <code>/</code> resource. &quot;HTTP/1.1&quot; is the protocol I said I wanted to use, and I said I intended to request the resource from example.com. It&#39;s possible to run more than one web site on a server, so it&#39;s important to say who you think you&#39;re talking to. The &quot;Connection: close&quot; line means tells the server that I am only going to request this one thing, and that it&#39;s safe to close the connection afterwards.</p>
-<p>The blank line at the end is important; you can send an arbitrary list of attributes to a web server, identifying cookies for the site, the name of your browser, what type of compression you support, what plugins you have installed, etc. The blank line indicates you don&#39;t have anything else to advertise to the server, and it can start sending you a response.</p>
-<p class="codez">HTTP/1.1 200 OK
-Cache-Control: max-age=604800
-Content-Type: text/html
-Date: Thu, 01 Jun 2017 07:57:30 GMT
-Etag: &quot;359670651+gzip+ident&quot;
-Expires: Thu, 08 Jun 2017 07:57:30 GMT
-Last-Modified: Fri, 09 Aug 2013 23:54:35 GMT
-Server: ECS (mdw/1275)
-Vary: Accept-Encoding
-X-Cache: HIT
-Content-Length: 1270
-Connection: close</p><p>This is the header of the HTTP response to my GET request. The top line is the response code, 200, which means that the server found the resource I asked for, and then it proceeds to tell me things about the response I may want to keep track of - what it&#39;s <a href="https://en.wikipedia.org/wiki/Media_type">content type</a> is, when it was created, how long I can expect it to be up to date (a week, in this case), and how many characters long it is.</p>
-<p>Once again, the blank line is significant, indicating the end of the header section, and the beginning of the response body - the &quot;file&quot; part. In this case, the &quot;body&quot; is an HTML file representing a small web page with some styling, and a single link to another site. The file itself is also broken down into a header and a body, that a browser would know how to parse. Let&#39;s start digging into that.</p>
-<pre class="codez"><code>&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Example Domain&lt;/title&gt;
-
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
-    &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
-    &lt;!-- stylesheet --&gt;
-&lt;/head&gt;
-&lt;!-- body --&gt;
-&lt;/html&gt;</code></pre><p>The very first line is the doctype declaration. In the past, giving browsers hints about what flavor of HTML content was about to happen would trigger different browser rendering modes. If you poke around in tech forums, you&#39;ll occasionally see references to &quot;quirks mode&quot; vs. &quot;standards mode&quot;. At this point in the web development space, the HTML standard is fluid, and updated frequently, and the doctype declaration is less significant, but old-timers like me still like to see it, mainly because we&#39;re a bunch of cranks.</p>
-<p>HTML &quot;tags&quot; are delimited by &quot;angle brackets&quot;, meaning less-than and greater-than signs - <code>&lt;</code> and <code>&gt;</code>. Some tags have a corresponding closing tag. <code>&lt;html&gt;</code> has <code>&lt;/html&gt;</code> at the end of the file, <code>&lt;head&gt;</code> has <code>&lt;/head&gt;</code> at the end of the header section, and anything between them is a child of the header. Other tags are self-closing, like the <code>&lt;meta&gt;</code> tags in the header. By convention, self-closing tags end with <code>/&gt;</code>, but browsers can still make sense of them if the slash is omitted. In fact, browsers are pretty good about making sense of pages that don&#39;t 100% adhere to the standards, which is important, because the HTML spec and browser versions aren&#39;t in sync with each other.</p>
-<p>The meta tags in this example show two ways of defining the character set, <a href="https://en.wikipedia.org/wiki/UTF-8">UTF-8</a> being the most common at the moment, as well as a viewport definition, which is a hint to mobile browsers on what size to make the virtual browser window, and how far to zoom in. In this case, we&#39;re locking the browser width to the size of the phone, and not zooming.</p>
-<p>In this example, I&#39;ve replaced the style and body sections with comment tags. Starting a tag with <code>&lt;!--</code> and ending it with <code>--&gt;</code> tells a browser to ignore that part when showing the page. Other programs can key off of HTML comments and perform special functions. The site generator for this blog, <a href="http://jekyllrb.com/">Jekyll</a>, looks for a comment tag <code>&lt;!--more--&gt;</code> to delimit where a post&#39;s excerpt ends, and can display small parts of each post on the site&#39;s main page.</p>
-<p>Let&#39;s take a closer look at example.com&#39;s stylesheet:</p>
-<pre class="codez"><code>&lt;style type=&quot;text/css&quot;&gt;
-body {
-    background-color: #f0f0f2;
-    margin: 0;
-    padding: 0;
-    font-family: &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
-
-}
-div {
-    width: 600px;
-    margin: 5em auto;
-    padding: 50px;
-    background-color: #fff;
-    border-radius: 1em;
-}
-a:link, a:visited {
-    color: #38488f;
-    text-decoration: none;
-}
-@media (max-width: 700px) {
-    body {
-        background-color: #fff;
-    }
-    div {
-        width: auto;
-        margin: 0 auto;
-        border-radius: 0;
-        padding: 1em;
-    }
-}
-&lt;/style&gt;    </code></pre><p>In a stylesheet, each setting starts with a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">selector</a>, followed by a block of parameters delimited by curly-braces - <code>{</code> and <code>}</code>. If my setting was <code>div { display: none; }</code>, then all the &quot;div&quot; HTML blocks of my page would be hidden.</p>
-<p>On example.com, there are two competing settings for the page&#39;s main body and it&#39;s div tag. The second block of settings is inside of a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries">media query</a> that fires for any browser whose width is 700 pixels or less. Try it out - head on over to <a href="http://example.com/">example.com</a>, and shrink the page until the left and right borders touch the white box.</p>
-<p>Stylesheets are a whole field of study, so I won&#39;t get too deep into them right now. If you want a puzzle to unravel outside the scope of this post, figure out why some of the colors above are defined with 6 hex characters, and others with just 3.</p>
-<p>The body of the page is a little more straightforward:</p>
-<pre class="codez"><code>&lt;body&gt;
-&lt;div&gt;
-    &lt;h1&gt;Example Domain&lt;/h1&gt;
-    &lt;p&gt;This domain is established to be used for illustrative examples in documents. You may use this
-    domain in examples without prior coordination or asking for permission.&lt;/p&gt;
-    &lt;p&gt;&lt;a href=&quot;http://www.iana.org/domains/example&quot;&gt;More information...&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/body&gt;</code></pre><p>The body contains a single div tag, whose only purpose is to be a container for the white box with rounded corners. The <code>&lt;h1&gt;</code> tag is a heading, implying larger text, and the 1 declaring it&#39;s place in a heirarchy from 1 - 6. There has been some struggle in the tech community to re-educate fogies such as myself to think of tags as a document&#39;s organization structure, and use stylesheets for layout instructions. In the early days of HTML, tags such as <code>&lt;font&gt;</code> and <code>&lt;center&gt;</code> were used to control the way a page looked, but that style of web page design is deprecated now in favor of using CSS and various box models. What we have now is pretty good, and a great deal more concise than what we started with in the 90s, but the road to get there was pretty bumpy.</p>
-<p>Lastly, under the heading text are a couple of paragraph definitions, one with plain text, the other with an &quot;anchor&quot;, or link, to the IANA site, which declares that example.com is reserved, and not up for grabs.</p>
-<h3 id="part-2-redirecting-to-https">Part 2: Redirecting to HTTPS</h3>
-<table>
-<thead>
-<tr>
-<th align="left">Tools</th>
-<th align="left">Tech</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://en.wikipedia.org/wiki/Dig_%28command%29">Dig</a></td>
-<td align="left"><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security">TLS</a></td>
-</tr>
-<tr>
-<td align="left"><a href="https://en.wikipedia.org/wiki/OpenSSL">OpenSSL</a></td>
-<td align="left"><a href="https://en.wikipedia.org/wiki/OSI_model">OSI model</a></td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Security/x509_Certificates">X509 certificates</a></td>
-</tr>
-</tbody></table>
-<p>Connections over the Internet between two machines are pretty abstract. They combine everything from the cord plugged into your router (or the Wifi signal to it), to how bytes are delimited, to how your local network card&#39;s address is mapped to an Internet address, to how packets are acknowledged, to how files are reassembled from the parts the sender breaks them into, to how your web browser interprets and displays all the files it receives. These connections and behaviors are defined in scores of protocol definitions and display standards, where each protocol exists on (at least) one layer of the &quot;Open Systems Interconnection&quot; (or OSI) model.</p>
-<p>While we were connecting using Telnet to example.com to download it&#39;s root page, our <a href="https://en.wikipedia.org/wiki/Presentation_layer">presentation layer</a> was unencrypted. An attacker who controlled one of the routers between us and the server could, in theory, have recorded the raw content of our session, and pieced together a history of what we did.</p>
-<p>Encrypted web traffic happens using HTTPS, which is a combination of an encrypted presentation layer, and plain old HTTP over that connection on the <a href="https://en.wikipedia.org/wiki/Application_layer">application layer</a>. Websites that are HTTPS-only will typically listen for unencrypted connections on port 80, and tell connecting clients where to find the same resource over HTTPS on port 443.</p>
-<p>I own two sites that do this very thing, both hosted on the same server at the same IP address. This is me using the &quot;dig&quot; application to look up the IP address for both domains. The &quot;+short&quot; option means to truncate everything in the output except the actual IP address of the server, as referenced by the domain name&#39;s <a href="https://en.wikipedia.org/wiki/List_of_DNS_record_types">A record</a>:</p>
-<p class="codez"><strong>~ $</strong> <em>dig appsbykids.org +short</em>
-138.197.24.38
-<strong>~ $</strong> <em>dig mokg.club +short</em>
-138.197.24.38
-<strong>~ $</strong></p><p>The telnet session below shows me connecting to that IP address, and doing a GET request for both site&#39;s root page.</p>
-<pre class="codez"><code><strong>~ $</strong> <em>telnet</em>
-<strong>telnet&gt;</strong> <em>open 138.197.24.38 80</em>
-Trying 138.197.24.38...
-Connected to 138.197.24.38.
-Escape character is &#39;^]&#39;.
-<em>GET / HTTP/1.1</em>
-<em>Host: appsbykids.org</em>
-
-HTTP/1.1 301 Moved Permanently
-Server: nginx/1.10.0 (Ubuntu)
-Date: Thu, 01 Jun 2017 11:59:13 GMT
-Content-Type: text/html
-Content-Length: 194
-Connection: keep-alive
-Location: https://appsbykids.org/
-
-&lt;html&gt;
-&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
-&lt;body bgcolor=&quot;white&quot;&gt;
-&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
-&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-<em>GET / HTTP/1.1</em>
-<em>Host: mokg.club</em>
-
-HTTP/1.1 301 Moved Permanently
-Server: nginx/1.10.0 (Ubuntu)
-Date: Thu, 01 Jun 2017 11:59:30 GMT
-Content-Type: text/html
-Content-Length: 194
-Connection: keep-alive
-Location: https://mokg.club/
-
-&lt;html&gt;
-&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
-&lt;body bgcolor=&quot;white&quot;&gt;
-&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
-&lt;hr&gt;&lt;center&gt;nginx/1.10.0 (Ubuntu)&lt;/center&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-<em>^]</em>
-<strong>telnet&gt;</strong> <em>close</em>
-Connection closed.
-<strong>telnet&gt;</strong> <em>quit</em>
-<strong>~ $</strong></code></pre><p>In both cases, the HTTP response code was 301 instead of 200, and the &quot;Location&quot; record of the header showed the same resource I was trying to download, but changing the URL type to HTTPS. At this point, a web browser would kick over to secure mode, and try to download the same resource over a TLS connection on port 443.</p>
-<p>We can&#39;t do that over Telnet, since it doesn&#39;t have any encryption widgets built in, but we can use the program OpenSSL to start a TLS session as a client, exchange encryption keys with the server, and give us a prompt to run HTTP commands. That looks like this:</p>
-<pre class="codez"><code><strong>~ $</strong> <em>openssl s_client -connect appsbykids.org:443</em>
-CONNECTED(00000003)
-depth=1 /C=US/O=Let&#39;s Encrypt/CN=Let&#39;s Encrypt Authority X3
-verify error:num=20:unable to get local issuer certificate
-verify return:0
----
-Certificate chain
- 0 s:/CN=appsbykids.org
-   i:/C=US/O=Let&#39;s Encrypt/CN=Let&#39;s Encrypt Authority X3
- 1 s:/C=US/O=Let&#39;s Encrypt/CN=Let&#39;s Encrypt Authority X3
-   i:/O=Digital Signature Trust Co./CN=DST Root CA X3
----
-Server certificate
------BEGIN CERTIFICATE-----
-MIIFADCCA+igAwIBAgISA2BV3xRGrMQVBo5zJna/Ow36MA0GCSqGSIb3DQEBCwUA
-MEoxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MSMwIQYDVQQD
-ExpMZXQncyBFbmNyeXB0IEF1dGhvcml0eSBYMzAeFw0xNzA1MjIxMTA3MDBaFw0x
-NzA4MjAxMTA3MDBaMBkxFzAVBgNVBAMTDmFwcHNieWtpZHMub3JnMIIBIjANBgkq
-hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvwy4dpBNDnqDS3oUavI9vH9eDsPT3pe1
-1ZSNxcxKrY8/9j4EjWMEv4wt6+cEqBpwlXqHX1Q/4mkZ73GTdV0H8z4d004rKuTb
-zxnK0hJV4mMAD/cS7k0ZeTW0znZJycat56dyGfS1BC3IMT0RKMrMsg4HJM9GvC2D
-BzcZ9W3rg4N1IwhLf82YpZn+j1h0BfkNllnIuFF6ZTFSjOyZoNGR8+mP1l59hX0i
-NSYiJiy5nn7qbSbHFsvQmkRTTErSAOog1Lpe4HmD6zOuadWNebid9z1TK3p8hL5L
-6zVKO3NTrox2xGbmDLW7sUpUkp3WlUyXfKAh1gkDChj8FDqYHzzjTQIDAQABo4IC
-DzCCAgswDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEF
-BQcDAjAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBTUs9hoiUE6dCGOxeik6tzmKthP
-JzAfBgNVHSMEGDAWgBSoSmpjBH3duubRObemRWXv86jsoTBwBggrBgEFBQcBAQRk
-MGIwLwYIKwYBBQUHMAGGI2h0dHA6Ly9vY3NwLmludC14My5sZXRzZW5jcnlwdC5v
-cmcvMC8GCCsGAQUFBzAChiNodHRwOi8vY2VydC5pbnQteDMubGV0c2VuY3J5cHQu
-b3JnLzAZBgNVHREEEjAQgg5hcHBzYnlraWRzLm9yZzCB/gYDVR0gBIH2MIHzMAgG
-BmeBDAECATCB5gYLKwYBBAGC3xMBAQEwgdYwJgYIKwYBBQUHAgEWGmh0dHA6Ly9j
-cHMubGV0c2VuY3J5cHQub3JnMIGrBggrBgEFBQcCAjCBngyBm1RoaXMgQ2VydGlm
-aWNhdGUgbWF5IG9ubHkgYmUgcmVsaWVkIHVwb24gYnkgUmVseWluZyBQYXJ0aWVz
-IGFuZCBvbmx5IGluIGFjY29yZGFuY2Ugd2l0aCB0aGUgQ2VydGlmaWNhdGUgUG9s
-aWN5IGZvdW5kIGF0IGh0dHBzOi8vbGV0c2VuY3J5cHQub3JnL3JlcG9zaXRvcnkv
-MA0GCSqGSIb3DQEBCwUAA4IBAQBmxhBvSweo3AUNonBuEQbGTPkfjANahPj8IsOw
-GXL57nnpCGLOn+fJmSHdRKViEv8mc8G2ncN+ijV4V7/cCG4YwkHv+rx7bBfDp0lK
-GygdiAu4y8cp0yLo0HkLyFmZgXFpyOgNijltX27e8+YS/OD3Oj1ba2DmfSXQPr3B
-m+eY5ZyPzCntad/1H+Pna3lfL2zW1n52iUSXQ385ki48Wf245EiDhF3fljcfR9Y/
-zvcMaMSezHbpW/0JyE0q4c50PS5nKTfP/R9L8lTbFI0dpcq4J7CXKeD3scY+ZcOM
-T9hTeHF+GCW+i+X4mtmOBcrfTTfXq9dneIF29KYUilcRq0YA
------END CERTIFICATE-----
-subject=/CN=appsbykids.org
-issuer=/C=US/O=Let&#39;s Encrypt/CN=Let&#39;s Encrypt Authority X3
----
-No client certificate CA names sent
----
-SSL handshake has read 3416 bytes and written 456 bytes
----
-New, TLSv1/SSLv3, Cipher is DHE-RSA-AES128-SHA
-Server public key is 2048 bit
-Secure Renegotiation IS supported
-Compression: NONE
-Expansion: NONE
-SSL-Session:
-    Protocol  : TLSv1
-    Cipher    : DHE-RSA-AES128-SHA
-    Session-ID: 7112A72B95EF591C9FAFE1BA6D91AAB1C7E453612EFBD7E5FBEF733B57509B12
-    Session-ID-ctx:
-    Master-Key: B88A46FCD524C9C2BBC644B86D6281FE7F2960099CCEF13609B2179098AD53B288B615DD22DAA32E42EAB9CBF970D259
-    Key-Arg   : None
-    Start Time: 1495554095
-    Timeout   : 300 (sec)
-    Verify return code: 0 (ok)
----
-<em>GET /files/final.ino HTTP/1.1</em>
-<em>Host: appsbykids.org</em>
-
-HTTP/1.1 200 OK
-Server: nginx/1.10.0 (Ubuntu)
-Date: Tue, 23 May 2017 15:42:11 GMT
-Content-Type: application/octet-stream
-Content-Length: 885
-Last-Modified: Mon, 09 Jan 2017 18:25:42 GMT
-Connection: keep-alive
-ETag: &quot;5873d5a6-375&quot;
-Strict-Transport-Security: max-age=15768000
-Accept-Ranges: bytes
-
-const int MAXPINS = 11;
-const int tPins[] = {0, 1, 3, 4, 15, 16, 17, 18, 19, 22, 23};
-const int notes[] = {60, 62, 64, 65, 67, 69, 71, 72};
-
-int pinFlags[MAXPINS];
-
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(115200);
-  delay(1000);
-
-  for( int i = 0; i &lt; MAXPINS; i++ ){
-    int pin = tPins[i];
-    Serial.print(&quot;Pin &quot;);
-    Serial.print(pin);
-    Serial.print(&quot; intial value: &quot;);
-    Serial.println(touchRead(pin));
-  }
-
-}
-
-void loop() {
-  for (int i = 0; i &lt; MAXPINS; i++) {
-    if (touchRead(tPins[i]) &gt; 1000) {
-      if (!pinFlags[i]) {
-        usbMIDI.sendNoteOn(notes[i], 99, 1);
-        pinFlags[i] = true;
-        Serial.print(&quot;Detected :&quot;);
-        Serial.println(tPins[i]);
-      }
-    } else {
-      pinFlags[i] = false;
-      usbMIDI.sendNoteOff(notes[i], 0, 1);
-    }
-  }
-
-
-  while (usbMIDI.read()) {
-    // ignore incoming messages
-  }
-
-
-}
-DONE
-<strong>~ $</strong></code></pre><p>OpenSSL did some auto-negotiation, finding the best encryption type to use with the server, and displayed back to me some information about the certificate chain, and server&#39;s certificate. The certificate is in X.509 format, which encodes the issuer, how long the cert is valid, the encryption algorithm used, and the <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">public key</a> that I should use to encrypt data. The server keeps the private key, which it uses to decrypt what I&#39;ve encrypted. This type of encryption is called Assymetrical, or just &quot;public key&quot;, and is, like CSS, its own field of study, way outside the scope this post. I wrote a <a href="http://cautery.blogspot.com/2012/06/rsa-encryption-and-other-sun-tzu.html">Blogger post</a> some years back on the math behind RSA, a popular variant of public key encryption, if you want to dive a little deeper.</p>
-<p>After the key exchange, the rest of the OpenSSL session behaves just like the Telnet sessions above, which I then used to download the source code to an Arduino program.</p>
-<h3 id="part-3-an-actual-api-call">Part 3: An actual API call</h3>
-<table>
-<thead>
-<tr>
-<th align="left">Tech</th>
-<th align="left">Tool</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://en.wikipedia.org/wiki/Application_programming_interface">API</a></td>
-<td align="left"><a href="https://en.wikipedia.org/wiki/Google_Chrome">Chrome</a></td>
-</tr>
-<tr>
-<td align="left"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">Javascript</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><a href="https://developer.mozilla.org/en-US/docs/AJAX">AJAX</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><a href="https://en.wikipedia.org/wiki/JSON">JSON</a></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">Regular Expressions</a></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<p>&quot;API&quot; is a nebulous term that programmers use to mean a few different things. The name the acronym stands for, Application Programming Interface, doesn&#39;t really clear things up.</p>
-<p>At it&#39;s core, an API is a list of commands that something can call. Web browsers provide some features, like AudioBuffer, or SpeechRecognitionResult, that can be accessed from the Javascript programming language directly. The browser talks to your operating system with system commands to allocate memory, draw windows on the screen, and request access to an Internet connection. Web sites sometimes provide answers to questions - what&#39;s my account balance? how many messages are in my inbox? - without rendering an entire HTML page, but instead returning just a chunk of data that the browser does something with. All of these are examples of making API calls.</p>
-<p>The site <a href="https://teleport.org/">teleport.org</a>, which provides data on cities intended to help people decide where to move, has a search box where you can type in a city name, and get a list of matching names to choose from. Here I am using that to search for London:</p>
-<p><img src="/images/london.png" alt="a teleport.org search for london"></p>
-<p>The most likely candidate, London England, is on the top, and then a handful of other Londons show up in different states of the US. Teleport provides a public API that can be called with a city name, which returns a block of JSON data that represents what&#39;s in the above list. Their API documentation is available <a href="https://developers.teleport.org/api/">here</a>, and here is an example calling to it from Telnet:</p>
-<pre class="codez"><code><strong>~ $</strong> <em>telnet api.teleport.org 80</em>
-Trying 52.84.76.101...
-Connected to d3v9dtao340sz1.cloudfront.net.
-Escape character is &#39;^]&#39;.
-<em>GET /api/cities/?search=london HTTP/1.1</em>
-<em>Host: api.teleport.org</em>
-
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-Transfer-Encoding: chunked
-Connection: keep-alive
-Access-Control-Max-Age: 600
-Cache-Control: public, max-age=300
-Server: nginx
-X-Apiproxy-Cache-Status: MISS
-Date: Fri, 02 Jun 2017 20:24:43 GMT
-Via: 1.1 google, 1.1 19270b9ebeb1c54b61c028475c86d6dd.cloudfront.net (CloudFront)
-Vary: Origin,Accept-Encoding
-X-Cache: Miss from cloudfront
-X-Amz-Cf-Id: CpJ7DY8v3Ks27jNEQJ5HSeBb_2XR4xjAbWw6aHNPB4GUlZnDdlKE1Q==
-
-1480
-{&quot;_embedded&quot;:{&quot;city:search-results&quot;:[{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:2643743/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;london&quot;},{&quot;name&quot;:&quot;London&quot;},{&quot;name&quot;:&quot;London osh&quot;},{&quot;name&quot;:&quot;Londona&quot;},{&quot;name&quot;:&quot;Londonas&quot;},{&quot;name&quot;:&quot;Londoni&quot;},{&quot;name&quot;:&quot;londoni&quot;},{&quot;name&quot;:&quot;Londono&quot;},{&quot;name&quot;:&quot;Londons&quot;},{&quot;name&quot;:&quot;Londonu&quot;}],&quot;matching_full_name&quot;:&quot;London, England, United Kingdom&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:6058560/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;London&quot;},{&quot;name&quot;:&quot;Londonas&quot;},{&quot;name&quot;:&quot;londoni&quot;},{&quot;name&quot;:&quot;Londono&quot;}],&quot;matching_full_name&quot;:&quot;London, Ontario, Canada&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:2643734/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;Londonderry County Borough&quot;}],&quot;matching_full_name&quot;:&quot;Londonderry County Borough, Northern Ireland, United Kingdom&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:2655775/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;London Borough of Bexley&quot;},{&quot;name&quot;:&quot;Londonska opshtina Beksli&quot;}],&quot;matching_full_name&quot;:&quot;Bexley, England, United Kingdom (London Borough of Bexley)&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:2636503/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;London Borough of Sutton&quot;}],&quot;matching_full_name&quot;:&quot;Sutton, England, United Kingdom (London Borough of Sutton)&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:2643736/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;Londonderis&quot;},{&quot;name&quot;:&quot;Londonderry&quot;}],&quot;matching_full_name&quot;:&quot;Derry, Northern Ireland, United Kingdom (Londonderis)&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:5088905/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;Londondehrri&quot;},{&quot;name&quot;:&quot;Londonderi&quot;},{&quot;name&quot;:&quot;Londonderri&quot;},{&quot;name&quot;:&quot;Londonderry&quot;}],&quot;matching_full_name&quot;:&quot;Londonderry, New Hampshire, United States&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:4517009/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;London&quot;}],&quot;matching_full_name&quot;:&quot;London, Ohio, United States&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:4361094/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;Londontowne&quot;}],&quot;matching_full_name&quot;:&quot;Londontowne, Maryland, United States&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:4298960/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;London&quot;}],&quot;matching_full_name&quot;:&quot;London, Kentucky, United States&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:2656295/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;London Borough of Barnet&quot;},{&quot;name&quot;:&quot;Londonska opshtina Barnet&quot;}],&quot;matching_full_name&quot;:&quot;Barnet, England, United Kingdom (London Borough of Barnet)&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:5367815/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;London&quot;}],&quot;matching_full_name&quot;:&quot;London, California, United States&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:4030939/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;London&quot;},{&quot;name&quot;:&quot;London Village&quot;}],&quot;matching_full_name&quot;:&quot;London Village, Line Islands, Kiribati&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:2643741/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;London&quot;},{&quot;name&quot;:&quot;Londonas Sitija&quot;},{&quot;name&quot;:&quot;Londono Sitis&quot;},{&quot;name&quot;:&quot;Londons&#39;ke Siti&quot;},{&quot;name&quot;:&quot;Londons&#39;ke siti&quot;}],&quot;matching_full_name&quot;:&quot;City of London, England, United Kingdom (London)&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:4119617/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;London&quot;}],&quot;matching_full_name&quot;:&quot;London, Arkansas, United States&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:2650567/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;London Borough of Ealing&quot;}],&quot;matching_full_name&quot;:&quot;Ealing, England, United Kingdom (London Borough of Ealing)&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:2634812/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;London Borough of Wandsworth&quot;}],&quot;matching_full_name&quot;:&quot;Wandsworth, England, United Kingdom (London Borough of Wandsworth)&quot;},{&quot;_links&quot;:{&quot;city:item&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/geonameid:2646517/&quot;}},&quot;matching_alternate_names&quot;:[{&quot;name&quot;:&quot;London Borough of Hounslow&quot;}],&quot;matching_full_name&quot;:&quot;Hounslow, England, United Kingdom (London Borough of Hounslow)&quot;}]},&quot;_links&quot;:{&quot;curies&quot;:[{&quot;href&quot;:&quot;https://developers.teleport.org/api/resources/Location/#!/relations/{rel}/&quot;,&quot;name&quot;:&quot;location&quot;,&quot;templated&quot;:true},{&quot;href&quot;:&quot;https://developers.teleport.org/api/resources/City/#!/relations/{rel}/&quot;,&quot;name&quot;:&quot;city&quot;,&quot;templated&quot;:true},{&quot;href&quot;:&quot;https://developers.teleport.org/api/resources/UrbanArea/#!/relations/{rel}/&quot;,&quot;name&quot;:&quot;ua&quot;,&quot;templated&quot;:true},{&quot;href&quot;:&quot;https://developers.teleport.org/api/resources/Country/#!/relations/{rel}/&quot;,&quot;name&quot;:&quot;country&quot;,&quot;templated&quot;:true},{&quot;href&quot;:&quot;https://developers.teleport.org/api/resources/Admin1Division/#!/relations/{rel}/&quot;,&quot;name&quot;:&quot;a1&quot;,&quot;templated&quot;:true},{&quot;href&quot;:&quot;https://developers.teleport.org/api/resources/Timezone/#!/relations/{rel}/&quot;,&quot;name&quot;:&quot;tz&quot;,&quot;templated&quot;:true}],&quot;self&quot;:{&quot;href&quot;:&quot;http://api.teleport.org/api/cities/?search=london\u0026geohash=&quot;}},&quot;count&quot;:18}
-0</code></pre><p>There are a couple of interesting things to note here. First, the <code>Transfer-Encoding: chunked</code> header means that instead of saying up front what the resource&#39;s byte count will be, the server will send you a chunk at a time, saying what the size of just that chunk is, and keeping the connection open while there is still more data coming. This is useful for things like streaming video, where there isn&#39;t a static file, and also for APIs that return results collected from a database, where the byte count isn&#39;t known immediately after the request is made.</p>
-<p>The &quot;1480&quot; before the block is actually a hexadecimal number indicating the size of the chunk. The &quot;0&quot; at the very end means the next chunk is 0 bytes, which means there won&#39;t be more data coming.</p>
-<p>Alright, now it&#39;s time to crack open a browser and stop futzing with Telnet. I use the Chrome browser, which has a nice developer tools area that includes a console for entering Javascript commands. To access it, press command-option-j if you&#39;re on a Mac, or control-shift-j for Windows or Linux (I think... I also think if you&#39;re on Linux you&#39;re pretty familiar with developer tools). Here&#39;s an example of me entering a small command, and its return value:</p>
-<p class="codez">parseInt(&#39;1480&#39;, 16)
-5248</p><p>In this case, I&#39;m converting the &quot;1480&quot; from above from hex to base 10, showing the length of the giant data block that teleport returned. The block is in a format called JSON, which stands for Javascript Object Notation. It&#39;s a string that would be valid Javascript if we pasted it into the Chrome console window. In fact, let&#39;s do just that. I&#39;ll preface it with &quot;london =&quot; so we assign the block to a variable we can look at.</p>
-<p><img src="/images/json-console.png" alt="Pasting JSON into a Javascript console"></p>
-<p>Clicking the triangles beside object field names will cause Chrome&#39;s console to expand one additional layer of an object to be examined visually. Repeating this lets you &quot;drill down&quot; through the object to see how it is organized:</p>
-<p><img src="/images/london-obj.png" alt="Expanded JS object"></p>
-<p>In a real web application, I don&#39;t want users to have to copy and paste to create an object, or to open a console and start clicking on things. I want it to be able to make an API call, understand how the return object&#39;s layout, and do something meaningful with that data. Enter AJAX.</p>
-<p>AJAX literally stands for &quot;Asynchronous Javascript And XML&quot;, even though it is more common to receive JSON data than XML. Javascript has an object type called an XMLHttpRequest designed to make HTTP requests without changing the page the browser is on. The return data is available to Javascript to use on the existing page instead. Here is a small bit of Javascript that you can enter into the console to fetch the same data we did above:</p>
-<p class="codez">x = new XMLHttpRequest();
-x.open(&#39;get&#39;, &#39;<a href="https://api.teleport.org/api/cities/?search=london&#39;">https://api.teleport.org/api/cities/?search=london&#39;</a>);
-x.send();</p><p>After typing those commands into the Javascript console, Chrome&#39;s Network tab shows the API call was made, and gives you an interface similar to what we saw when we pasted the same JSON data into the console above:</p>
-<p><img src="/images/london-network-tab.png" alt="Chrome Network tab"></p>
-<p>The next post in this series will dive a little deeper into basic Javascript, and we&#39;ll learn how to do something interesting with the teleport data, namely find out how many states in the US have cities named London.</p>
-<p>See you then!</p>
+<h1 id="four-ways-to-construct-a-pentagon">Four ways to construct a pentagon</h1>
+<p><a href="/blog/compass.html">This page</a> contains animations of the compass and straightedge pentagon construction techniques I describe below, along with the first six propositions in Euclid&#39;s Elements.</p>
+<p>Over the last few weeks I&#39;ve been spending what free time I have obsessing over the odd mathematics of Argand diagrams, complex roots, and how they relate to constructing regular polygons with a compass and straightedge. I found, among other things, that I had forgotten quite a bit from my trig and geometry classes from 25 years ago.</p>
+<p>The spark for this obsession was when I stumbled on the Wikipedia article Compass and straightedge constructions, a topic I thoroughly enjoyed in my freshman Geometry class back in high school. The article mentions the discovery by Guass that a regular heptadecagon (a 17-sided polygon) was constructable because the cosine of <span class="math"><span class="fraction"><span class="numerator">2π</span>17</span></span> was equal to some arcane madness that had several nested square roots of 17 in it. On further digging, it mentions his proof of this had to do with finding the complex roots for <span class="math">𝑥<sup>17</sup> = 1</span>, raising e to the <span class="math"><span class="fraction"><span class="numerator">2π𝑖</span>17</span></span>, and liberal application of Euler&#39;s formula <span class="math">𝑒<sup>𝑖𝑥</sup> = cos 𝑥 + 𝑖 sin 𝑥</span>, all of which either seemed unrelated to drawing circles and lines, or just went right over my head.</p>
+<p>After returning to the article and reading other texts about the topic, I started to see how it all connected together, but not enough to be able to explain it to anyone, and then miraculously, it all clicked after watching <a href="https://youtu.be/N0Y8ia57C24">this video</a> on Khan Academy, which explains how to find complex roots. (Thanks, Sal, you da man.)</p>
+<p>There are two sides to this: the crazy math which concerns itself with complex roots and whatnot, which deals mainly with proving that a shape is or is not constructable, and the much simpler math that deals with finding where on a circle to find the next vertex of a shape. The simpler math, while easier to understand to laymen like myself, turns out to be pretty interesting on its own.</p>
+<h3 id="0-basic-concepts">0: Basic concepts</h3>
+<p>Let&#39;s start with a triangle.</p>
+<p>No, let&#39;s start with π (pi), the ratio of a circle&#39;s circumference to it&#39;s diameter. If you&#39;ve read this far, I imagine you&#39;ve heard of it, as well as the basic formula <span class="math">𝐶 = 2π𝑟</span>. The circumference of a circle is equal to 2 times π times the circle&#39;s radius.</p>
+<p>If the circle&#39;s radius is 1 (a &quot;unit circle&quot;), your current distance around the circle can be described as a fraction of 2π, the total circumference. If you are a third of the way around, you are at <span class="math"><span class="fraction"><span class="numerator">2π</span>3</span></span> from your starting point. To describe an equilateral triangle on the circle, you start at any point on the circle&#39;s edge, then add a second point one third the way around, at <span class="math"><span class="fraction"><span class="numerator">2π</span>3</span></span>, then add a third point another <span class="math"><span class="fraction"><span class="numerator">2π</span>3</span></span> around, then connect the dots:</p>
+<p><img src="/images/tri_1.PNG" alt=""></p>
+<p>So far so good, but how does knowing you have to go <span class="math"><span class="fraction"><span class="numerator">2π</span>3</span></span> around help you? With our good friend the cosine, of course! If you took a trigonometry course in school, you may have heard of the acronym SOH-CAH-TOA (it&#39;s explanation, unfortunately, commonly comes with a story that mocks native Americans - old chief Sohcahtoa, uncle to the lost brave Fallen Rocks, etc.). The acronym tells us that the Cosine is equal to the Adjacent side divided by the Hypotenuse. Cosine, Adjacent, Hypotenuse - the &quot;CAH&quot; of SOH-CAH-TOA. What does all that mean?</p>
+<p>This is in reference to right-triangles. With our example above, we can draw a right triangle from the point we&#39;re trying to find to the diameter line of the circle:</p>
+<p><img src="/images/cosine.PNG" alt=""></p>
+<p>This is a unit circle, so it has a radius of one. The cosine of our <span class="math"><span class="fraction"><span class="numerator">2π</span>3</span></span> angle will be the length of the line segment marked &quot;adjacent&quot;, divided by the hypotenuse. Since the hypotenuse in this case is also the circle&#39;s radius, we&#39;re just dividing by one, so the cosine tells us how far to move from the center along the diameter line to get &quot;under&quot; the point at <span class="math"><span class="fraction"><span class="numerator">2π</span>3</span></span>.</p>
+<p>The cosine of <span class="math"><span class="fraction"><span class="numerator">2π</span>3</span></span> radians (120 degrees if your calculator doesn&#39;t understand radians), is -.5, or half the distance from the circle&#39;s center to the left side of the diameter line. This is where the numbers turn into drawing instructions. One of the basic constructs with a compass and straightedge is dividing something in two, in this case the line segment between the circle&#39;s center and the left edge:</p>
+<p><img src="/images/bisect.PNG" alt=""></p>
+<p>Start with the circle in the picture above, then draw a circle with Q as the center, out to radius QO, and the circle/circle intersection points bisect the line segment QO, putting us -.5 from center on the diameter line, or immediately under the <span class="math"><span class="fraction"><span class="numerator">2π</span>3</span></span> point.</p>
+<p><img src="/images/bisected.PNG" alt=""></p>
+<p>Now to find the second point of the triangle, we need a line perpendicular to QO, which will intersect the original circle at <span class="math"><span class="fraction"><span class="numerator">2π</span>3</span></span>... what&#39;s that? Yes, in fact, we already have one of those. Additionally, the point it intersected was already established by the circle/circle intersection. Additionally...er, the bottom intersection point was at 4π/3 (whose cosine is also -.5, but whose sine is negative). So after we draw circle QO, we can mark off the second and third points of the inscribed triangle, and connect them:</p>
+<p><img src="/images/tri_2.PNG" alt=""></p>
+<p>Fairly simple. For any regular polygon you want to inscribe in a circle, you pick a point on the circle&#39;s edge, and then find the point at <span class="math"><span class="fraction"><span class="numerator">2π</span>𝑛</span></span>, where n is the number of sides. Once you find one leg of the shape, you can either repeat the procedure starting at the new point, or just draw a new circle centered on one point with a radius out to the other, and the circle-circle intersection shows where the next point is.:</p>
+<p><img src="/images/hep_circles.PNG" alt=""></p>
+<p>Alternatively, find <span class="math">𝑓 <span class="fraction"><span class="numerator">2π</span>𝑛</span></span>, where n is the number of sides, and f is co-prime to n. &quot;Say what?&quot; Basically, instead of finding the next point, you can find some other point, so long as skipping that many points and repeating will eventually fill in all the dots.</p>
+<h3 id="1-euclids-method">1: Euclid&#39;s method</h3>
+<p>There are other methods to find a point than by using cosines. With pentagons, the cosine math gets a little trickier. Since there are five points, the distance along the circumference between each will be <span class="math"><span class="fraction"><span class="numerator">2π</span>5</span></span>. If you ask a calculator for the cosine of <span class="math"><span class="fraction"><span class="numerator">2π</span>5</span></span> radians (or 72 degrees), you get an irrational number that starts with 0.309016994. This turns out to be <span class="math"><span class="fraction"><span class="numerator">√<span class="radicand">5 - 1</span></span>4</span></span>, but let&#39;s assume we don&#39;t know that yet. Point being, no method of finding that point with compass and straightedge jumps out at you.</p>
+<p>In Euclid&#39;s Elements, the construction method was different: Inscribe an isosceles triangle on a circle, making the angles on the base double the one on top. Bisect the bigger angles, and then you should have 5 equal angles extending to 5 points equidistant from each other. Creating the triangle involves mechanically finding the golden ratio, <span class="math"><span class="fraction"><span class="numerator">√<span class="radicand">5 + 1</span></span>2</span></span>, commonly denoted by the Greek letter phi (φ). The link below titled &quot;Pentagon, Euclid&#39;s method&quot; shows an animation of that, but here&#39;s the gist of it:</p>
+<p><img src="/images/golden_triangle.PNG" alt=""></p>
+<p>The type of triangle required for this is a &quot;golden triangle&quot;, meaning the ratio between the long sides and short side is the golden ratio. That knowledge, combined with Ptolemy&#39;s little gem, can tell us everything we need to know about a pentagon, including ways to construct it beyond Euclid&#39;s.</p>
+<h3 id="2-phi-method-or-the-kite">2: Phi method (or &quot;The Kite&quot;)</h3>
+<p>Ptolemy&#39;s theorem, if you&#39;ve never heard of it, is the bad-ass sequel to the Pythagorean theorem... the &quot;Godfather 2&quot; to Pythagoras&#39; &quot;The Godfather&quot;. Unfortunately, it never made its way into popular parlance, which I attribute to its difficulty in being expressed succinctly in English. It goes, roughly, thusly:</p>
+<p>If you inscribe a 4 sided polygon on a circle, the product of the lengths of the diagonals is the same as the sum of the products of each pair of opposite sides. For example, if you have a quadrilateral ABCD inscribed on a circle:</p>
+<p><img src="/images/ptolemy.PNG" alt=""></p>
+<p>...then <span class="math">𝐴𝐶 × 𝐵𝐷 = (𝐴𝐵 × 𝐶𝐷) + (𝐵𝐶 × 𝐴𝐷)</span>. Why this relationship works isn&#39;t intuitive (to me), especially since it doesn&#39;t rely on right angles. In the case of pentagons, it&#39;s surprisingly useful. To start, remember the golden triangle that can be drawn with three of the pentagon&#39;s points. The long sides (B from above) amount to connecting pentagon vertex points that are two apart on the circle&#39;s edge, where the short side (A) connects points that are adjacent. The ratio between them, B/A is equal to φ, the golden ratio.</p>
+<p>Now with that in mind, draw a line from one of the pentagon&#39;s points, through the circle&#39;s center, and connect it with the opposite end of the circle, making a diameter line. Then draw a kite:</p>
+<p><img src="/images/kite.PNG" alt=""></p>
+<p>Note that point Q, the end of the diameter line, is not a point on the pentagon. The lines A and B in the drawing above have the same lengths as A and B from the golden triangle. We don&#39;t know what their individual lengths are... yet. The diameter line is D, which we know is length 2 since this is a unit circle. The two Z lines are, for now, complete unknows. Now let&#39;s apply Ptolemy&#39;s theorem and a little algebra:</p>
+<p class="codez"><span class="math">𝐷𝐵 = 𝐴𝑍 + 𝐴𝑍</span>, or, <span class="math">𝐷𝐵 = 2𝐴𝑍</span>. Divide both sides by 2A to solve for Z.
+<span class="math">𝑍 = <span class="fraction"><span class="numerator">𝐷𝐵</span>2𝐴</span></span>
+We know the diameter, D, is 2, so:
+<span class="math">𝑍 = <span class="fraction"><span class="numerator">2𝐵</span>2𝐴</span></span>, which reduces to <span class="math">𝑍 = <span class="fraction"><span class="numerator">𝐵</span>𝐴</span></span>.
+Lastly, we know from Euclid that <span class="math"><span class="fraction"><span class="numerator">𝐵</span>𝐴</span></span> is the golden ratio, so:
+<span class="math">𝑍 = φ = <span class="fraction"><span class="numerator">√<span class="radicand">5 + 1</span></span>2</span></span></p>
+<p>This gives us our second method of constructing a pentagon with compass and straightedge, namely finding a point phi away from the opposite end of P0. We do this by finding the <span class="math"><span class="fraction"><span class="numerator">√<span class="radicand">5</span></span>2</span></span> part and the 1/2 part separately using nothing more than bisecting lines and drawing circles with known points. The link &quot;Pentagon, Phi method&quot; below shows an animation of that, but the method is simply drawing a circle with a 1/2 radius inside the unit circle, with a diameter from the unit circle&#39;s center to it&#39;s edge:</p>
+<p><img src="/images/phi_method_1.PNG" alt=""></p>
+<p>The triangle QBO is a right triangle with base 1, height 1/2, and hypotenuse <span class="math">√<span class="radicand">1<sup>2</sup> + (1/2)<sup>2</sup></span> = √<span class="radicand">1 + <span class="fraction"><span class="numerator">1</span>4</span></span> = √<span class="radicand"><span class="fraction"><span class="numerator">5</span>4</span></span> = <span class="fraction"><span class="numerator">√<span class="radicand">5</span></span>2</span></span>. So from Q to B we need only 1/2 more to be at the radius φ... which also happens to be the radius of the inner circle.</p>
+<p>So we just extend line QB, and the point where it intersects the inner circle, N, is φ away from Q. All that&#39;s left is to draw a semicircle from center Q to radius N, which will cross the unit circle at P1 and P4:</p>
+<p><img src="/images/phi_method_2.PNG" alt=""></p>
+<h3 id="intermission-exact-value-of-0309016994">Intermission: Exact value of 0.309016994...</h3>
+<p>With some further applied trig and algebra, we can find the exact value of <span class="math">cos <span class="fraction"><span class="numerator">2π</span>5</span></span>. Let&#39;s return to the kite:</p>
+<p><img src="/images/kite2.PNG" alt=""></p>
+<p>According to Thales&#39; theorem if two points on a circle lie on opposite ends of a diameter line, connecting them to any other point on the circle forms a right angle. In the kite diagram above, triangle ZAD is a right triangle. D and Z are known values, so A is <span class="math">√<span class="radicand">𝐷<sup>2</sup> - 𝑍<sup>2</sup></span></span>, or <span class="math">√<span class="radicand">4 - φ<sup>2</sup></span></span>, which reduces to the very un-sexy <span class="math">√<span class="radicand"><span class="fraction"><span class="numerator">5 - √5</span>2</span></span></span>.</p>
+<p>Now in the Ptolemy equation, only B is unknown. A little algebra finds its length to be <span class="math">√<span class="radicand"><span class="fraction"><span class="numerator">5 + √5</span>2</span></span></span>. If line B intersects the diameter line at J:</p>
+<p><img src="/images/J.PNG" alt=""></p>
+<p>...then we have enough information to solve for the missing length J-P0 in right triangle J-P1-P0: <span class="math"><span class="fraction"><span class="numerator">5</span>4</span> - √<span class="radicand"><span class="fraction"><span class="numerator">5</span>4</span></span></span>, leading us, at long last, to the length between O and J, the same as the cosine of <span class="math"><span class="fraction"><span class="numerator">2π</span>5</span></span>: <span class="math"><span class="fraction"><span class="numerator">√5 - 1</span>4</span></span>.</p>
+<h3 id="3-cosine-method-or-richmonds-epiphany">3: Cosine method (or &quot;Richmond&#39;s epiphany&quot;)</h3>
+<p>The 19th century gave us an interesting mathematician who is very overlooked: Herbert William Richmond. His specialty was algebraic geometry. His papers were compact, and contained simplifications of already discovered methods. Two years before his death, he was writing about the failings of algebraic techniques to handle problems of higher than three dimensions, and had this to say about his style:</p>
+<blockquote>
+<p>&quot;It is true that the scope of these methods is restricted, but there is compensation in the fact that when geometry is successful in solving a problem the solution is almost invariably both simple and beautiful.</p>
+<p>The last sentence explains why so many of my published papers are very short. A result already known is obtained in a simple manner.</p>
+<p>Admittedly I have spent much time advocating old-fashioned methods which have fallen into undeserved neglect (in my opinion). This does not imply lack of appreciation of modern methods...&quot;</p>
+</blockquote>
+<p>In 1893, Richmond published a two-page paper in &quot;The Quarterly Journal Of Pure And Applied Mathematics&quot; titled &quot;A Construction for a Regular Polygon of Seventeen Sides.&quot; The paper expands on Gauss&#39; work on the heptadecagon, showing a practical compass and straightedge construction method. As a footnote, the paper ends with a quick discussion of pentagons:</p>
+<p>It may similarly be shewn that, if 2C be the acute angle whose tangent is 2, and α stand for <span class="math"><span class="fraction"><span class="numerator">2π</span>5</span></span>, then will
+2 cos α = tan C, and 2 cos 2α = - cot C.
+Therefore (fig. 7), if OA, OB be two perpendicular radii of a [circle] and J the middle point of OBl then the ordinates drawn circle, through E and F, the points where the bisectors of OJA meet OA, determine on the circle four points which with A form a regular pentagon.</p>
+<p><img src="/images/fig7.PNG" alt=""></p>
+<p>Another way of expressing Richmond&#39;s equation is this:</p>
+<p>tan(arctan(cos(<span class="math"><span class="fraction"><span class="numerator">2π</span>5</span></span>) * 2) * 2) = 2</p>
+<p>What it&#39;s trying to show is that we&#39;re flipping the triangle the other way, with the vertex at 90°, changing from a hypotenuse of 1 to a height of 1, and examining the angle at A instead of the angle at O:</p>
+<p><img src="/images/flip.PNG" alt=""></p>
+<p>What Richmond found, and it&#39;s unclear what sparked his epiphany, is that if you cut the adjacent side in half, and double the angle, you get a tangent of 2. In the case of the unit circle, this puts the apex of the triangle at (0, 1/2), and the base points at O and P0.</p>
+<p>Going backwards from the epiphany, if you bisect line OA at B, then bisect the angle at O-B-P0, you intersect O-P0 at <span class="math"><span class="fraction"><span class="numerator">√<span class="radicand">5</span> - 1</span>4</span></span>. A perpendicular line up from there intersects the unit circle at P1:</p>
+<p><img src="/images/half_cosine.PNG" alt=""></p>
+<p>The &quot;Pentagon, Cosine method&quot; link on the animations page shows this in a way that makes more sense.</p>
+<h3 id="4-carlyle-circles">4: Carlyle Circles</h3>
+<p>In the early 19th century, Thomas Carlyle gave us a gem of a geometric construct - shortly before retiring from teaching mathematics and moving on to political writing including satire, a history of the French Revolution, and advocating against democracy and for moving back to a fuedal society. Takes all types.</p>
+<p>Anyway, what he discovered was a way to mechanically find the quadratic roots of equations of the form x2 -sx + p. The method is remarkably simple: draw a circle with a diameter from (0,1) to (s,p), and where the circle crosses the x axis are the roots.</p>
+<p>For example, here&#39;s Wolfram Alpha&#39;s rendition of a Carlyle Circle describing x2 -5x + 6:</p>
+<p><img src="/images/5_6_a.PNG" alt=""></p>
+<p>The equation at the bottom is not the quadratic formula we&#39;re trying to solve, but rather the circle&#39;s equation in the format <span class="math">(𝑥 - ℎ)<sup>2</sup> + (𝑦 - 𝑘)<sup>2</sup> = 𝑟<sup>2</sup></span>. Visually it appears the circle is crossing 2 and 3, but here&#39;s an official declaration from Wolfram of the intersect points:</p>
+<p><img src="/images/5_6_b.PNG" alt=""></p>
+<p>(Unfortunately, I couldn&#39;t find the exact syntax on Wolfram&#39;s input line to do this in one step, hence the examples all have two screenshots.) As it appeared, 2 and 3, making the root formula (x - 2)(x - 3), which, if you&#39;re familiar with this type of thing, is pretty obvious.</p>
+<p>For a second example, here is how the Carlyle circle behaves when the roots are the same, solving x2 -6x + 9:</p>
+<p><img src="/images/6_9_a.PNG" alt="">
+<img src="/images/6_9_b.PNG" alt=""></p>
+<p>One intersection, the x axis tangent to the circle, making the root formula <span class="math">(𝑥 - 3)<sup>2</sup></span></p>
+<p>How does any of this help us construct a pentagon? It goes back to the cosines of the individual points. Remember that when we find cosines of points on the edge of a unit circle (actually cosines of the angles at the origin), we end up with the length of the base of the right triangle - positive for points right of the origin, negative for points left of the origin, and 0 for points at exactly 90 and 270 degrees. If you think about this for a minute, you might come to an interesting conclusion:</p>
+<p>For a regular polygon, the cosines of the points add up to 0.</p>
+<p>As a corollary of that, consider that all of our examples have had a vertex point at (1,0), or on the x axis, at distance 1 from the origin. The cosine of that point is 1. If you add up the cosines of every other point, then, you get -1. Some regular polygons have another property: certain combinations of vertex cosines multiply together to form whole numbers or simple fractions.</p>
+<p>Consider the four points of a pentagon other than the starting point at (1,0):</p>
+<p class="codez">Point 1: cos(1 * <span class="math"><span class="fraction"><span class="numerator">2π</span>5</span></span>) =  0.30901699437494742410229341718282
+Point 2: cos(2 * <span class="math"><span class="fraction"><span class="numerator">2π</span>5</span></span>) = -0.80901699437494742410229341718282
+Point 3: cos(3 * <span class="math"><span class="fraction"><span class="numerator">2π</span>5</span></span>) = -0.80901699437494742410229341718282
+Point 4: cos(4 * <span class="math"><span class="fraction"><span class="numerator">2π</span>5</span></span>) =  0.30901699437494742410229341718282</p>
+<p>First, clearly the two positive numbers (points 1 and 4) correspond to points on the right of the origin, where the two negative numbers (points 2 and 3) are left of the origin. It turns out that the positive points are the same x distance from the origin, and the same is true of the negative points.</p>
+<p>To verify what I said above, these values all add up to -1 (note after the 3 and 8, the rest of the digits are the same, so you have .3-.8-.8+.3 = -1.0. Now, if you add the negative and positive pairs together, let&#39;s call them &quot;n1&quot; and &quot;n2&quot;, we get this:</p>
+<pre><code>n1 = -0.80901699437494742410229341718282 * 2 = -1.618033988749894848204586834364
+n2 =  0.30901699437494742410229341718282 * 2 =  0.618033988749894848204586834364
+n1 + n2 = -1</code></pre>
+<p>and here&#39;s the punchline:</p>
+<pre><code>n1 * n2 = -1</code></pre>
+<p>Now the digits I have for n1 and n2 are estimates, so if you&#39;re checking the product with a calculator, you&#39;ll get a -0.99999... number just short of -1. The real answer is -1, and I&#39;ll spare you the trigonometric exegesis that shows it.</p>
+<p>So, if I plug (-1,-1) into the Carlyle circle, the two points crossing the x axis should equal n1 and n2, by virtue of &quot;s&quot; being n1 + n1, and &quot;p&quot; being n1 * n2. Both points are double the x distance from the origin as their respective pentagon vertex points:</p>
+<p><img src="/images/carlyle_1.PNG" alt=""></p>
+<p>Visually the intersection points look to be at roughly n1 and n2 from above, but here&#39;s the exact answer from Wolfram (I&#39;ve done the obvious simplification of their equation of subtracting <span class="math"><span class="fraction"><span class="numerator">1</span>4</span></span> from both sides):</p>
+<p><img src="/images/carlyle_2.PNG" alt=""></p>
+<p>Using compass and straightedge rules, finding point (0,1) is trivial. So is finding (-.5,0), the midpoint between (-1,-1) and (0,1), to be the circle&#39;s center:</p>
+<p><img src="/images/carlyle_m_a.PNG" alt=""></p>
+<p>From there a circle from center M to radius A intersects the x axis at our n1 and n2 points:</p>
+<p><img src="/images/carlyle_n1_n2.PNG" alt=""></p>
+<p>And now what do we do? Lines O-n1 and O-n2 are both twice as long as the x position of their respective vertex points. From here there are two basic approaches. First, you can bisect the lines, then a perpendicular line from the bisection points will cross the unit circle at P2 and P3 on the negative side, and P1 and P4 on the positive side. Alternately, we can draw new unit circles at n1 and n2, and the circle/circle intersections will occur in the same places as the first approach.</p>
+<p>If you add the ability of remembering a compass length to the classical rules of compass and straightedge, the unit circle approach is decidedly the simpler one. In the link to my example below titled &quot;Pentagon, Carlyle Circle method&quot;, I performed the unit-circle method on one side, but stuck to the classical Greek rules of collapsing a compass when you lift it from the page. To get the unit length over to point n1, I used Book I, Proposition II of Euclid&#39;s Elements to copy the length over from line QO.</p>
+<p>So, that&#39;s about all. There are other methods to create a pentagon which I haven&#39;t covered here, such as Ptolemy&#39;s, but I think I&#39;ve covered the topic pretty thoroughly. I hope I have laid this out simply enough for a layman (or a high-school student trying to decide if math is a worthwhile thing to think about) to follow. Don&#39;t forget to check out the construction animations <a href="/blog/compass.html">here</a>.</p>
 
 </article>
-<script src="/script.js"></script>
+<script src="script.js"></script>
 

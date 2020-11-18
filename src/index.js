@@ -1,13 +1,21 @@
-const marked = require('marked')
 const AWS = require('aws-sdk/clients/s3')
 const s3 = new AWS()
+const marked = require('marked')
+
+function mathLetter(n) {
+  if (n == 'h') return "\u210E"
+
+  if (n < 'a') return "\ud835" + String.fromCharCode(n.charCodeAt(0) + 56307)
+
+  return "\ud835" + String.fromCharCode(n.charCodeAt(0) + 56301)
+}
 
 const renderer = {
   paragraph(text) {
     const match = text.match(/^\.(.+?)\n(.+)/s)
     if (match == null) return false
 
-    return `<p class="${match[1]}">${match[2]}</p>`
+    return `<p class="${match[1]}">${match[2]}</p>\n`
   },
 
   code(text) {
@@ -25,14 +33,39 @@ const renderer = {
       .replace(/\b__(.+?)__\b/g, "<strong>$1</strong>")
       .replace(/\b_(.+?)_\b/g, "<em>$1</em>")
 
-    return `<pre class="${match[1]}"><code>${escaped}</code></pre>`
+    return `<pre class="${match[1]}"><code>${escaped}</code></pre>\n`
+  },
+
+  codespan(text) {
+    if (!text.startsWith('$$')) return false
+
+    const converted = text.slice(2)
+      .replace(/(?<!\\[a-z]*)[a-zA-Z]/g, mathLetter)
+      .replace(/\*/g, '×')
+      .replace(/\\(?=[a-z])/g, '')
+      .replace(/{(.+?)}\/{(.+?)}/g, `<span class="fraction"><span class="numerator">$1</span>$2</span>`)
+      .replace(/√\[(.+?)\]/g, `√<span class="radicand">$1</span>`)
+      .replace(/\^(.+?)(\b|(?=\s))/g, "<sup>$1</sup>")
+
+    return `<span class="math">${converted}</span>`
   }
 }
 
 marked.use({ renderer })
 
 function render(template, page) {
-   return template.replace('%%', marked(page))
+  const metas = page.match(/^(og:.+\n)+/)
+
+  if (metas) {
+    const tags = metas[0]
+      .match(/.+/g)
+      .map(m => m.replace(/^(og:\w+) (.+)/, `<meta name="$1" content="$2">\n`))
+      .join('')
+    const offset = metas[0].length + 1
+    return tags + template.replace('%%', marked(page.slice(offset)))
+  }
+
+  return template.replace('%%', marked(page))
 }
 
 async function handler(event, context, callback) {
