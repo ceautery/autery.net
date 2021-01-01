@@ -1,8 +1,8 @@
-# [Microblog](/projects/micro)
+## [Microblog](/projects/micro)
 
 Stream of consciousness thoughts with no particular focus.
 
-# [Advent of Code](https://adventofcode.com/)
+## [Advent of Code](https://adventofcode.com/)
 
 From Dec 1 to 25, Advent of Code gives you a daily Christmas-themed two part puzzle, to solve in your programming language of choice. Like similar online code challenges, the puzzles get increasingly complex. AoC ticks some other nice boxes, too: Each participant gets unique input files that require unique solutions (or at the very least, there are many variations), and the second half of the puzzle is an extension of the first half, which encourages you to write maintainable code that encapsulates the puzzle's concepts, instead of writing a clumsy one-off brute force solution.
 

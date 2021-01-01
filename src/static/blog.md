@@ -6,6 +6,7 @@ og:image /images/plate.jpg
 
 Things I think about
 
+* `2020-12-31` - [Books of the year, 2020](/blog/books-2020)
 * `2020-11-05` - [Covid, rebirth, jobs, and elections](/blog/rebirth)
 * `2017-06-01` - [How to download a web page](/blog/download-webpage)
 * `2016-02-12` - [A deep dive into APL](/blog/apl)
