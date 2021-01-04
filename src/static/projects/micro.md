@@ -1,10 +1,14 @@
-# 2021-01-01
+## 2021-01-04
+
+Everyone seems to be irate about the "Trump Tapes", where he called the Georgia secretary of state and asked him to find votes. Meanwhile, my progressive friends on Facebook are just posting pics of cakes they've made or their dogs playing in the snow. It's not that we don't care, it's just that this isn't a *new* phenomenon to us. From the same man that started shouting voter fraud prior to the election, installed a postmaster general to slow the mail, and had his boy launch a series of lawsuits against states that didn't swing his way. This is no different. Anyone shocked into action *now* has clearly not been following along.
+
+## 2021-01-01
 
 New year. So far, so good.
 
 The "Twisted Tea" scene is puzzling. I'm watching a lot of my suburban white friends glorify street violence, where an intoxcated man gets hit in the face with a two pound weight, punched repeatedly when he was down, and then choked. Yes, the kid was a jerk. Yes, his attacker had suffered through racism his entire life. No, the kid didn't deserve to be near hospitalized, and no, we shouldn't enjoy watching what is only a couple steps removed from the Django Unchained slave fight, or make memes about it like it was funny.
 
-# 2020-12-29
+## 2020-12-29
 
 [Redditor's post on walking away from software development](https://www.reddit.com/r/cscareerquestions/comments/kfcmbj/ive_walked_away_from_software_development/)
 
