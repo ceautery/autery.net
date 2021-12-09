@@ -6,7 +6,8 @@ og:image /images/plate.jpg
 
 Things I think about
 
-* `2021-11-15` - [Schools and angry conservatives](https://autery.net/blog/krause)
+* `2021-12-08` - [Outsiders, TDD, and the area of a polygon](/blog/room-area)
+* `2021-11-15` - [Schools and angry conservatives](/blog/krause)
 * `2020-12-31` - [Books of the year, 2020](/blog/books-2020)
 * `2020-11-05` - [Covid, rebirth, jobs, and elections](/blog/rebirth)
 * `2017-06-01` - [How to download a web page](/blog/download-webpage)
