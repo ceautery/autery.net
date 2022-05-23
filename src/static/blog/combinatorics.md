@@ -2,6 +2,7 @@ Recently I've been checking out coding tutorial sites, including Hour of Code, K
 
 The fCC tutorial includes incremental instructions on how to write basic HTML and JavaScript, challenges to solve, and links to Wikipedia pages or other sources on topics that will be needed for the exercise. When presented with a problem, you type JavaScript code to solve it right into the page and submit it, where a number of test assertions are run against your code. For example, the [Symmetric Difference](http://www.freecodecamp.com/challenges/bonfire-symmetric-difference) algorithm problem looks like this:
 
+.hero
 ![](/images/23415855964%5F3bd10273be%5Fc.jpg)
 
 (The warning triangle is there because the library fCC uses for its syntax checks doesn't like arrow functions, but whatever your browser can execute runs fine against the test assertions.)

@@ -41,8 +41,13 @@ article {
   margin: 0 14pt;
 }
 
-article h1, article img {
+article h1 {
   text-align: center;
+}
+
+p.hero {
+  display: flex;
+  justify-content: center;
 }
 
 article blockquote {
