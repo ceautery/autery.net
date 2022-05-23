@@ -24,7 +24,7 @@ According to Chomsky, because of the propaganda model, there are modern genocide
 
 ## [Project Hail Mary](https://www.audible.com/pd/Project-Hail-Mary-Audiobook/B08G9PRS1K?ref=a_library_t_c5_libItem_&pf_rd_p=80765e81-b10a-4f33-b1d3-ffb87793d047&pf_rd_r=4KNRQF743CY0363ZTZ6Z), Andy Weir
 
-It's hard to describe this story without unforgivable spoilers. There is something eating our sun, and some of the other stars in our local cluster. There is one star system nearby where this started to happen, but not that star is no longer dimming, and no one knows why. Clearly Earth's best chance of survival is flying out a middle school science teacher to investigate!
+It's hard to describe this story without unforgivable spoilers. There is something eating our sun, and some of the other stars in our local cluster. There is one star system nearby where this started to happen, but now that star is no longer dimming, and no one knows why. Clearly Earth's best chance of survival is flying out a middle school science teacher to investigate!
 
 I'll skip trying to explain why this ends up making perfect sense, and just say that this book is profoundly better than The Martian, one of Weir's earlier works. And one of the best examples you'll ever see of waking up with amnesia and trying to sort out what situation you're in.
 
@@ -52,7 +52,7 @@ Claire North, who did not write this book, is a recent discovery of mine, and wr
 
 Addie LaRue is a woman who, like Claire North's Hope, can't be remembered. Except unlike Claire's characters who have their magical ability as an intrinsic part of them, Addie can't be remembered because of the curse of a dark god. Oh, and she's also immortal. And her writing disappears, and her name disappears from contracts.
 
-On top of this spremise, Whelan gives us an amazing love story, and explores loopholes in curses (can someone else write about Addie and have it stick?) and what happens when two curses collide. It's a very fun read.
+On top of this premise, Whelan gives us an amazing love story, and explores loopholes in curses (can someone else write about Addie and have it stick?) and what happens when two curses collide. It's a very fun read.
 
 ## [The Book of Longings](https://www.audible.com/pd/The-Book-of-Longings-Audiobook/0593212835?ref=a_library_t_c5_libItem_&pf_rd_p=80765e81-b10a-4f33-b1d3-ffb87793d047&pf_rd_r=QV0Y4SWVV6SX1JA2S3PJ), Sue Monk Kidd
 
@@ -86,7 +86,7 @@ This was 40 short stories from different authors that made me feel 10 years old 
 
 ## [The Giver](https://www.audible.com/pd/The-Giver-Audiobook/B002UUQUB6?ref=a_library_t_c5_libItem_&pf_rd_p=80765e81-b10a-4f33-b1d3-ffb87793d047&pf_rd_r=QV0Y4SWVV6SX1JA2S3PJ)/[Gathering Blue](https://www.audible.com/pd/Gathering-Blue-Audiobook/B002V9ZBK2?ref=a_library_t_c5_libItem_&pf_rd_p=80765e81-b10a-4f33-b1d3-ffb87793d047&pf_rd_r=QV0Y4SWVV6SX1JA2S3PJ), Lois Lowry
 
-My son has, in three separate grades, been assigned The Giver as a reading assignment. His not a fan, but I suspect that has less to do with the book itself, and more with how it is taught, and the inevitable after discussion: "What do you think happens next?" as if the book wasn't part of a series.
+My son has, in three separate grades, been assigned The Giver as a reading assignment. He's not a fan, but I suspect that has less to do with the book itself, and more with how it is taught, and the inevitable after discussion: "What do you think happens next?" as if the book wasn't part of a series.
 
 In The Giver, we learn that something weird happened to the world, but not what it was. People can't see colors, and take libido-eliminating meds. There are no seasons, and no animals. Society is rigidly organized. Children are given a bicycle at a fixed age. Girls wear a hair ribbon until a certain age. When graduating school, kids are assigned jobs based on their aptitude. Families have two children, birthed by women who are assigned the ill-regarded job of birth mother. Every evening families meet and discuss what feelings they had that day, and what the feelings meant.
 
@@ -98,7 +98,7 @@ Unfortunately, the receiver learns the truth of the world, and it is a lot to be
 
 In "Gathering Blue", we learn that the black & white sameness society isn't the only way the world went weird. There is another society that isn't subject to those rules, and they live more primitively. Some in the village are pretty brutal, fighting for resources, stealing food from each other, some with children who are essentially feral. The sick and disabled are taken to a field to either die of exposure, or be killed by "beasts".
 
-Separate from the main villagers is the Council of the Guardians, who live more refined lives. There is an annual gathering that includes a singer dressed in a robe the details the world's history, who sings a ritual song that tells all that is known about how the world was in the past.
+Separate from the main villagers is the Council of the Guardians, who live more refined lives. There is an annual gathering that includes a singer dressed in a robe that details the world's history, who sings a ritual song that tells all that is known about how the world was in the past.
 
 The story is from the perspective of a young girl with a deformed leg who the council takes in because of her skill at making and repairing clothing. She learns how to grow plants used in dyeing fabric from an old lady who lives away from the council, who puts it in her head that maybe not everything is as cool with the council as it seems. What's up with beasts, exactly? And is the singer really there by choice, or is he maybe more of a prisoner?
 
@@ -108,7 +108,7 @@ Fun reads both, but YA fiction isn't something I normally seek out. Being halfwa
 
 ## [The Dispatcher](https://www.audible.com/pd/The-Dispatcher-Audiobook/B01KKPH1VA?ref=a_library_t_c5_libItem_&pf_rd_p=80765e81-b10a-4f33-b1d3-ffb87793d047&pf_rd_r=QV0Y4SWVV6SX1JA2S3PJ), John Scalzi
 
-Whoever is controlling the universe decides that murder ain't a thing anymore. People still die of disease, accidents, and age, but if you deliberately kill someone, most of the time the body disappears. and they appear alive again at their home, with a body in a state. And nobody knows why.
+Whoever is controlling the universe decides that murder ain't a thing anymore. People still die of disease, accidents, and age, but if you deliberately kill someone, most of the time the body disappears. and they appear alive again at their home. And nobody knows why.
 
 These facts create an incentive for a new profession: Dispatcher. A dispatcher kills someone in extreme circumstances, in order to preserve their life. Usually this happens in operating rooms for patients undergoing risky procedures. If the dispatcher believes a patient is close to death, they perform a mercy killing (they have special non-bloody foolproof gadgets for this), and (most times) the person appears back at home with a body in the condition it was yay-many hours ago.
 
@@ -118,9 +118,9 @@ Very well done. I had never heard of Scalzi before Audible recommended him to me
 
 ## [Termination Shock](https://www.audible.com/pd/Termination-Shock-Audiobook/0063028085?ref=a_library_t_c5_libItem_&pf_rd_p=80765e81-b10a-4f33-b1d3-ffb87793d047&pf_rd_r=QV0Y4SWVV6SX1JA2S3PJ), Neal Stephenson
 
-Stephenson usually makes my list every year, and this year's atypical offering of his is no exception. Termination Shock is set in the near future, as we continue to upset the world's climate. It opens with the queen of the Netherlands landing a plan on a murderous outsized wild boar in Waco Texas. Part of me thinks Stephenson pulled those items randomly out of a hat and tried to write a story around it.
+Stephenson usually makes my list every year, and this year's atypical offering of his is no exception. Termination Shock is set in the near future, as we continue to upset the world's climate. It opens with the queen of the Netherlands landing a plane on a murderous outsized wild boar in Waco Texas. Part of me thinks Stephenson pulled those items randomly out of a hat and tried to write a story around it.
 
-Part of the story concerns a real political issue I wasn't aware of, the LAC (Line of Actual Control) in the disputed India/China border. There was a [1996 agreement](https://peacemaker.un.org/sites/peacemaker.un.org/files/CN%20IN_961129_Agreement%20between%20China%20and%20India.pdf) between the nations not to deploy firearms or explosives in the area, since, ya know, the nations are both have nuclear weapons, and humanity is at risk if nuclear powers ever go to war with each other. Despite that, patrols try to claim territory and move the LAC by other means, such as going at each other with rocks and melee weapons, such as last year's [Galwan Valley clash](https://thebulletin.org/2020/07/sticks-stones-and-words-ugly-stability-between-india-and-china/) that caused the deaths of at least 20 soldiers.
+Part of the story concerns a real political issue I wasn't aware of, the LAC (Line of Actual Control) in the disputed India/China border. There was a [1996 agreement](https://peacemaker.un.org/sites/peacemaker.un.org/files/CN%20IN_961129_Agreement%20between%20China%20and%20India.pdf) between the nations not to deploy firearms or explosives in the area, since, ya know, the nations both have nuclear weapons, and humanity is at risk if nuclear powers ever go to war with each other. Despite that, patrols try to claim territory and move the LAC by other means, such as going at each other with rocks and melee weapons, such as last year's [Galwan Valley clash](https://thebulletin.org/2020/07/sticks-stones-and-words-ugly-stability-between-india-and-china/) that caused the deaths of at least 20 soldiers.
 
 In Stephenson's story, this conflict is more ritualized and performative, with videos of fights used as propaganda, individual fighters become YouTube stars, and the fights aren't to the death any more. It's Fight Club rules, where a fight goes on as long as it has to, and your side can tap out at any time and yield territory to the opposing force. One of the fighters specializes in the Sikh fighting style [Gatka](https://www.youtube.com/watch?v=uFS9t7svEiM), which employs a lot of jumping around and spinning with a sword or stick, as if you're being attacked by multiple opponents, which ends up being quite the game-changer in the LAC.
 
