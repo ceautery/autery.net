@@ -4,6 +4,7 @@ og:image /images/books-2021.jpg
 
 # Audiobooks of the year, 2021
 
+.hero
 ![](/images/books-2021.jpg)
 
 There's no point in pretending I read physical books any more. I read code and web pages, an occasional e-book, maybe a pilfered PDF file from Sci-Hub, but most of my "book" consumption is from Audible, which I listen to as I commute or do chores. The links below are to Audible, but most of these you can find from your local library, [WorldCat](https://www.worldcat.org/), [OverDrive](https://www.overdrive.com/), [Hoopla](https://www.hoopladigital.com/), etc., as physical or e-books, books on CD, or downloadable audio.

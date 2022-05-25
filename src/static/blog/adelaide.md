@@ -1,5 +1,6 @@
 ### Adelaide
 
+.hero
 ![](/images/adelaide.jpg)
 
 Adelaide Lenora Allerding  

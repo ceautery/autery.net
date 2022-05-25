@@ -4,6 +4,7 @@ og:image /images/books-2020.jpg
 
 # Books of the year, 2020
 
+.hero
 ![](/images/books-2020.jpg)
 
 Some things happened this year that took a bite out of my love for fiction. I spent most of my media consumption in 2020 on current events, listening to late night talk show hosts shake their collective fists at Trump and his posse of criminal buffoons, and as a result I ended up finishing more non-fiction books than I usually consume in a year.

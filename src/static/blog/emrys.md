@@ -1,3 +1,4 @@
+.hero
 ![First picture of Emrys](/images/9789110283%5Fd84675e343.jpg)
 
 I'm 42 years old, and starting fatherhood anew with a glad heart. My 4th daughter, Emrys Hadley Allerding, was born this Sunday, September 15, 2013, at 9:30pm, weighing 8 lbs, 4 oz, 21" long. As an archetypal Sunday's child, she is bonnie and blithe, and good and gay. "Blithe" is a trait that I share with my wife and our children, and which is typically not meant as a complement. However, I think of being blithe about things that don't matter to be healthy and enlightened... it's just that the Clan Autery list of what doesn't matter is much more extensive than is typical. Emrys hasn't actually shown any blithe behavior yet, because, well, she's a baby. But it's coming, and we welcome it.

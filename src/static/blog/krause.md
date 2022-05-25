@@ -4,6 +4,7 @@ og:image /images/conservatives.jpeg
 
 # Schools and angry conservatives
 
+.hero
 ![](/images/conservatives.jpeg)
 
 > There never was an age of conformity quite like this one, or a camaraderie quite like the Liberals’. Drop a little itching powder in Jimmy Wechsler’s bath and before he has scratched himself for the third time, Arthur Schlesinger will have denounced you in a dozen books and speeches, Archibald MacLeish will have written ten heroic cantos about our age of terror, Harper’s will have published them, and everyone in sight will have been nominated for a Freedom Award. - William F. Buckley
