@@ -1,0 +1,29 @@
+<canvas></canvas>
+<script>
+cnv = document.querySelector('canvas')
+pen = cnv.getContext('2d')
+msg = "The 90's called, they want their ridiculously long doctypes back."
+x = 250
+
+function marquee() {
+	requestAnimationFrame(marquee)
+	setup()
+	x -= 2
+	if (Math.abs(x % 100) > 25) pen.fillText(msg, x, 80)
+}
+
+function setup() {
+  pen.clearRect(0, 0, 300, 150)
+  pen.beginPath()
+  pen.fillStyle = 'black'
+  pen.roundRect(1, 30, 298, 90, 25)
+  pen.stroke()
+  pen.fillStyle = 'white'
+  pen.fillRect(45, 25, 155, 25)
+  pen.font = '20px serif';
+  pen.fillStyle = 'black'
+  pen.fillText('Fieldsets are dope', 50, 35)
+}
+
+marquee()
+</script>
