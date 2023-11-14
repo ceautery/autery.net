@@ -3,11 +3,15 @@ const s3 = new AWS()
 const marked = require('marked')
 
 function mathLetter(n) {
+  // Mathematical italic h appears in the "letterlike symbols" unicode block (2100) as "Planck Constant"
+  // alongside "h with stroke", the reduced Planck Constant (h/2𝜋 = ħ)
   if (n == 'h') return "\u210E"
 
-  if (n < 'a') return "\ud835" + String.fromCharCode(n.charCodeAt(0) + 56307)
-
-  return "\ud835" + String.fromCharCode(n.charCodeAt(0) + 56301)
+  // The remaining mathematical italic letters appear in the "Mathematical Alphanumeric Symbols"
+  // 1D400/119808 is math alpha A
+  // 1D41A/119834 is math alpha a
+  if (n < 'a') return String.fromCodePoint(119743 + n.charCodeAt()) // A = chr(65), 119808 - 65 = 119743
+  return String.fromCodePoint(119737 + n.charCodeAt())              // a = chr(97), 119834 - 97 = 119737
 }
 
 const renderer = {

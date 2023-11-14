@@ -1,3 +1,7 @@
+// Run this in the src folder with
+// node test.js <markdown file> > static/<output html file>
+// TODO - load local images, run as server
+
 const fs = require('fs')
 
 const blog = require('./index.js')
