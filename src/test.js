@@ -1,6 +1,6 @@
 // Run this in the src folder with
 // node test.js <markdown file> > static/<output html file>
-// TODO - load local images, run as server
+// View output by running http-server from static folder
 
 const fs = require('fs')
 

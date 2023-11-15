@@ -16,14 +16,21 @@ function mathLetter(n) {
 
 const renderer = {
   paragraph(text) {
-    const match = text.match(/^\.(.+?)\n(.+)/s)
+    const match = text.match(/^\.(\w+)\n(.+)/s)
     if (match == null) return false
+
+    if (match[1] === 'tip') {
+      fields = match[2].match(/^([^\n]+)\n(.+)/s)
+      if (fields != null) {
+        return `<p class="hover">${fields[1]}\n  <span class="tooltip">${fields[2]}</span>\n</p>`
+      }
+    }
 
     return `<p class="${match[1]}">${match[2]}</p>\n`
   },
 
   code(text) {
-    const match = text.match(/^\.(.+?)\n(.+)/s)
+    const match = text.match(/^\.(\w+)\n(.+)/s)
     if (match == null) return false
 
     const escapeReplacements = {

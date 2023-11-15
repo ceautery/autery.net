@@ -193,3 +193,21 @@ p {
     height: auto;
   }
 }
+
+.hover {
+  position: relative;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 2px solid grey;
+  padding: 5pt;
+  background: white;
+}
+
+.hover img:hover + .tooltip, .tooltip:hover {
+    display: inline;
+}
