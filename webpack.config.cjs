@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'index.js',
+    filename: 'index.mjs',
     path: path.resolve(__dirname, 'dist'),
     library: { type: 'module' },
     chunkFormat: 'module'
