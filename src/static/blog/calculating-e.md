@@ -43,7 +43,7 @@ Q) What the hell is a float, really?
 
 In IEEE 754, a double-precision float is a sign bit, 11 exponent bits offset by -1023, and 52 mantissa bits, expressed by this equation:
 
-`-1sign × 2exp-1023 × 1.mantissa`
+`$$-1^\sign * 2^\exp-1023 * 1.\mantissa`
 
 ...and for the low cost of $89, you can independently verify that from IEEE. As a cost-saving measure, I took the risky position of just [trusting Wikipedia](http://en.wikipedia.org/wiki/Double-precision%5Ffloating-point%5Fformat).
 
@@ -58,7 +58,7 @@ Starting very simply, let's look at the float representation of 1.
     Mantissa:    0
     
 
-The `-1sign` expression may be awkward if you are more of a programmer than a maths nerd. If that's the case, think of the sign bit as an "isNegative" flag. When the flag is 0, the expression evaluates to 1 (positive, i.e., isNegative is false, anything raised to 0 is 1), and when the flag is 1, the expression evaluates to -1 (raising to 1 is an identity operation). The results of that expression are then multiplied in with the results of the exponent and mantissa expressions, either leaving them alone or negating them, depending on the sign bit's value.
+The `$$-1^\sign` expression may be awkward if you are more of a programmer than a maths nerd. If that's the case, think of the sign bit as an "isNegative" flag. When the flag is 0, the expression evaluates to 1 (positive, i.e., isNegative is false, anything raised to 0 is 1), and when the flag is 1, the expression evaluates to -1 (raising to 1 is an identity operation). The results of that expression are then multiplied in with the results of the exponent and mantissa expressions, either leaving them alone or negating them, depending on the sign bit's value.
 
 The exponent value given in the float is offset by -1023, so if I want a calculated exponent of 0 (so that the mantissa is multiplied by 20 = 1), I use a real float of 1023. The equation for the float is then:
 

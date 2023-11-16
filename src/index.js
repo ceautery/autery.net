@@ -57,7 +57,7 @@ const renderer = {
       .replace(/\\(?=[a-z])/g, '')
       .replace(/{(.+?)}\/{(.+?)}/g, `<span class="fraction"><span class="numerator">$1</span>$2</span>`)
       .replace(/√\[(.+?)\]/g, `√<span class="radicand">$1</span>`)
-      .replace(/\^(.+?)(\b|(?=\s))/g, "<sup>$1</sup>")
+      .replace(/\^([\w-]+)/g, "<sup>$1</sup>")
 
     return `<span class="math">${converted}</span>`
   }
