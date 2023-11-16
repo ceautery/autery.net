@@ -1,3 +1,5 @@
+# Calculating e with Javascript
+
 > "In showing a painting to probably a critical or venomous lady, anger dominates. O take guard, or she raves and shouts." - Martin Gardner
 
 The odd quote above is from one of Gardner's mathematical puzzles columns in Scientific American, and is a mnemonic aid for building the mathematical constant _e_ based on the lengths of each word, where the "O" from "O take guard" represents zero. Here's a quick Javascript console snippet showing how it works (and a shout out to my fellow regex nerds):
@@ -251,7 +253,7 @@ _e_ to 50 digits is 2.71828182845904523536028747135266249775724709369995, howeve
 
 One method of calculating _e_ is as follows:
 
-![](/images/11059902465%5F34745ebaf8%5Fo.png)
+![](/images/e-formula.png)
 
 In English, _e_ is the limit as n approaches infinity of 1 and an nth raised to the nth power. You can see below how progressively larger values for n begin to converge on the value above:
 
