@@ -3,3 +3,4 @@ node_modules
 dist
 /src/static/test.html
 /src/static/Curtis-Autery.pdf
+.babelrc
