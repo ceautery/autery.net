@@ -9,10 +9,10 @@ function mathLetter(n) {
   if (n == 'h') return "\u210E"
 
   // The remaining mathematical italic letters appear in the "Mathematical Alphanumeric Symbols"
-  // 1D400/119808 is math alpha A
-  // 1D41A/119834 is math alpha a
-  if (n < 'a') return String.fromCodePoint(119743 + n.charCodeAt()) // A = chr(65), 119808 - 65 = 119743
-  return String.fromCodePoint(119737 + n.charCodeAt())              // a = chr(97), 119834 - 97 = 119737
+  // 1D434/119860 is MATHEMATICAL ITALIC CAPITAL A
+  // 1D44E/119886 is MATHEMATICAL ITALIC SMALL A
+  if (n < 'a') return String.fromCodePoint(119795 + n.charCodeAt()) // A = chr(65), 119860 - 65 = 119795
+  return String.fromCodePoint(119789 + n.charCodeAt())              // a = chr(97), 119886 - 97 = 119789
 }
 
 const renderer = {
