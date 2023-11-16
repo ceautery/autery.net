@@ -9,7 +9,7 @@
   "author": "Curtis Autery",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.778.0",
+    "@aws-sdk/client-s3": "^3.451.0",
     "marked": "^1.1.1"
   },
   "devDependencies": {

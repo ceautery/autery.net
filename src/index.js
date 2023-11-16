@@ -1,4 +1,6 @@
-const AWS = require('aws-sdk/clients/s3')
+const {
+  S3: AWS
+} = require('@aws-sdk/client-s3');
 const s3 = new AWS()
 const marked = require('marked')
 
@@ -86,7 +88,7 @@ async function handler(event, context, callback) {
     const obj = await s3.getObject({
       Bucket: 'autery-blog',
       Key: key
-    }).promise()
+    })
 
     return obj.Body.toString('utf-8')
   }
