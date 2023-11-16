@@ -1,5 +1,6 @@
 {
   "name": "autery.net",
+  "type": "module",
   "version": "1.0.0",
   "description": "AWS Lambda blog engine for https://autery.net",
   "main": "index.js",

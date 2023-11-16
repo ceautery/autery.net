@@ -1,8 +1,7 @@
-const {
-  S3: AWS
-} = require('@aws-sdk/client-s3');
-const s3 = new AWS()
-const marked = require('marked')
+import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3"
+import marked from 'marked'
+
+const client = new S3Client({ region: 'us-east-2' })
 
 function mathLetter(n) {
   // Mathematical italic h appears in the "letterlike symbols" unicode block (2100) as "Planck Constant"
@@ -22,7 +21,7 @@ const renderer = {
     if (match == null) return false
 
     if (match[1] === 'tip') {
-      fields = match[2].match(/^([^\n]+)\n(.+)/s)
+      const fields = match[2].match(/^([^\n]+)\n(.+)/s)
       if (fields != null) {
         return `<p class="hover">${fields[1]}\n  <span class="tooltip">${fields[2]}</span>\n</p>`
       }
@@ -85,12 +84,10 @@ async function handler(event, context, callback) {
   const request = event.Records[0].cf.request
 
   async function getFile(key) {
-    const obj = await s3.getObject({
-      Bucket: 'autery-blog',
-      Key: key
-    })
+    const command = new GetObjectCommand({ Bucket: "autery-blog", Key: key })
+    const response = await client.send(command)
 
-    return obj.Body.toString('utf-8')
+    return await response.Body.transformToString('utf-8')
   }
 
   const uri = request.uri.replace(/\?.+/, '')
@@ -122,4 +119,4 @@ async function handler(event, context, callback) {
   }
 }
 
-module.exports = { handler, render }
+export { handler, render }
