@@ -52,12 +52,13 @@ const renderer = {
     if (!text.startsWith('$$')) return false
 
     const converted = text.slice(2)
-      .replace(/(?<!\\[a-z]*)[a-zA-Z]/g, mathLetter)
+      .replace(/(?<!\\[a-zA-Z]*)[a-zA-Z]/g, mathLetter)
       .replace(/\*/g, '×')
-      .replace(/\\(?=[a-z])/g, '')
+      .replace(/\\(?=[a-zA-Z])/g, '')
       .replace(/{(.+?)}\/{(.+?)}/g, `<span class="fraction"><span class="numerator">$1</span>$2</span>`)
       .replace(/√\[(.+?)\]/g, `√<span class="radicand">$1</span>`)
       .replace(/\^([\w-]+)/g, "<sup>$1</sup>")
+      .replace(/_(\w+)\s?/g, "<sub>$1</sub>")
 
     return `<span class="math">${converted}</span>`
   }
