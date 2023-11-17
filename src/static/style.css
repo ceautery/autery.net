@@ -138,8 +138,9 @@ th:last-of-type {
   font-size: 1em;
 }
 
-sup {
+sup, sub {
   font-size: .625em;
+  white-space: nowrap;
 }
 
 .fraction {

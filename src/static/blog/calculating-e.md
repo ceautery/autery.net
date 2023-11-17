@@ -305,28 +305,28 @@ When you raise 2 to the 53rd or higher power, you can no longer maintain accurac
       __1__
     
 
-So `252` is the limit of scale and accuracy. Let's plug that into the above e function:
+So `$$2^52` is the limit of scale and accuracy. Let's plug that into the above e function:
 
     .codez
     __>__ _e(Math.pow(2, 52))_
     __2.718281828459045__
     
 
-That exactly matches Math.E, and is accurate to the mathematical constant _e_ within `2.3 × 10-16`. If we move n up or down by just 1, we lose accuracy:
+That exactly matches Math.E, and is accurate to the mathematical constant _e_ within `$$2.3 × 10^-16`. If we move n up or down by just 1, we lose accuracy:
 
     .codez
     __>__ _e(Math.pow(2, 52) + 1)_
       __2.7182818284590455__
     
 
-This gives us an extra digit, but the accuracy is slightly less. We're off by `2.6 × 10-16`
+This gives us an extra digit, but the accuracy is slightly less. We're off by `$$2.6 × 10^-16`
 
     .codez
     __>__ _e(Math.pow(2, 52) - 1)_
       __2.718281828459044__
     
 
-As expected, going lower, while maintaining float64 precision, is less accurate according to the limit equation. In this case, the discrepancy is `1.2 × 10-15`
+As expected, going lower, while maintaining float64 precision, is less accurate according to the limit equation. In this case, the discrepancy is `$$1.2 × 10^-15`
 
 So that's _e_, Javascript numbers, double precision 64 bit binary floats, and behind the scenes type casts. I'll leave you with a quick reason not to try to implement this with bitshifting instead of Math.pow(). I mentioned above that the rules for bitshifting in Javascript imply they are accurate only when the number in question can be cast into a 32 bit int. Observe what happens with a larger number:
 
