@@ -1,5 +1,11 @@
 # Calculating e with Javascript
 
+_Update - 2023, Nov 17_
+
+_I converted this and a few other blog entries over from a blog I used to run on Google App Engine. I wanted to consolidate where I blogged, and to create a simple MathJax-adjacent DSL for showing equations with good inline support for radicans, fractions, and powers, and as this blog's about page hints at, I wanted to be able to just publish markdown, and let the engine sort out the rest of it._
+
+_Converting the old entries was a bit of an effort, and I botched this entry pretty bad, only giving it a cursory glance. One part mentions taking the Log base 10 of 2, and multiplying it by 52, which showed up inititally as `Log10252`. I believe I have the entire entry unborked at this point, but please ping me with any errata you find. Now on with the show..._
+
 > "In showing a painting to probably a critical or venomous lady, anger dominates. O take guard, or she raves and shouts." - Martin Gardner
 
 The odd quote above is from one of Gardner's mathematical puzzles columns in Scientific American, and is a mnemonic aid for building the mathematical constant _e_ based on the lengths of each word, where the "O" from "O take guard" represents zero. Here's a quick Javascript console snippet showing how it works (and a shout out to my fellow regex nerds):
