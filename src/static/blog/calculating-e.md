@@ -280,7 +280,7 @@ In English, _e_ is the limit as n approaches infinity of 1 and an nth raised to 
       __2.7182816939803724__
     
 
-How high, then, do we need to go to reach the precision of the built-in constant? The answer is unsurprising: `252`. Javascript is capable of representing higher values (in fact, it can go as high as `21023`), however that's the limit at which it maintains unit-accuracy. For example:
+How high, then, do we need to go to reach the precision of the built-in constant? The answer is unsurprising: `$$2^52`. Javascript is capable of representing higher values (in fact, it can go as high as `$$2^1023`), however that's the limit at which it maintains unit-accuracy. For example:
 
     .codez
     __>__ _Math.pow(2, 52)_
