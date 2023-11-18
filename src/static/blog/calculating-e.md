@@ -67,7 +67,7 @@ Starting very simply, let's look at the float representation of 1.
 
 The `$$-1^\sign` expression may be awkward if you are more of a programmer than a maths nerd. If that's the case, think of the sign bit as an "isNegative" flag. When the flag is 0, the expression evaluates to 1 (positive, i.e., isNegative is false, anything raised to 0 is 1), and when the flag is 1, the expression evaluates to -1 (raising to 1 is an identity operation). The results of that expression are then multiplied in with the results of the exponent and mantissa expressions, either leaving them alone or negating them, depending on the sign bit's value.
 
-The exponent value given in the float is offset by -1023, so if I want a calculated exponent of 0 (so that the mantissa is multiplied by 20 = 1), I use a real float of 1023. The equation for the float is then:
+The exponent value given in the float is offset by -1023, so if I want a calculated exponent of 0 (so that the mantissa is multiplied by `$$2^0 = 1`), I use a real float of 1023. The equation for the float is then:
 
 `$$-1^0 × 2^0 × 1.0`
 
