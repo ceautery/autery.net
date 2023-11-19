@@ -41,6 +41,10 @@ article {
   margin: 0 14pt;
 }
 
+article:focus {
+  outline: none;
+}
+
 article h1 {
   text-align: center;
 }
