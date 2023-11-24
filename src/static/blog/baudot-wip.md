@@ -91,7 +91,7 @@ Either way, this turned out to not be very relevant, as consumers started gettin
 
 ## Part 2. In the aftermath of revolution
 
-> Paris is quiet and the good citizens are content - Napolean
+> Paris is quiet and the good citizens are content - Napoleon
 
 The tech used in dial-up modem communications is built on ancient concepts.
 
