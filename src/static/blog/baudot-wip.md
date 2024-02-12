@@ -1,3 +1,7 @@
+og:title From Baudot to Graphemes
+og:description A dive into the history of telecommunications, character sets, and how both were influenced by the French Revolution
+og:image /images/murray_telegraph.png
+
 # From Baudot to Graphemes
 
 ## Part 1. The age of dial-up modems
@@ -44,9 +48,9 @@ Account :
 
 Except it wouldn't quite have looked like that. Most of us had terminals that were only 40 characters wide, and most home computer keyboards back then only supported upper-case characters, thanks to [Woz not already being rich](https://www.vintagecomputing.com/index.php/archives/2833/why-the-apple-ii-didnt-support-lowercase-letters), and the lack of mass-market ASCII peripherals in 1974.
 
-These "boards" were an awakening for me. They were social networks of nearby young computer enthusiasts who could suddenly communicate with people like them. This was back in a time when being a nerd was much less mainstream, and bullying wasn't exactly frowned on. For many of us who were some degree of an outlier in our normal lives, after our first public BBS post gets replies from our contemporaries, we realize we're normal and part of a larger community.
+These "boards" were an awakening for me. They were social networks of nearby young computer enthusiasts who could suddenly communicate with people like them. This was back in a time when being a nerd was much less mainstream, and bullying wasn't exactly frowned on. For many of us who were some degree of an outlier in our normal lives, after our first public BBS post gets replies from our contemporaries, we realize we're normal and part of a larger community. It was beautiful. And years before any of us would discover the internet.
 
-It was beautiful. And years before any of us would discover the internet. I liked connecting to boards ("getting online" wasn't in the vernacular yet) so much that I needled my parents to buy a modem for my Apple //c. I'm pretty sure I still rode my bike places, climbed trees, played soccer, what have you, but if I was home I was on the computer typing furiously on one BBS or other.
+I liked connecting to boards so much that I needled my parents to buy a modem for my Apple //c. I'm pretty sure I still rode my bike places, climbed trees, played soccer, what have you, but if I was home I was on the computer typing furiously on one BBS or other.
 
 My modem, an Avatex 1200, was more complicated than an accoustic coupler modem. You changed it's settings by typing to it from a terminal program on your computer, which would transmit command signals to it over a serial cable. The modem would start listening for commands when you typed "AT" (attention).
 
@@ -56,7 +60,7 @@ My modem, an Avatex 1200, was more complicated than an accoustic coupler modem. 
 by [Alex Lozupone](https://commons.wikimedia.org/wiki/User:Tduk)
 is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en)
 
-After that you could use "init string" commands to set properties for the connection like timeouts and how flow control (notifying a device to stop sending so you can catch up, and then telling it when you're ready again) will work on the next connection. Dialing the phone was the D command, and back then some phone lines didn't have touchtone service yet, so you said whether to dial in pulse or tone mode with P or T. A typical command sequence would be:
+After that you could use "init string" commands to set properties for the connection like timeouts and how flow control (notifying a device to stop sending so you can catch up) will work on the next connection. Dialing the phone was the D command, and back then some phone lines didn't have touchtone service yet, so you said whether to dial in pulse or tone mode with P or T. A typical command sequence would be:
 
 ```
 ATS30=12&K4
@@ -69,25 +73,19 @@ As modems got faster, there were more chances for errors in transmission (the ph
 
 This meant that for backwards compatibility, modems got progressively more expensive to manufacture. The idea of passing some of the work off to the computer a modem was attached to became more attractive in the late 90s, when modem speeds were 33,600 baud and CPU speeds crossed the 300MHZ threshold. A few different [softmodems](https://en.wikipedia.org/wiki/Softmodem) hit the PC consumer market then, and it was nothing short of a train wreck for us tech support folks. The average computer user wasn't very sophisticated back then, so talking them through installing a software driver for their modem was a chore, and often the computer wasn't up to the task and swapping error correction mode for something like "buffered async" mode was needed to keep a healthy connection.
 
-Another common problem I ran into back then was with a modem's default flow control mode. CompuServe's client software had a list of modems for users to select, which would pre-populate an init string. All of these enabled [RTS/CTS flow control](https://stackoverflow.com/questions/957337/what-is-the-difference-between-dtr-dsr-and-rts-cts-flow-control), where most users would have had a better experience with Xon/Xoff. RTS/CTS only works between a modem and the computer it's connected to, and inevitably users with underpowered computers would run out of buffer because they couldn't process data fast enough, and then either the user would lose data if they weren't in error control mode, or get disconnected after too many error-controlled packets have to be sent again. In Xon/Xoff, a struggling computer could send an Xoff character over the modem to the CompuServe side, and this helped prevent buffer overruns and disconnects from exceeding an error limit.
+Another common problem I ran into back then was with a modem's default flow control mode. CompuServe's client software had a list of modems for users to select, which would pre-populate an init string. All of these enabled [RTS/CTS flow control](https://stackoverflow.com/questions/957337/what-is-the-difference-between-dtr-dsr-and-rts-cts-flow-control), where most users would have had a better experience with Xon/Xoff. RTS/CTS only works between a modem and the computer it's connected to, and inevitably users with underpowered computers would run out of buffer on their modems because the computer couldn't process incoming data fast enough, and then either the user would lose data if they weren't in error control mode, or get disconnected after too many error-controlled packets have to be sent again. In Xon/Xoff, a struggling computer could send an Xoff character over the modem to the CompuServe side, and this helped prevent buffer overruns and disconnects.
 
-I started thinking about this world again recently, in particular about a misunderstanding I had about the whole flow control problem. I thought that RTS/CTS was between the two modems somehow, and that data was lost because the CompuServe server was also behind an X.25 node that talked to the modem banks, which couldn't see the "signal" from the modem.
-
-I decided to read up on the topic, starting by finding an answer to a simple question: If dial-up modems are set in "hardware flow control" mode, using RTS/CTS or DTR/DSR signals between each modem and its terminal, is there any mechanism to tell the remote modem to stop sending?
-
-I found an answer eventually: No. The receiving modem just has to buffer, and if that overflows the connection has to rely on some external error check, MNP on the connection itself, or a higher level transfer protocol like Z-modem. I did find this reference in the ITU's [V.43 data flow control recommendation](https://www.itu.int/rec/T-REC-V.43-199802-I/en), in section 4.2, "Methods for flow control of received data":
-
-> NOTE – The data whose flow is temporarily stopped or slowed down is originated from the remote DTE. In order to control the flow of that data so that no data is lost, the local DCE will either need to provide a received data buffer whose size cannot be specified in this Recommendation, or a mechanism will need to be implemented in the system to force the remote DTE to stop transmitting data until such time as the DTE not-ready condition is cleared.
-
-So at least someone was thinking about it. Why should the official recommendation for flow control not take a harder stance on this? I think it's because of the natural push and pull between standards writers and hardware manufacturers. Some of what the ITU does is document what has already been created, and this flow control edge case is a clear example of that.
-
-The ITU isn't completely toothless, though. Their 1998 [V.90 recommendation](https://www.itu.int/rec/T-REC-V.90-199809-I/en) for 56k modem connections was an official call to action for both USRobotics and Rockwell, who created [incompatible 56k standards](https://www.inetdaemon.com/tutorials/computers/hardware/modems/v90.shtml), X2 and K56Flex, forcing consumers and online services/ISPs to pick a side or suffer slower connection speeds. Fortunately both companies were quick to adopt the common standard, since modems had also started using EPROMs that could be flashed to support more features.
+I left the tech support world around the time that 56k modems started hitting the market, which was a pretty chaotic time. In 1998 the ITU published the [V.90 recommendation](https://www.itu.int/rec/T-REC-V.90-199809-I/en), which was an official call to action for both USRobotics and Rockwell, who created [incompatible 56k standards](https://www.inetdaemon.com/tutorials/computers/hardware/modems/v90.shtml), X2 and K56Flex, forcing consumers and online services/ISPs to pick a side or suffer slower connection speeds. Fortunately both companies were quick to adopt the common standard, since modems had also started using EPROMs that could be flashed to support more features.
 
 I won't talk much here about V.90 modems, but it's an interesting topic. Digital lines had been added to the public phone network going back as far as the 1960s, not all the way to customer phones on the "local loop", but between "trunks" of the phone network. In 1988, The ITU rolled out recommendation [G.711](https://www.itu.int/rec/T-REC-G.711/), a codec for encoding voice data, turning speech into a .wav file, essentially. Some ISPs had digital lines all the way to their modem banks, and could use digital modems. V.90 allows a connection where receiving (from the customer's point of view) data can happen in G.711, and transmission happens in V.34.
 
-In 2000 the standard was enhanced with V.92, the basic change being an attempt to negotiate G.711 on both transmit and receive happened, with both falling back to V.34. I don't know enough about the technology (yet) to talk intelligentally about where the conversion to audio happens, or whether V.92 required digital local loop lines as well.
+In 2000 the standard was enhanced with V.92, the basic change being an attempt to negotiate G.711 on both transmit and receive happened, with both falling back to V.34. I don't know enough about the technology to speak intelligently about where the conversion to audio happens, or whether V.92 required digital local loop lines as well.
 
 Either way, this turned out to not be very relevant, as consumers started getting true digital piped to their homes with DSL and cable internet, where 56k would seem slow in comparison. Internet users in big cities where this was first rolled out were quick to migrate, and dial-up modems started showing up in thrift stores and garage sales.
+
+This type of technical progression, improvements causing new problems, regulators getting involved when adoption gets wider, has repeated itself throughout the history of telecommunications. The two basic problems of how to send signals faster, and what those signals mean, are constants that we've been contending with for a very long time.
+
+These days most of us receive data over high speed internet connections, in the unicode character set, transmitted using UTF-8 encoding. But all of those things are very new. Going back to as recent a time as 1985 when "getting online" was brand new to me, there was no unicode. Data was transmitted very slowly, in 7 or 8 bit ASCII, with [disagreement](https://en.wikipedia.org/wiki/Windows-1251) [over](https://en.wikipedia.org/wiki/ISO/IEC_8859-1) what characters were represented by symbols 128-255.
 
 ## Part 2. In the aftermath of revolution
 
@@ -95,15 +93,15 @@ Either way, this turned out to not be very relevant, as consumers started gettin
 
 The tech used in dial-up modem communications is built on ancient concepts.
 
-Transmitting simple information over distance has been done with smoke signals by natives of the Americas and Australian aboriginals. Ming dynasty China used [a relay system of beacon towers](https://link.springer.com/article/10.1007/s12520-021-01283-7) along the Great Wall to warn of invaders. The ancient Greeks got creative with their [Polybius square](https://en.wikipedia.org/wiki/Polybius_square) fire-signaling to describe coordinates on a grid of letters (or on a cipher grid). 
+Transmitting simple information over distance has been done with simple tools throughout recorded history. Natives of the Americas and Australian aboriginals used smoke signals. Ming dynasty China used [a relay system of beacon towers](https://link.springer.com/article/10.1007/s12520-021-01283-7) along the Great Wall to warn of invaders. The ancient Greeks got creative with their [Polybius square](https://en.wikipedia.org/wiki/Polybius_square) fire-signaling to describe coordinates on a grid of letters (or on a cipher grid). 
 
-A big leap forward from Polybius happened in France during the French Revolution. Claude Chappe conceived of a semaphore telegraph which would sit above a tower. The telegraph was two indicator arms that could each be rotated to 7 distict positions, connected to a base that could rotated into a horizontal or vertical position, giving `$$7 * 7 * 2 =  98` distinct numeric codes. Each tower also had a telescope, to view other telegraphs in a chain between cities.
+A big leap forward from Polybius happened in France during the French Revolution. Claude Chappe conceived of a semaphore telegraph which would sit above a tower. The telegraph had two indicator arms that could each be rotated to 7 distict positions, connected to a base that could be rotated into a horizontal or vertical position, giving `$$7 * 7 * 2 =  98` distinct numeric codes. Each tower also had a telescope, to view other telegraphs in a chain between cities.
 
 .tip
 ![](/images/chappe_telegraph.jpg)
 [Télégraphe Chappe](https://commons.wikimedia.org/wiki/File:T%C3%A9l%C3%A9graphe_Chappe_1.jpg)
 by [Louis Figuier](https://en.wikipedia.org/wiki/Louis_Figuier)
-is licensed under public domain in France
+is licensed under public domain
 
 Six of the codes were meant to convey status information, or "control codes" - start of message, no one at the station right now, etc. The remaining 92 positions were used in a two-symbol code, where each code represented a French word, giving `$$92 * 92 = 8,464` possible words. Each station would have a codebook of 92 pages, with 92 words on each page.
 
@@ -115,12 +113,20 @@ is licensed under [GFDL-1.2-or-later](https://en.wikipedia.org/wiki/en:GNU_Free_
 
 When Napoleon came to power, he made use of these towers to communicate with his army an order of magnitude faster than the next quickest option, delivery of physical letters via horseback. This method of communication was very timely, since France's neighbors had taken a hostile stance towards them, worried about revolution spreading into their countries and their own monarchs getting their heads lopped off.
 
-Napoleon found the Chappe telegraph network so useful that he recruited Claude's brother Abraham to design a telegraph that could [communicate across the English channel](https://shannonselin.com/2020/05/chappe-semaphore-telegraph), and a mobile telegraph that could be used in Russian, which was unworkable.
+Napoleon found the Chappe telegraph network so useful that he recruited Claude's brother Abraham to design a telegraph that could [communicate across the English channel](https://shannonselin.com/2020/05/chappe-semaphore-telegraph), and a mobile telegraph that could be used in a Russia compaign, which was unworkable with the tools Abraham had to work with.
 
-Why Abraham and not Claude? Sadly, Claude suffered from depression, and under the strain of rivals declaring that they had invented the telegraph first, or made a better one, he committed suicide. His gravesite has a replica of a Chappe telegraph, with its indicator arms set to the "at rest" control code.
+Why Abraham and not Claude? Sadly, Claude suffered from depression, not helped by the strain of his contemporaries competing for attention, declaring that they had invented the telegraph first, or made a better one. Ultimately Claude committed suicide. His gravesite has a replica of a Chappe telegraph, with its indicator arms set to the "at rest" position.
 
 .tip
 ![](/images/chappe_gravesite.jpg)
 [Cimetière du Père Lachaise tombe de Claude Chappe](https://commons.wikimedia.org/wiki/File:Cimeti%C3%A8re_du_P%C3%A8re_Lachaise_tombe_de_Claude_Chappe.jpg)
 by Mimmo109
 is licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en)
+
+After witnessing Napoleon's use of the Chappe network, the utility of being able to communicate over distance reliably and at speed wasn't lost on the rest of Europe. Within a few years optical telegraphs were being designed and built in Sweden, Denmark, England, and Spain, and they were in use by the early 19th century. Each country ended up with unique designs and encoding systems. A grid of shudders was a popular idea.
+
+.tip
+![](/images/murray_telegraph.png)
+[Murray Shutter Telegraph 1795](https://commons.wikimedia.org/wiki/File:Murray_Shutter_Telegraph_1795.png)
+is licensed under public domain
+
