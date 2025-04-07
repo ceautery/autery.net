@@ -8,7 +8,7 @@ og:image /images/murray_telegraph.png
 
 > It [transmitting data with a modem] is a simple principle, and telecommunicating would be easy if all computers spoke precisely the same digital language. They don't, however, and that's where telecommunicating can become frustrating. - ASCII Express instruction manual
 
-In 1985, I attended a small magnet high school called the Linworth Alternative Program. In one of the rooms used primarily for math classes, there was a dumb terminal, a rotary phone, and a 300 baud [accoustic coupler modem](https://en.wikipedia.org/wiki/Acoustic_coupler). On a piece of paper taped nearby was a list of phone numbers of local Columbus BBS servers - COMPUTE, The Tesseract, The Village (after the 1960s British TV show "The Prisoner"), others I've forgotten in the intervening 38 years.
+In 1985, I attended a small magnet high school called the Linworth Alternative Program. In one of the rooms used primarily for math classes, there was a dumb terminal, a rotary phone, and a 300 baud [accoustic coupler modem](https://en.wikipedia.org/wiki/Acoustic_coupler). On a piece of paper taped nearby was a list of phone numbers of local Columbus BBS servers - COMPUTE, The Tesseract, The Village (after the 1960s British TV show "The Prisoner"), others I've forgotten in the intervening decades.
 
 .tip
 ![](/images/Acoustic_modem_and_phone_plugged.jpg)
@@ -93,7 +93,7 @@ These days most of us receive data over high speed internet connections, in the 
 
 The tech used in dial-up modem communications is built on ancient concepts.
 
-Transmitting simple information over distance has been done with simple tools throughout recorded history. Natives of the Americas and Australian aboriginals used smoke signals. Ming dynasty China used [a relay system of beacon towers](https://link.springer.com/article/10.1007/s12520-021-01283-7) along the Great Wall to warn of invaders. The ancient Greeks got creative with their [Polybius square](https://en.wikipedia.org/wiki/Polybius_square) fire-signaling to describe coordinates on a grid of letters (or on a cipher grid). 
+Transmitting simple information over distance has been done with simple tools throughout recorded history. Natives of the Americas and Australian aboriginals used smoke signals. Ming dynasty China used [a relay system of beacon towers](https://link.springer.com/article/10.1007/s12520-021-01283-7) along the Great Wall to warn of invaders. The ancient Greeks got creative with their [Polybius square](https://en.wikipedia.org/wiki/Polybius_square) fire-signaling to describe coordinates on a grid of letters (or on a cipher grid).
 
 A big leap forward from Polybius happened in France during the French Revolution. Claude Chappe conceived of a semaphore telegraph which would sit above a tower. The telegraph had two indicator arms that could each be rotated to 7 distict positions, connected to a base that could be rotated into a horizontal or vertical position, giving `$$7 * 7 * 2 =  98` distinct numeric codes. Each tower also had a telescope, to view other telegraphs in a chain between cities.
 
