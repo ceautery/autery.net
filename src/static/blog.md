@@ -1,11 +1,12 @@
 og:title Bytes
-og:description A minimalist blog from a pretty ok husband, dad, and software writer
+og:description A minimalist blog from a pretty ok software writer
 og:image /images/plate.jpg
 
 # Bytes
 
 Things I think about
 
+* `2025-04-08` - [Using Discrete Logarithms to Randomize a Million Integers](/blog/randomize)
 * `2021-12-23` - [Audiobooks of the year, 2021](/blog/books-2021)
 * `2021-12-08` - [Outsiders, TDD, and the area of a polygon](/blog/room-area)
 * `2021-11-15` - [Schools and angry conservatives](/blog/krause)
