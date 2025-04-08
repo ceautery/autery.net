@@ -1,25 +1,3 @@
-https://web.archive.org/web/20230324215306/https://www.mutuallyhuman.com/blog/using-discrete-logarithms-to-randomize-a-million-integers/
-
--  a^p \equiv a\ (mod\ p)
-- a^{p-1} \equiv 1\ (mod\ p)
-- a^{\varphi(n)} \equiv 1\ (mod\ n)
-- \varphi(p^k) = p^{k-1} (p – 1)
-\varphi(p^k) = p^k \frac{p – 1}{p}
-\varphi(p) = p \frac{p – 1}{p}
-40 = 8 \times 5 = 2^3 \times 5
-\varphi(8 \times 5) = \varphi(8) \times \varphi(5)
-\varphi(8) = 8 \times \frac{1}{2}, \varphi(5) = 5 \times \frac{4}{5}
-8 \times \frac{1}{2} \times 5 \times \frac{4}{5}
-40 \times \frac{1}{2} \times \frac{4}{5}
-\varphi(n) = n \prod_{p|n} \frac{p-1}{p}
-
-
-`$$x^17 = 1`
-`$${2πi}/{17}`
-`$$e^ix = \cos x + i \sin x`
-
-
-
 # Using Discrete Logarithms to Randomize a Million Integers
 
 For simplicity’s sake, my use of “numbers” here will mean positive integers (counting, or natural numbers).
@@ -306,15 +284,15 @@ This works for any prime factors of a composite number that are coprime. If m an
 
 That’s 5 columns times 4 rows, for 20 numbers under 25 that are coprime to it. This can be represented by this identity (and in these equations φ(n) will mean totient(n):
 
-`$$φ(p^\k) = p^{k-1}(p-1)`
+`$$φ(p^{k}) = p^{k-1}(p-1)`
 
 If we multiply that by p/p, we can express the equation a little more usefully:
 
-φ(pk)=pkp–1p
+`$$φ(p^{k}) = p^{k} {p–1}/{p}`
 
 This also works if we’re looking for the totient of a prime not raised to any power – where k is 1:
 
-φ(p)=pp–1p
+`$$φ(p) = p{p–1}/{p}`
 
 Which simplifies to just p - 1.
 
@@ -323,29 +301,29 @@ It seems like we’re out in the weeds now, but there’s one fact that brings t
     [26] pry(main)> totient 40
     => 16
 
-40=8×5=23×5
+`$$40 = 8 * 5 = 2^3 * 5`
 
 8 and 5 are coprime to each other, so:
 
-φ(8×5)=φ(8)×φ(5)
+`$$φ(8 * 5) = φ(8) * φ(5)`
 
 Using our prime-to-a-power formula, the totients of 8 and 5 are:
 
-φ(8)=8×12,φ(5)=5×45
+`$$φ(8) = 8 * {1}/{2} , φ(5) = 5 * {4}/{5}`
 
 Multiplying them together to get the totient of 40, we have:
 
-8×12×5×45
+`$$8 * {1}/{2} * 5 * {4}/{5}`
 
 If we multiply 8 and 5 in the above equation, we get one that contains the original number we’re finding the totient of, and fractions based on each of its unique prime factors:
 
-40×12×45
+`$$40 * {1}/{2} * {4}/{5}`
 
 And that brings us to our final formula:
 
-φ(n)=n∏p|np−1p
+<svg xmlns="http://www.w3.org/2000/svg" width="149.184px" height="50.056px" viewBox="0 -1342 8242.3 2765.4" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style=""><defs><path id="MJX-5-TEX-I-1D711" d="M92 210Q92 176 106 149T142 108T185 85T220 72L235 70L237 71L250 112Q268 170 283 211T322 299T370 375T429 423T502 442Q547 442 582 410T618 302Q618 224 575 152T457 35T299 -10Q273 -10 273 -12L266 -48Q260 -83 252 -125T241 -179Q236 -203 215 -212Q204 -218 190 -218Q159 -215 159 -185Q159 -175 214 -2L209 0Q204 2 195 5T173 14T147 28T120 46T94 71T71 103T56 142T50 190Q50 238 76 311T149 431H162Q183 431 183 423Q183 417 175 409Q134 361 114 300T92 210ZM574 278Q574 320 550 344T486 369Q437 369 394 329T323 218Q309 184 295 109L286 64Q304 62 306 62Q423 62 498 131T574 278Z"></path><path id="MJX-5-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-5-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-5-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-5-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-5-TEX-LO-220F" d="M220 812Q220 813 218 819T214 829T208 840T199 853T185 866T166 878T140 887T107 893T66 896H56V950H1221V896H1211Q1080 896 1058 812V-311Q1076 -396 1211 -396H1221V-450H725V-396H735Q864 -396 888 -314Q889 -312 889 -311V896H388V292L389 -311Q405 -396 542 -396H552V-450H56V-396H66Q195 -396 219 -314Q220 -312 220 -311V812Z"></path><path id="MJX-5-TEX-I-1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path id="MJX-5-TEX-N-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path><path id="MJX-5-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-5-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="#000000" fill="#000000" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D711" xlink:href="#MJX-5-TEX-I-1D711"></use></g><g data-mml-node="mo" transform="translate(654,0)"><use data-c="28" xlink:href="#MJX-5-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1043,0)"><use data-c="1D45B" xlink:href="#MJX-5-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(1643,0)"><use data-c="29" xlink:href="#MJX-5-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(2309.8,0)"><use data-c="3D" xlink:href="#MJX-5-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(3365.6,0)"><use data-c="1D45B" xlink:href="#MJX-5-TEX-I-1D45B"></use></g><g data-mml-node="munder" transform="translate(4132.2,0)"><g data-mml-node="mo"><use data-c="220F" xlink:href="#MJX-5-TEX-LO-220F"></use></g><g data-mml-node="TeXAtom" transform="translate(150.7,-1147) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D45D" xlink:href="#MJX-5-TEX-I-1D45D"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(503,0)"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="7C" xlink:href="#MJX-5-TEX-N-7C"></use></g></g><g data-mml-node="mi" transform="translate(781,0)"><use data-c="1D45B" xlink:href="#MJX-5-TEX-I-1D45B"></use></g></g></g><g data-mml-node="mfrac" transform="translate(5576.9,0)"><g data-mml-node="mrow" transform="translate(220,676)"><g data-mml-node="mi"><use data-c="1D45D" xlink:href="#MJX-5-TEX-I-1D45D"></use></g><g data-mml-node="mo" transform="translate(725.2,0)"><use data-c="2212" xlink:href="#MJX-5-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(1725.4,0)"><use data-c="31" xlink:href="#MJX-5-TEX-N-31"></use></g></g><g data-mml-node="mi" transform="translate(1081.2,-686)"><use data-c="1D45D" xlink:href="#MJX-5-TEX-I-1D45D"></use></g><rect width="2425.4" height="60" x="120" y="220"></rect></g></g></g></svg>
 
-The totient of any number, is the original number times (p - 1)/p for each of it’s unique prime factors. In Ruby, we can represent that formula like this:
+The totient of any number, is the original number times `(p - 1)/p` for each of it’s unique prime factors. In Ruby, we can represent that formula like this:
 
     [27] pry(main)> def totient(n)
     [27] pry(main)>   factors = n.prime_division.map(&:first)
