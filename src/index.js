@@ -56,6 +56,7 @@ const renderer = {
       .replace(/\*/g, '×')
       .replace(/\\(?=[a-zA-Z])/g, '')
       .replace(/{([^}]+)}\/{([^}]+)}/g, `<span class="fraction"><span class="numerator">$1</span>$2</span>`)
+      .replace(/{([^}]+)}\|{([^}]+)}/g, `<span class="series"><span class="symbol">$1</span>$2</span>`)
       .replace(/√\[(.+?)\]/g, `√<span class="radicand">$1</span>`)
       .replace(/\^{([^}]+)}/g, "<sup>$1</sup>")
       .replace(/\^([\w-]+)/gu, "<sup>$1</sup>")

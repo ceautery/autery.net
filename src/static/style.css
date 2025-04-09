@@ -158,6 +158,15 @@ sup, sub {
   position: relative;
 }
 
+.series {
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  font-size: .6875em;
+  line-height: 1.25;
+  position: relative;
+}
+
 .radicand .fraction {
   font-size: .375em;
 }
@@ -169,6 +178,11 @@ p {
 .numerator {
   border-bottom: .09375em solid;
   display: block;
+}
+
+.symbol {
+  display: block;
+  font-size: 2em;
 }
 
 @media screen and (max-width: 1200px) {
