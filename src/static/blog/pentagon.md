@@ -8,7 +8,7 @@ og:image /images/half_cosine.PNG
 
 Over the last few weeks I've been spending what free time I have obsessing over the odd mathematics of Argand diagrams, complex roots, and how they relate to constructing regular polygons with a compass and straightedge. I found, among other things, that I had forgotten quite a bit from my trig and geometry classes from 25 years ago.
 
-The spark for this obsession was when I stumbled on the Wikipedia article [Compass and straightedge construction](https://en.wikipedia.org/wiki/Straightedge_and_compass_construction)s, a topic I thoroughly enjoyed in my freshman Geometry class back in high school. The article mentions the discovery by Guass that a regular heptadecagon (a 17-sided polygon) was constructable because the cosine of `$${2π}/{17}` was equal to some arcane madness that had several nested square roots of 17 in it. On further digging, it mentions his proof of this had to do with finding the complex roots for `$$x^17 = 1`, raising e to the `$${2πi}/{17}`, and liberal application of Euler's formula `$$e^ix = \cos x + i \sin x`, all of which either seemed unrelated to drawing circles and lines, or just went right over my head.
+The spark for this obsession was when I stumbled on the Wikipedia article [Compass and straightedge construction](https://en.wikipedia.org/wiki/Straightedge_and_compass_construction)s, a topic I thoroughly enjoyed in my freshman Geometry class back in high school. The article mentions the discovery by Guass that a regular heptadecagon (a 17-sided polygon) was constructable because the cosine of `$${2π}/{17}` was equal to some arcane madness that had several nested square roots of 17 in it. On further digging, it mentions his proof of this had to do with finding the complex roots for `$$x^17 = 1`, raising e to the `$${2πi}/{17}`, and liberal application of Euler's formula `$$e^{ix} = \cos x + i \sin x`, all of which either seemed unrelated to drawing circles and lines, or just went right over my head.
 
 After returning to the article and reading other texts about the topic, I started to see how it all connected together, but not enough to be able to explain it to anyone, and then miraculously, it all clicked after watching [this video](https://youtu.be/N0Y8ia57C24) on Khan Academy, which explains how to find complex roots. (Thanks, Sal, you da man.)
 
@@ -84,11 +84,11 @@ We know the diameter, D, is 2, so:
 Lastly, we know from Euclid that `$${B}/{A}` is the golden ratio, so:
 `$$Z = φ = {√[5 + 1]}/{2}`
 
-This gives us our second method of constructing a pentagon with compass and straightedge, namely finding a point phi away from the opposite end of P0. We do this by finding the `$${√[5]}/{2}` part and the 1/2 part separately using nothing more than bisecting lines and drawing circles with known points. The link "Pentagon, Phi method" below shows an animation of that, but the method is simply drawing a circle with a 1/2 radius inside the unit circle, with a diameter from the unit circle's center to it's edge:
+This gives us our second method of constructing a pentagon with compass and straightedge, namely finding a point phi away from the opposite end of P0. We do this by finding the `$${√[5]}/{2}` part and the `$${1}/{2}` part separately using nothing more than bisecting lines and drawing circles with known points. The link "Pentagon, Phi method" below shows an animation of that, but the method is simply drawing a circle with a `$${1}/{2}` radius inside the unit circle, with a diameter from the unit circle's center to it's edge:
 
 ![](/images/phi_method_1.PNG)
 
-The triangle QBO is a right triangle with base 1, height 1/2, and hypotenuse `$$√[1^2 + (1/2)^2] = √[1 + {1}/{4}] = √[{5}/{4}] = {√[5]}/{2}`. So from Q to B we need only 1/2 more to be at the radius φ... which also happens to be the radius of the inner circle.
+The triangle QBO is a right triangle with base 1, height `$${1}/{2}`, and hypotenuse `$$√[1^2 + ({1}/{2})^2] = √[1 + {1}/{4}] = √[{5}/{4}] = {√[5]}/{2}`. So from Q to B we need only `$${1}/{2}` more to be at the radius φ... which also happens to be the radius of the inner circle.
 
 So we just extend line QB, and the point where it intersects the inner circle, N, is φ away from Q. All that's left is to draw a semicircle from center Q to radius N, which will cross the unit circle at P1 and P4:
 
@@ -106,7 +106,7 @@ Now in the Ptolemy equation, only B is unknown. A little algebra finds its lengt
 
 ![](/images/J.PNG)
 
-...then we have enough information to solve for the missing length J-P0 in right triangle J-P1-P0: `$${5}/{4} - √[{5}/{4}]`, leading us, at long last, to the length between O and J, the same as the cosine of `$${2π}/{5}`: `$${√5 - 1}/{4}`.
+...then we have enough information to solve for the missing length J-P0 in right triangle J-P1-P0: `$${5}/{4} - √[{5}/{4}]`, leading us, at long last, to the length between O and J, the same as the cosine of `$${2π}/{5}` : `$${√5 - 1}/{4}`.
 
 ### 3: Cosine method (or "Richmond's epiphany")
 
@@ -146,9 +146,9 @@ The "Pentagon, Cosine method" link on the animations page shows this in a way th
 
 In the early 19th century, Thomas Carlyle gave us a gem of a geometric construct - shortly before retiring from teaching mathematics and moving on to political writing including satire, a history of the French Revolution, and advocating against democracy and for moving back to a fuedal society. Takes all types.
 
-Anyway, what he discovered was a way to mechanically find the quadratic roots of equations of the form x2 -sx + p. The method is remarkably simple: draw a circle with a diameter from (0,1) to (s,p), and where the circle crosses the x axis are the roots.
+Anyway, what he discovered was a way to mechanically find the quadratic roots of equations of the form `$$x^2 -sx + p`. The method is remarkably simple: draw a circle with a diameter from (0,1) to (s,p), and where the circle crosses the x axis are the roots.
 
-For example, here's Wolfram Alpha's rendition of a Carlyle Circle describing x2 -5x + 6:
+For example, here's Wolfram Alpha's rendition of a Carlyle Circle describing `$$x^2 - 5x + 6`:
 
 ![](/images/5_6_a.PNG)
 
@@ -156,9 +156,9 @@ The equation at the bottom is not the quadratic formula we're trying to solve, b
 
 ![](/images/5_6_b.PNG)
 
-(Unfortunately, I couldn't find the exact syntax on Wolfram's input line to do this in one step, hence the examples all have two screenshots.) As it appeared, 2 and 3, making the root formula (x - 2)(x - 3), which, if you're familiar with this type of thing, is pretty obvious.
+(Unfortunately, I couldn't find the exact syntax on Wolfram's input line to do this in one step, hence the examples all have two screenshots.) As it appeared, 2 and 3, making the root formula `$$(x - 2)(x - 3)`, which, if you're familiar with this type of thing, is pretty obvious.
 
-For a second example, here is how the Carlyle circle behaves when the roots are the same, solving x2 -6x + 9:
+For a second example, here is how the Carlyle circle behaves when the roots are the same, solving `$$x^2 - 6x + 9`:
 
 ![](/images/6_9_a.PNG)
 ![](/images/6_9_b.PNG)
