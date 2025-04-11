@@ -111,6 +111,10 @@ async function handler(event, context, callback) {
         'content-type': [{
           key: 'Content-Type',
           value: 'text/html'
+        }],
+        'cache-control': [{
+          key: 'Cache-Control',
+          value: 'public, max-age=86400'
         }]
       },
       body
