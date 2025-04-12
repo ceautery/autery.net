@@ -6,6 +6,7 @@ og:image /images/plate.jpg
 
 Things I think about
 
+* `2025-04-12` - [A simple serverless blog](/blog/topology)
 * `2025-04-08` - [Using Discrete Logarithms to Randomize a Million Integers](/blog/randomize)
 * `2021-12-23` - [Audiobooks of the year, 2021](/blog/books-2021)
 * `2021-12-08` - [Outsiders, TDD, and the area of a polygon](/blog/room-area)
