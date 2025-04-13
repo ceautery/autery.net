@@ -196,7 +196,7 @@ And that comes from this much more standard CNAME alias record:
 
 ![](/images/serverless/02-cname-email.png)
 
-By default, Cloudflare choosed caching behavior by file extension, not the content-type header. Since I'm serving blog URLs without a file extension, I need add an explicit "cache everything" rule for all requests, and tell it to follow the cache-control header sent from the origin server.
+By default, Cloudflare chooses caching behavior by file extension, not the content-type header. Since I'm serving blog URLs without a file extension, I need add an explicit "cache everything" rule for all requests, and tell it to follow the cache-control header sent from the origin server.
 
 ![](/images/serverless/03-cache-rule.png)
 
