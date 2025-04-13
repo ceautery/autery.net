@@ -74,7 +74,7 @@ function render(template, page) {
   if (metas) {
     const tags = metas[0]
       .match(/.+/g)
-      .map(m => m.replace(/^(og:\w+) (.+)/, `<meta name="$1" content="$2">\n`))
+      .map(m => m.replace(/^(og:\w+) (.+)/, `<meta property="$1" content="$2">\n`))
       .join('')
     const offset = metas[0].length + 1
     return tags + template.replace('%%', marked(page.slice(offset)))
