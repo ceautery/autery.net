@@ -1,7 +1,7 @@
 og:title A simple serverless blog
 og:description Chaining cloud services to run a blog without a fixed server or HTML files
-og:image /images/serverless/06-s3-dir.png
-og:url //autery.net/blog/topology
+og:image https://autery.net/images/serverless/06-s3-dir.png
+og:url https://autery.net/blog/topology
 
 # A simple serverless blog
 
