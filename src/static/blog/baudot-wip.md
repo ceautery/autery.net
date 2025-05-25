@@ -123,10 +123,34 @@ Why Abraham and not Claude? Sadly, Claude suffered from depression, not helped b
 by Mimmo109
 is licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en)
 
-After witnessing Napoleon's use of the Chappe network, the utility of being able to communicate over distance reliably and at speed wasn't lost on the rest of Europe. Within a few years optical telegraphs were being designed and built in Sweden, Denmark, England, and Spain, and they were in use by the early 19th century. Each country ended up with unique designs and encoding systems. A grid of shudders was a popular idea.
+After witnessing Napoleon's use of the Chappe network, the utility of being able to communicate over distance reliably and at speed wasn't lost on the rest of Europe. Within a few years optical telegraphs were being designed and built in Sweden, Denmark, England, and Spain, and they were in use by the early 19th century. Each country ended up with unique designs and encoding systems, all incompatible and in local language character sets. A grid of shudders was a popular idea.
 
 .tip
 ![](/images/murray_telegraph.png)
 [Murray Shutter Telegraph 1795](https://commons.wikimedia.org/wiki/File:Murray_Shutter_Telegraph_1795.png)
 is licensed under public domain
 
+## Part 3. The age of electricity
+
+> What hath God wrought? - Samuel Morse
+
+The thing about using towers, semaphore, and telescopes for communication is... a whole lot can go wrong. Your messages are plainly visible to anyone nearby, needing only a codebook to decipher them. You rely on intermediaries to be available, to accurately transcribe and transmit, and you rely on light and good weather for visibility.
+
+A more reliable, secure, and fast method of sending messages was sending electric signals over wire. This technology was in its infancy during the French Revolution, but an early prototype electric telegraph was created in 1774 by physicist [Georges-Louis Le Sage](https://en.wikipedia.org/wiki/Georges-Louis_Le_Sage), while Claude Chappe was still a child.
+
+.tip
+![](/images/lesage-telegraph.png)
+[Lesage's Telegraph](https://www.gutenberg.org/files/8862/8862-h/8862-h.htm#7)
+is licensed under the [Project Gutenberg License](https://www.gutenberg.org/policy/license.html)
+
+The spinning wheel in the above image generates static electricity. There are 24 or 26, depending on [which](https://en.wikipedia.org/wiki/Electrical_telegraph) [source](https://www.gutenberg.org/files/8862/8862-h/8862-h.htm#7) you believe, wires hooked to contraptions in two rooms. Here's a description from George Prescott's [History, Theory, and Practice of the Electric Telegraph](https://commons.princeton.edu/motorcycledesign/wp-content/uploads/sites/70/2018/07/History_theory_and_practice_of_the_elect1.pdf):
+
+> Lesage ... constructed an apparatus composed of twenty-four wires, corresponding to the twenty-four letters of the alphabet, and separated from each other by insulators. To the extremity of each one of these wires a [pith-ball](https://www.youtube.com/watch?v=Zfg_ryinAME) was suspended by a silk thread. By touching the wires with an electrical machine, the other extremity of the conductors —the pith-ball — would be repulsed, and thus make known the letter indicated.
+
+The Le Sage telegraph is interesting, and a good proof of concept for communicating without line of sight, but it was impractical to use that many wires over any real distance, where each wire required insulation against other wires' static charges.
+
+In 1816, English scientist Francis Ronalds built a telegraph that needed only one "wire", although his prototype used a hard to imagine amount of wire strung in a grid between two insulators - eight miles of wire!
+
+From the 2016 Physics Today article [The bicentennial of Francis Ronalds’s electric telegraph](https://pubs.aip.org/physicstoday/article/69/2/26/415427/The-bicentennial-of-Francis-Ronalds-s-electric)
+
+> Cooke, Wheatstone, and Morse took advantage of important new discoveries in electrical science, beginning with Hans Ørsted’s 1820 observation that electricity and magnetism were interrelated. The electromagnet, developed a few years later, enabled mechanical work to be done at a distance by applying a current. Electromagnets could be deployed as a relay switch to operate the telegraph receiver or in repeaters at intermediate wire locations to increase the transmission distance. In 1827 Georg Ohm published his famous law, which related electromotive force, current, and resistance and allowed circuits to be designed mathematically. Finally, John Daniell in 1836 created a battery much longer lasting and more reliable than Volta’s pile. All the elements were available to put together a new generation of electric telegraphs powered by current rather than static electricity.

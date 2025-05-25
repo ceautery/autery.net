@@ -3,6 +3,8 @@ import marked from 'marked'
 
 const client = new S3Client({ region: 'us-east-2' })
 
+const converted = (process.env.CONVERTED || '').split(',')
+
 function mathLetter(n) {
   // Mathematical italic h appears in the "letterlike symbols" unicode block (2100) as "Planck Constant"
   // alongside "h with stroke", the reduced Planck Constant (h/2𝜋 = ħ)
@@ -63,6 +65,13 @@ const renderer = {
       .replace(/_(\w+)\s?/g, "<sub>$1</sub>")
 
     return `<span class="math">${converted}</span>`
+  },
+
+  link(href, title, text) {
+    if (!href.startsWith('http')) return false
+
+    return title ? `<a href="${href}" title="${title}" target="_blank">${text}</a>`
+                 : `<a href="${href}" target="_blank">${text}</a>`
   }
 }
 
@@ -77,10 +86,10 @@ function render(template, page) {
       .map(m => m.replace(/^(og:\w+) (.+)/, `<meta property="$1" content="$2">\n`))
       .join('')
     const offset = metas[0].length + 1
-    return tags + template.replace('%%', marked(page.slice(offset)))
+    return template.replace('%%head', tags).replace('%%article', marked(page.slice(offset)))
   }
 
-  return template.replace('%%', marked(page))
+  return template.replace('%%head', '').replace('%%article', marked(page))
 }
 
 async function handler(event, context, callback) {
@@ -93,7 +102,14 @@ async function handler(event, context, callback) {
     return await response.Body.transformToString('utf-8')
   }
 
-  const uri = request.uri.replace(/\?.+/, '')
+  const uri = request.uri.replace(/[?#].+/, '')
+  const convertedUri = converted.includes(uri)
+
+  if (converted.includes(uri)) {
+    request.uri = uri + '.html'
+    callback(null, request)
+    return
+  }
 
   const isTemplate = uri == "/" || /template\.html/.test(uri)
   const isMarkdown =  /\/(blog|about|projects)/.test(uri)

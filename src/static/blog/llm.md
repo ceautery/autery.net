@@ -6,21 +6,6 @@ og:description Experimenting with Ollama and Open WebUI on a Macbook
 og:author Curtis Autery
 og:publish_date 2025-05-20
 
-<style>
-  article pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow: auto;
-    font-size: 90%;
-    background-color: #fafafa;
-  }
-
-  article img {
-    max-width: 100%;
-    height: auto;
-  }
-</style>
-
 # Local LLMs
 
 Findings of an AI luddite spinning up on running LLMs on a Macbook for the first time
@@ -33,7 +18,7 @@ Yet every time I attempted to use it to write some code at work for me, be it wi
 
 There are two "why"s that made me take a second look at LLMs a couple years later (and boy had the average model improved over that time). The first was the response to a new type of scam/fraud RVshare users were being subjected to. I take seriously my duty not to blab company confidential secrets to the open internet, so I'll just say we were bombarded with a sophisticated social engineering attack that was so new that there were not extant tools to mitigate it. So some clever engineers on my team wrote one.
 
-The engineers on my team who had kept an ear to the ground on the AI world created a tool to analyze messages and make decisions based on how fraudulent they looked to an LLM. The impact this had can't be overstated. Quite frankly and without any exaggeration or spin, if they're still solvent next year, that tool is why.
+The engineers on my team who had kept an ear to the ground on the AI world created a tool to analyze messages and make decisions based on how fraudulent they looked to an LLM. The impact this had can't be overstated.
 
 The second was the fact that most of the new job postings on the monthly Hacker News "Who's Hiring?" thread for April and May were related to AI in some way. An example is the first place I applied to in April, Fathom. They have an AI tool that joins your Zoom and Google Meet calls and creates a summary. You can then query an AI about the call's transcript or summary. Did anyone mention payment integrations? Yes, Joe talked about integrating with Stripe at minute 23.
 
@@ -710,4 +695,6 @@ Lastly, Ollama responds with a streaming one-line-per-token response, which when
 
     According to the output from `gutendex_fetcher/gutenberg_api`, there is only 1 Gutenberg entry for H.G. Wells. Specifically, it's a book about him titled "The World of H.G. Wells" by Van Wyck Brooks.
 
-After these experiments, I'm more tuned into the LLM world than I was before, in fact a lot of ChatGTP-adjacent content is showing up in my Reddit feed now. I can see plainly now that LLMs are useful, and I'm curious what I can do with them. I think my next step is to poke around a little in the world of Agents.
+After these experiments, I'm more tuned into the LLM world than I was before. Unsurprisingly, a lot of ChatGTP-adjacent content is showing up in my Reddit feed now, which shows that there's quite a lot of activity in getting models shrunk down enough to use locally (e.g., [Devstral-Small](https://www.reddit.com/r/LocalLLaMA/comments/1kryybf/mistralaidevstralsmall2505_hugging_face/) that you can use with OpenHands with commands like "Go clone this repo, and fix all the broken tests", and watch the agent go to town).
+
+But we still have a long way to go. Even the larger LLMs like Meta.ai are still giving untrustworthy answers while expending ice cap-melting levels of energy. But every day we seem to get closer to something reliable. Right now we're somewhere between GLaDOS and Friend Computer, but we're getting there.

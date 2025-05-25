@@ -1,3 +1,26 @@
+:root {
+  color-scheme: light dark;
+  --background-color: light-dark(#fff, #2f2f2f);
+  --text-color: light-dark(#000, #fff);
+  --nav-border-color: light-dark(rgba(10, 10, 10, 0.1), rgba(200, 200, 200, 0.1));
+  --nav-hover-color: light-dark(#f4f4f4, #555);
+  --code-background-color: light-dark(#f0f0f0, #444);
+  --code-color: light-dark(#000, #fff);
+  --blockquote-border-color: light-dark(#eee, #666);
+  --blockquote-color: light-dark(#444, #ccc);
+  --table-border-color: light-dark(#dbdbdb, #555);
+  --table-hover-color: light-dark(#f5f5f5, #444);
+  --link-color: light-dark(#198e53, #66d9ef);
+  --link-hover-color: light-dark(#363636, #fff);
+  --tooltip-background-color: light-dark(#fff, #444);
+  --tooltip-border-color: light-dark(#dbdbdb, #666);
+  --header-background-color: light-dark(rgba(255, 255, 255, 1), rgba(47, 47, 47, 1));
+}
+
+html {
+  scroll-padding-top: 96px;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -6,15 +29,21 @@ body {
   font-family: system-ui;
   font-size: 1.25em;
   line-height: 1.5;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 header {
   margin-left: 1em;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: var(--header-background-color);
 }
 
 nav {
-  margin: .5em 1em;
-  border-bottom: 3px solid rgba(10,10,10,0.1);
+  margin: .5em 0;
+  border-bottom: 3px solid var(--nav-border-color);
   line-height: 2;
   max-width: 600px;
 }
@@ -27,7 +56,7 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #f4f4f4;
+  background-color: var(--nav-hover-color);
 }
 
 nav a.live {
@@ -37,7 +66,6 @@ nav a.live {
 article {
   flex-grow: 1;
   padding: 1em 15%;
-  overflow-y: scroll;
   margin: 0 14pt;
 }
 
@@ -55,19 +83,19 @@ p.hero {
 }
 
 article blockquote {
-  border-left: 5px solid #eee;
+  border-left: 5px solid var(--blockquote-border-color);
   padding-left: 1em;
   margin-left: 0;
-  color: #444;
+  color: var(--blockquote-color);
 }
 
 a {
-    color: #198e53;
-    text-decoration: none;
- }
+  color: var(--link-color);
+  text-decoration: none;
+}
 
 a:hover {
-    color: #363636;
+  color: var(--link-hover-color);
 }
 
 code, p.codez {
@@ -76,9 +104,9 @@ code, p.codez {
 }
 
 .codez {
-  background-color: #333;
+  background-color: var(--code-background-color);
   padding: 0.75em;
-  color: white;
+  color: var(--code-color);
   overflow: scroll;
 }
 
@@ -87,21 +115,21 @@ p.codez {
 }
 
 .codez strong {
-  color: #dda790
+  color: #dda790;
 }
 
 .codez em {
-  color: #26d980
+  color: #26d980;
 }
 
 tr:hover {
-    background-color: #f5f5f5;
+  background-color: var(--table-hover-color);
 }
 
 td, th {
-    border: 1px solid #dbdbdb;
-    padding: .5em .75em;
-    vertical-align: top;
+  border: 1px solid var(--table-border-color);
+  padding: .5em .75em;
+  vertical-align: top;
 }
 
 td {
@@ -110,7 +138,7 @@ td {
 
 th {
   width: 30%;
-  color: #363636;
+  color: var(--link-hover-color);
   text-align: left;
   border-width: 0 0 2px;
 }
@@ -129,9 +157,9 @@ th:last-of-type {
 }
 
 .radical {
-    /*font-size: 1.25em;*/
-    /*position: relative;*/
-    /*top: -.0625em;*/
+  /*font-size: 1.25em;*/
+  /*position: relative;*/
+  /*top: -.0625em;*/
 }
 
 .radicand {
@@ -185,6 +213,37 @@ p {
   font-size: 2em;
 }
 
+article pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: auto;
+  font-size: 90%;
+  background-color: var(--code-background-color);
+}
+
+article p > code {
+  background-color: var(--code-background-color);
+}
+
+article img {
+  max-width: 100%;
+  height: auto;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 2px solid var(--tooltip-border-color);
+  padding: 5pt;
+  background: var(--tooltip-background-color);
+}
+
+.hover img:hover + .tooltip, .tooltip:hover {
+  display: inline;
+}
+
 @media screen and (max-width: 1200px) {
   body { font-size: 1.125em; }
   article { padding: 1em 10%; }
@@ -201,33 +260,4 @@ p {
     padding: 1em 0;
     text-align: left;
   }
-
-  article pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow: auto;
-  }
-
-  article img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-
-.hover {
-  position: relative;
-}
-
-.tooltip {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border: 2px solid grey;
-  padding: 5pt;
-  background: white;
-}
-
-.hover img:hover + .tooltip, .tooltip:hover {
-    display: inline;
 }
