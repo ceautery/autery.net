@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.451.0",
+    "katex": "^0.16.22",
     "marked": "^1.1.1"
   },
   "devDependencies": {

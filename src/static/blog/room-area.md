@@ -40,7 +40,7 @@ I dove in, and along the way also went back to the basics with using [test-drive
 
 The shoelace formula makes finding the area of polygons straightforward and elegant, but it's not immediately obvious why it works. Collect all the coordinates going counter-clockwise around the perimeter, and include the first point again at the end. Assume point Pn has coordinates (xn, yn), e.g., point P1 has coords (x1, y1). The formula for finding the polygon's area is then:
 
-`$${1}/{2} ( (x1y2 - x2y1) + (x2y3 - x3y2) ... + (xny1 - x1yn) )`
+`$\frac{1}{2} ( (x1y2 - x2y1) + (x2y3 - x3y2) ... + (xny1 - x1yn) )$`
 
 To understand why this works, let's take a step back...
 
@@ -74,31 +74,33 @@ Breaking any arbitrary polygon (so long as none of the lines cross) up into tria
 
 ![](/images/ra-step1.png)
 
-I'll keep a running total of parallelogram areas, and divide everything in half at the end. Using the shoelace method, our first area is `$$(9*5) - (9*0)` or 45, representing double the shaded area.
+I'll keep a running total of parallelogram areas, and divide everything in half at the end. Using the shoelace method, our first area is
+<br>`$(9 \times 5) - (9 \times 0)$` or 45, representing double the shaded area.
 
 The next triangle is where things get weird:
 
 ![](/images/ra-step2.png)
 
-Our "sweep" has just moved clockwise, so it should produce a negative area. It looks to be subtracting part of the triangle we just considered, and some random wedge outside the shape. Let's pretend that's not as insane as it sounds, and continue. The formula gives us `$$(9*5) - (16*5),` or `45 - 80`, or -35. This makes our running total
+Our "sweep" has just moved clockwise, so it should produce a negative area. It looks to be subtracting part of the triangle we just considered, and some random wedge outside the shape. Let's pretend that's not as insane as it sounds, and continue. The formula gives us `$(9 \times 5) - (16 \times 5)$`,
+<br>or `$45 - 80$`, or `$^{-}35$`. This makes our running total
 
-    45 - 35 = 10
+`$45 - 35 = 10$`
 
 The next triangle shows that we're still on the right track:
 
 ![](/images/ra-step3.png)
 
-We've added back in both of the shapes subtracted in the previous step, along with the small triangle in the upper-right. Using the formula, we have `$$(16*9) - (16*5)`, or `144 - 80`, or 64. Our running total is now
+We've added back in both of the shapes subtracted in the previous step, along with the small triangle in the upper-right. Using the formula, we have `$(16 \times 9) - (16 \times 5)$`, or `$144 - 80$`, or `$64$`. Our running total is now
 
-    45 - 35 + 64 = 74
+`$45 - 35 + 64 = 74$`
 
 This brings us to the last triangle we have to consider:
 
 ![](/images/ra-step4.png)
 
-The formula gives us `$$(16 * 9) - (9 * 0)`, or 144, making our final running total
+The formula gives us `$(16 \times 9) - (9 \times 0)$`, or 144, making our final running total
 
-    45 - 35 + 64 + 144 = 218
+`$45 - 35 + 64 + 144 = 218$`
 
 Dividing that in half gives us the area we calculated initially, 109.
 

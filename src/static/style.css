@@ -17,6 +17,10 @@
   --header-background-color: light-dark(rgba(255, 255, 255, 1), rgba(47, 47, 47, 1));
 }
 
+.katex {
+  font-size: 1.25em;
+}
+
 html {
   scroll-padding-top: 96px;
 }

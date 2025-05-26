@@ -1,23 +1,15 @@
-import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3"
 import marked from 'marked'
-
-const client = new S3Client({ region: 'us-east-2' })
-
-const converted = (process.env.CONVERTED || '').split(',')
-
-function mathLetter(n) {
-  // Mathematical italic h appears in the "letterlike symbols" unicode block (2100) as "Planck Constant"
-  // alongside "h with stroke", the reduced Planck Constant (h/2𝜋 = ħ)
-  if (n == 'h') return "\u210E"
-
-  // The remaining mathematical italic letters appear in the "Mathematical Alphanumeric Symbols"
-  // 1D434/119860 is MATHEMATICAL ITALIC CAPITAL A
-  // 1D44E/119886 is MATHEMATICAL ITALIC SMALL A
-  if (n < 'a') return String.fromCodePoint(119795 + n.charCodeAt()) // A = chr(65), 119860 - 65 = 119795
-  return String.fromCodePoint(119789 + n.charCodeAt())              // a = chr(97), 119886 - 97 = 119789
-}
+import katex from 'katex';
 
 const renderer = {
+  // Add a CSS class to a <p> block, with special handling for the "tip" class.
+  // I use this for image attribution popups on hover, with this style of usage:
+  //
+  // .tip <- This line will by match[1]
+  // ![](/path/to/image.png) <- This line will be fields[1]
+  // [Source image desc](https://source.image/location.png)
+  // by [Owner](https://owner.profile/)
+  // is licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en)
   paragraph(text) {
     const match = text.match(/^\.(\w+)\n(.+)/s)
     if (match == null) return false
@@ -32,6 +24,9 @@ const renderer = {
     return `<p class="${match[1]}">${match[2]}</p>\n`
   },
 
+  // Add a CSS class to a <pre> block, allow markdown for inline strong/em (__text__, _text_)
+  // Coupled with the .codez definitions in style.css, this allows simple color schemes for shell sessions.
+  // I use it to differentiate the shell prompt, user input, and output of commands.
   code(text) {
     const match = text.match(/^\.(\w+)\n(.+)/s)
     if (match == null) return false
@@ -50,23 +45,24 @@ const renderer = {
     return `<pre class="${match[1]}"><code>${escaped}</code></pre>\n`
   },
 
+  // Use codespans (inline <code> without <pre> blocks) to render KaTeX equations
+  // https://katex.org/docs/supported.html
+  // https://utensil-site.github.io/available-in-katex/
+  //
+  // `$ (equation) $` renders inline
+  // `$$ (equation) $$` renders as larger centered block
+  //
+  // Example:
+  // `$\frac{1}{2}$`
   codespan(text) {
-    if (!text.startsWith('$$')) return false
+    if (!text.startsWith('$')) return false
 
-    const converted = text.slice(2)
-      .replace(/(?<!\\[a-zA-Z]*)[a-zA-Z]/g, mathLetter)
-      .replace(/\*/g, '×')
-      .replace(/\\(?=[a-zA-Z])/g, '')
-      .replace(/{([^}]+)}\/{([^}]+)}/g, `<span class="fraction"><span class="numerator">$1</span>$2</span>`)
-      .replace(/{([^}]+)}\|{([^}]+)}/g, `<span class="series"><span class="symbol">$1</span>$2</span>`)
-      .replace(/√\[(.+?)\]/g, `√<span class="radicand">$1</span>`)
-      .replace(/\^{([^}]+)}/g, "<sup>$1</sup>")
-      .replace(/\^([\w-]+)/gu, "<sup>$1</sup>")
-      .replace(/_(\w+)\s?/g, "<sub>$1</sub>")
+    const displayMode = text.startsWith('$$')
 
-    return `<span class="math">${converted}</span>`
+    return text.replace(/^\$+(.*?)\$+$/, (m, equation) => katex.renderToString(equation, { displayMode }))
   },
 
+  // Open external links in a new tab
   link(href, title, text) {
     if (!href.startsWith('http')) return false
 
@@ -78,6 +74,13 @@ const renderer = {
 marked.use({ renderer })
 
 function render(template, page) {
+  // Start a markdown file with some Open Graph tags, and they'll be rendered as
+  // meta tags in the rendered HTML file's <head>
+  //
+  // Example:
+  // og:title My Cool Blog Entry
+  // ...becomes...
+  // <meta property="og:title" content="My Cool Blog Entry">
   const metas = page.match(/^(og:.+\n)+/)
 
   if (metas) {
@@ -92,54 +95,4 @@ function render(template, page) {
   return template.replace('%%head', '').replace('%%article', marked(page))
 }
 
-async function handler(event, context, callback) {
-  const request = event.Records[0].cf.request
-
-  async function getFile(key) {
-    const command = new GetObjectCommand({ Bucket: "autery-blog", Key: key })
-    const response = await client.send(command)
-
-    return await response.Body.transformToString('utf-8')
-  }
-
-  const uri = request.uri.replace(/[?#].+/, '')
-  const convertedUri = converted.includes(uri)
-
-  if (converted.includes(uri)) {
-    request.uri = uri + '.html'
-    callback(null, request)
-    return
-  }
-
-  const isTemplate = uri == "/" || /template\.html/.test(uri)
-  const isMarkdown =  /\/(blog|about|projects)/.test(uri)
-
-  if (isTemplate || isMarkdown) {
-    const template = await getFile('template.html')
-    const key = isTemplate ? 'blog.md' : uri.replace(/^\//, '') + '.md'
-    const page = await getFile(key)
-    const body = render(template, page)
-
-    const response = {
-      status: '200',
-      statusDescription: 'OK',
-      headers: {
-        'content-type': [{
-          key: 'Content-Type',
-          value: 'text/html'
-        }],
-        'cache-control': [{
-          key: 'Cache-Control',
-          value: 'public, max-age=86400'
-        }]
-      },
-      body
-    }
-
-    callback(null, response)
-  } else {
-    callback(null, request)
-  }
-}
-
-export { handler, render }
+export { render }
