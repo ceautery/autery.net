@@ -95,7 +95,7 @@ The tech used in dial-up modem communications is built on ancient concepts.
 
 Transmitting simple information over distance has been done with simple tools throughout recorded history. Natives of the Americas and Australian aboriginals used smoke signals. Ming dynasty China used [a relay system of beacon towers](https://link.springer.com/article/10.1007/s12520-021-01283-7) along the Great Wall to warn of invaders. The ancient Greeks got creative with their [Polybius square](https://en.wikipedia.org/wiki/Polybius_square) fire-signaling to describe coordinates on a grid of letters (or on a cipher grid).
 
-A big leap forward from Polybius happened in France during the French Revolution. Claude Chappe conceived of a semaphore telegraph which would sit above a tower. The telegraph had two indicator arms that could each be rotated to 7 distict positions, connected to a base that could be rotated into a horizontal or vertical position, giving `$$7 * 7 * 2 =  98` distinct numeric codes. Each tower also had a telescope, to view other telegraphs in a chain between cities.
+A big leap forward from Polybius happened in France during the French Revolution. Claude Chappe conceived of a semaphore telegraph which would sit above a tower. The telegraph had two indicator arms that could each be rotated to 7 distict positions, connected to a base that could be rotated into a horizontal or vertical position, giving `$7 \times 7 \times 2 =  98$` distinct numeric codes. Each tower also had a telescope, to view other telegraphs in a chain between cities.
 
 .tip
 ![](/images/chappe_telegraph.jpg)
@@ -103,7 +103,7 @@ A big leap forward from Polybius happened in France during the French Revolution
 by [Louis Figuier](https://en.wikipedia.org/wiki/Louis_Figuier)
 is licensed under public domain
 
-Six of the codes were meant to convey status information, or "control codes" - start of message, no one at the station right now, etc. The remaining 92 positions were used in a two-symbol code, where each code represented a French word, giving `$$92 * 92 = 8,464` possible words. Each station would have a codebook of 92 pages, with 92 words on each page.
+Six of the codes were meant to convey status information, or "control codes" - start of message, no one at the station right now, etc. The remaining 92 positions were used in a two-symbol code, where each code represented a French word, giving `$92 \times 92 = 8,464$` possible words. Each station would have a codebook of 92 pages, with 92 words on each page.
 
 .tip
 ![](/images/chappe_codebook.png)

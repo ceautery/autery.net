@@ -43,6 +43,7 @@ header {
   top: 0;
   width: 100%;
   background-color: var(--header-background-color);
+  z-index: 1; /* keeps KaTeX fractions from renering on top of header */
 }
 
 nav {
@@ -158,63 +159,6 @@ th:last-of-type {
 .math {
   font-family: "Times";
   font-size: 1.25em;
-}
-
-.radical {
-  /*font-size: 1.25em;*/
-  /*position: relative;*/
-  /*top: -.0625em;*/
-}
-
-.radicand {
-  border-top: .046875em solid;
-  margin-left: .0625em;
-}
-
-.codez .radical {
-  font-size: 1em;
-}
-
-sup, sub {
-  font-size: .625em;
-  white-space: nowrap;
-}
-
-.fraction {
-  text-align: center;
-  display: inline-block;
-  vertical-align: middle;
-  font-size: .6875em;
-  line-height: 1.25;
-  top: -.1875em;
-  position: relative;
-}
-
-.series {
-  text-align: center;
-  display: inline-block;
-  vertical-align: top;
-  font-size: .6875em;
-  line-height: 1.25;
-  position: relative;
-}
-
-.radicand .fraction {
-  font-size: .375em;
-}
-
-p {
-  line-height: 1.75;
-}
-
-.numerator {
-  border-bottom: .09375em solid;
-  display: block;
-}
-
-.symbol {
-  display: block;
-  font-size: 2em;
 }
 
 article pre {
