@@ -2,7 +2,7 @@ Recently I took a contract with Automattic to build a WordPress plugin for them.
 
 Part of their onboarding ordeal is a coding challenge. In my case, it was to modify a dummy plugin to add a feature to it, with 7 days to polish it up. I bring this up only because what I expected, but which apparently wasn't part of the process, was a series of coding questions like the ones that follow. In fact none of the software dev interviews I've ever had have included questions like these. Granted I haven't applied to Google or Microsoft, and I don't live in The Valley, but still... nothing?
 
-I sort of feel cheated, and because of that, I've decided to take the current first 5 questions from [Career Cup](https://web.archive.org/web/20170702094845/http://www.careercup.com/page?pid=coding-interview-questions) and give my take on them (actually at the time of this writing, this was the first 4 questions, skipping a few (design a web crawler, convert a float without using built-in functions, and remove an unsorted list's dups in O(n) time without using sorting or space - that last exceeds polite levels of ridiculous), and then the Goldman Sachs chess problem, since it looked interesting. Most coding questions like this don't require deep computer science knowledge so much as simply critical thinking, knowledge of basic set theory and data structures, and of course familiarity with the syntax of a programming language or two.
+I sort of feel cheated, and because of that, I've decided to take the current first 5 questions from [Career Cup](https://web.archive.org/web/20170702094845/http://www.careercup.com/page?pid=coding-interview-questions) (defunct as of June 2024, this link is to the Wayback Machine archive) and give my take on them (actually at the time of this writing, this was the first 4 questions, skipping a few (design a web crawler, convert a float without using built-in functions, and remove an unsorted list's dups in O(n) time without using sorting or space - that last exceeds polite levels of ridiculous), and then the Goldman Sachs chess problem, since it looked interesting. Most coding questions like this don't require deep computer science knowledge so much as simply critical thinking, knowledge of basic set theory and data structures, and of course familiarity with the syntax of a programming language or two.
 
 I'm not very familiar with Career Cup, but it was the top hit for coding interview questions on Google. It appears to be used by people seeking specific "right answers" to interview questions meant to glean deep subject knowledge, and hence defeating the entire exercise.
 
@@ -10,7 +10,7 @@ As I understand it, the point of a tech or coding interview is to feel out a can
 
 And yet, sites like Career Cup are in abundance, trying to game the system. CC uses user-submitted questions purportedly from interviews they've had, most of which name the company the question belongs to. I'm uncertain how accurate that assumption is, or if it really matters. At any rate, here are the questions exactly as they appeared on CC, my interpretation of them, and my answers, spanning Go, Perl, Lisp, Java, PHP, JavaScript, and 18 years of experience in IT:
 
-> 1) From Amazon.com:  
+> 1) From Amazon.com:
 > Find if all the leaf nodes are at same level in binary tree. Recursive and non-recursive approach?
 
 Leaf? Node? Binary Tree? Alright, let's start with this completely pointless example:
@@ -25,13 +25,12 @@ Leaf? Node? Binary Tree? Alright, let's start with this completely pointless exa
         / \         / \
        /   \       /   \
     Paul  Ringo  John  George
-    
 
 A "tree" in computer science jargon, is a collection of objects, each of whom contain links to other objects. Each object + links is a node. A leaf is a node with no links, which I'm sure you already intuited, since we're talking about trees, after all.
 
 In the tree above, each of our Beatles objects is simply a string, and a link to two other objects, until you get to the bottom. Each node having two links to other nodes makes this a binary tree. There are specialized types of trees (e.g., "cover trees" for nearest neighbor searches), and specialized binary trees (e.g, binary search trees whose insert functions reorder nodes to keep them sorted), but this isn't a tutorial on the concept, so I'd recommend this Google search if you want more theory and examples:
 
-[tree programming site:.edu](https://web.archive.org/web/20170702094845/https://www.google.com/#q=tree+programming+site:.edu)
+[tree programming site:.edu](https://www.google.com/search?q=tree+programming+site%3A.edu)
 
 There are libraries for most programming lanuages for different tree types, but you don't need them for simple examples like this. Programming a tree is really just a design pattern; all you need is your language's variation on a struct or an object, and functions for managing inserts, searches, and deletes. I'll use Go, with the following declaration of a node:
 
@@ -40,7 +39,6 @@ There are libraries for most programming lanuages for different tree types, but 
         mom   *Person
         dad   *Person
     }
-    
 
 Yes, we're making a family tree of sorts, and yes the declaration of a node is really that simple. Adding to a tree is similarly easy:
 
@@ -52,7 +50,6 @@ Yes, we're making a family tree of sorts, and yes the declaration of a node is r
             p.dad = &parent
         }
     }
-    
 
 Our question wants us to determine if all the leaves are at the same depth. If I build a tree with the following:
 
@@ -63,7 +60,6 @@ Our question wants us to determine if all the leaves are at the same depth. If I
         root.mom.addParent("Maternal Grandma", true)
         root.mom.addParent("Maternal Grandpa", false)
     }
-    
 
 ...then my tree looks like this:
 
@@ -74,10 +70,9 @@ Our question wants us to determine if all the leaves are at the same depth. If I
            /       \
           /         \
         Mom         Dad
-        / \ 
+        / \
        /   \
     Grams  Gramps
-    
 
 In this example, "Dad" is a leaf, and so are Grams and Gramps, but they are at different depths. So if I look at "Self" as the root node, the tree doesn't have all leaves at the same depth. However, if I start with "Mom", it does. So we need a way to programmatically iterate through all the nodes, find out if they're leaves, and track their depths. As the question suggested, this can be done both recursively and non-recursively.
 
@@ -136,7 +131,6 @@ Let's start with the recursive approach. I'm using a global variable, depth, whi
         d++ // Not a leaf node, increment depth
         return ( checkDepths(p.mom, d) && checkDepths(p.dad, d) )
     }
-    
 
 Results:
 
@@ -145,7 +139,6 @@ Results:
     true
     
     C:\gae_go\test>
-    
 
 Just as expected. Now, how can we do the same thing without recursion? Another way to represent a binary tree is with a simple array. An object's index on the array implies where it is on the tree. Here is a simple tree of index positions:
 
@@ -161,7 +154,6 @@ Just as expected. Now, how can we do the same thing without recursion? Another w
       3     4     5     6
      / \   / \   / \   / \
     7   8 9  10 11 12 13 14
-    
 
 Nodes that aren't used on the tree are just empty (or "", since I'm using an array of Go strings here... slices, really, but there's an array under there somewhere). So if I wanted to represent the binary tree from the previous example, these indices would be used:
 
@@ -172,7 +164,6 @@ Nodes that aren't used on the tree are just empty (or "", since I'm using an arr
            1       2
           / \
          3   4
-    
 
 Now I can iterate through the array sequentially, and use a little math to check whether or not I'm looking at a leaf. The following psuedocode performs the same checks as the Go program above:
 
@@ -183,7 +174,6 @@ Now I can iterate through the array sequentially, and use a little math to check
     Increment n from 0 to l - 1
         if array index n is not empty, but indices 2n + 1 and 2n + 2 are, fail
     If the loop exits without failing, return success
-    
 
 Why does that work? The last row contains all leaves (otherwise it wouldn't be the last row). I'm checking all the elements on rows above that for leaves. If I find any, then the leaves aren't all on the same depth. An element at index n is a leaf if it isn't empty, but indices 2n+1 and 2n+2 are.
 
@@ -201,7 +191,6 @@ Here's the psuedocode converted to working Go:
         }
         return true
     }
-    
 
 The "isEmpty" function will check for the empty string at the given index, or the index being out of range of the array. Other than that, I'm using logs base 2 and raising 2 to powers to search for row numbers and indices, respectively. I'll trust that you can decode the math if you're so inclined.
 
@@ -265,7 +254,6 @@ What we can't do easily with a non-recursive function is pick a node other than 
         }
         return people[index] == ""
     }
-    
 
 Results:
 
@@ -274,12 +262,11 @@ Results:
     true
     
     C:\gae_go\test>
-    
 
 > 2) From Cadence inc: Given a positive int "N". and an array of numbers ranging from 0-9 (say array name is arr). print all numbers from 0 to N which include any number from "arr".
-> 
+>
 > example: i/p: N=20 arr={2,3}
-> 
+>
 > o/p: 2,3,12,13,20
 
 Again, these are the questions as-is on Career Cup. Let's re-describe what's being asked for:
@@ -289,12 +276,10 @@ Given a list of digits, and a count N, iterate from 0 to N, and print any number
 So if my list of digits is:
 
     [2, 3]
-    
 
 ...and my count is:
 
     20
-    
 
 ...then the lines I return should be:
 
@@ -303,7 +288,6 @@ So if my list of digits is:
     12
     13
     20
-    
 
 ...because each of those numbers contains a digit in the list.
 
@@ -312,7 +296,6 @@ I posted a solution to this with regular expressions and Javascript, and then lo
 Regex syntax allows for matching characters in a group. e.g., if I turn my list of 2 and 3 into a regex group match, it looks like this:
 
     /[23]/
-    
 
 If I iterate from 0 to N, and turn each of those numbers into strings, I can bind that regex to them, and let the parser tell me if the current number matches anything in the group. The steps involved are remarkably simple, and most of the overhead in the code is creating the RegExp object with the array.join business:
 
@@ -324,14 +307,12 @@ If I iterate from 0 to N, and turn each of those numbers into strings, I can bin
         }
         return m;
     }
-    
 
 Results:
 
     matches(20, [2, 3])
     
     [2, 3, 12, 13, 20]
-    
 
 The syntax for doing the same thing on commandline perl is a great illustration of why it is my favorite language. Here I'm using perl's marvelous grep function and range operator, simple regular expression syntax, and the "automagic" conversion of numbers to strings as needed:
 
@@ -341,25 +322,22 @@ The syntax for doing the same thing on commandline perl is a great illustration 
     12
     13
     20
-    
 
 > 3) From Facebook:
-> 
-> We are given a set of integers with repeated occurences of elements. For Example, S={1,2,2}.  
-> We need to print the power set of S ensuring that the repeated elements of the power set are printed only once.  
+>
+> We are given a set of integers with repeated occurences of elements. For Example, S={1,2,2}.
+> We need to print the power set of S ensuring that the repeated elements of the power set are printed only once.
 > For the above S, the power set will be {NULL, {1}, {2}, {2}, {1,2}, {1,2}, {2,2}, {1,2,2}}. So, as per the question requirements, we need to print {NULL, {1}, {2}, {1,2}, {2,2}, {1,2,2}}
 
-The "Power Set" of set S is basically the set of all subsets of S. Good detailed descriptions are all over the net, such as in [this Wikipedia page](https://web.archive.org/web/20170702094845/http://en.wikipedia.org/wiki/Power%5Fset).
+The "Power Set" of set S is basically the set of all subsets of S. Good detailed descriptions are all over the net, such as in [this Wikipedia page](https://en.wikipedia.org/wiki/Power%5Fset).
 
 Essentially we're being asked here to take the set {1,2,2}, create a power set out of it, and filter out the dups. In this case, that involves creating:
 
     {NULL, {1}, {2}, {2}, {1,2}, {1,2}, {2,2}, {1,2,2}}
-    
 
 ...and filtering out the extra {2} and {1,2}, leaving:
 
     {NULL, {1}, {2},      {1,2},        {2,2}, {1,2,2}}
-    
 
 A programming language family well-suited to create powersets is Lisp. It's a language I find very fun, partially for for how arcane it is (making seasoned .NET or Java developers blanch in terror is high comedy to me), and it is perhaps the only language type to match my beloved Perl in expressiveness, as the power set generator below (written in the Emacs flavor of Lisp) illustrates:
 
@@ -373,7 +351,6 @@ A programming language family well-suited to create powersets is Lisp. It's a la
                      ))
             #'(lambda(a b) (< (length a) (length b)))
     ))
-    
 
 Results:
 
@@ -383,7 +360,6 @@ Results:
 So what's going on here? First I should mention that this isn't a method I came up with on the fly, rather the underlying call sequence:
 
     reduce -> append -> mapcar -> cons
-    
 
 ...is a well known method to generate power sets using 4 powerful, idiomatic Lisp functions chained together. The method involves taking our source list S, and a working list W that starts empty. Iterate through each item in S, concatenating the item to everything in W, then appending the original W. Like so:
 
@@ -397,9 +373,8 @@ So what's going on here? First I should mention that this isn't a method I came 
     Third pass
       Take the final 2 from S, concat with W, returning ((2 2 1) (2 2) (2 1) (2))
       Append the above to W, giving a final set of ((2 2 1) (2 2) (2 1) (2) (2 1) (2) (1) nil)
-    
 
-A couple sorting tweaks are needed, and the duplicates haven't been addressed, but first let's take apart how the Lisp functions accomplish the process I just described. This blog entry won't serve as a tutorial on Lisp or its underlying data structures, but I'll hum a few bars to get through the example. Note that my explanations are not perfectly canon. I'd suggest taking a peek at [the GNU Emacs Lisp manual](https://web.archive.org/web/20170702094845/http://www.gnu.org/software/emacs/manual/html%5Fnode/eintr/index.html), or [Common Lisp the Language, 2nd Edition](https://web.archive.org/web/20170702094845/http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node1.html) for more in depth descriptions. Or if you happen to be a Douglas Hofstadter fan, his excellent book "Metamagical Themas" from the '80s has a [wonderful Lisp introduction](https://web.archive.org/web/20170702094845/https://gist.github.com/jackrusher/5139396) that I can't recommend highly enough as a starting point.
+A couple sorting tweaks are needed, and the duplicates haven't been addressed, but first let's take apart how the Lisp functions accomplish the process I just described. This blog entry won't serve as a tutorial on Lisp or its underlying data structures, but I'll hum a few bars to get through the example. Note that my explanations are not perfectly canon. I'd suggest taking a peek at [the GNU Emacs Lisp manual](https://www.gnu.org/software/emacs/manual/html%5Fnode/eintr/index.html), or [Common Lisp the Language, 2nd Edition](https://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node1.html) for more in depth descriptions. Or if you happen to be a Douglas Hofstadter fan, his excellent book "Metamagical Themas" from the '80s has a [wonderful Lisp introduction](https://gist.github.com/jackrusher/5139396) that I can't recommend highly enough as a starting point.
 
 First, everything surrounded by parentheses is a space separated list. Lists fed to the expression evaluator can be a function name and its arguments, e.g. `(cons 1 nil)`, or a "quoted" list containing literal values, e.g. `'(1 2 3)`.
 
@@ -407,22 +382,18 @@ cons: Create a "cons" out of the two variables passed. If the first variable is 
 
     (cons 1 '(2 3)) => (1 2 3)
     (cons 1 nil) => (1)
-    
 
 mapcar: Perform a function on each element of a list, returning all the results as a new list.
 
     (mapcar '1+ '(1 2 3)) => (2 3 4)
-    
 
 This can be combined with a "lambda" (anonymous function) that accepts one variable
 
     (mapcar #'(lambda(i) (cons i '(1))) '(1 2 3)) => ((1 1) (2 1) (3 1))
-    
 
 append: Combine the elements of multiple lists into one list.
 
     (append '(1 2 3) '(4 5 6) '(7 8 9)) => (1 2 3 4 5 6 7 8 9)
-    
 
 reduce: The doozy. Perform a two-parameter function across all elements of a list, keeping a running value as the first parameter in the next pass. This can start with the "running value" as the first list element, or a separate init value can be passed.
 
@@ -430,17 +401,14 @@ The easiest example is addition. In Lisp, the '+' function takes two variables, 
 
     (+ 2 3) => 5
     (reduce '+ '(1 2 3)) => 6
-    
 
 As with mapcar, the function can be swapped out for a lambda, provided it accepts two parameters. This is the same reduce as above, explicitly declaring the maths involved:
 
     (reduce #'(lambda(a b) (+ a b)) '(1 2 3)) => 6
-    
 
 Here is the syntax for setting an initial "running value", and the effect it has:
 
     (reduce '+ '(1 2 3) :initial-value 7) => 13
-    
 
 `reduce` is not a standard Emacs Lisp function, but can be imported by requring the "cl" (Common Lisp) library.
 
@@ -449,32 +417,26 @@ Let's go back to the meat of our solution to the question:
     (reduce #'(lambda (one two) (append (mapcar #'(lambda(i) (cons two i)) one) one))
             :initial-value '(nil)
             ))
-    
 
 ...and our original list to pass to it: `'(1 2 2)`. Reduce is going to pass `(nil)` (that is, a set containing nil as an element) and 1 to the `lambda (one two)` function, which will trickle down to the cons function the equivalent of:
 
     (cons 1 nil) => (1)
-    
 
 ...which will return to the mapcar the equivalent of:
 
     (mapcar #'(lambda(i) (cons 1 i)) '(nil)) => ((1))
-    
 
 ...then that will be appended back with the current "one" value of `(nil)`:
 
     (append '((1)) '(nil)) => ((1) nil)
-    
 
 ...and on the next pass we cons the first "2" to everything:
 
     (mapcar #'(lambda(i) (cons 2 i)) '((1) nil)) => ((2 1) (2))
-    
 
 ...and append the current "one" ((1) nil) back on:
 
     (append '((2 1) (2)) '((1) nil)) => ((2 1) (2) (1) nil)
-    
 
 ...and one more pass fleshes out the power set. After that we can use Emacs Lisp's built-in "delete-dups" to pull out the extra (2) and (1 2), and some sort functions to straighten out the output the way we want.
 
@@ -492,7 +454,6 @@ An easy way to iterate through all the possibilities of a power set is with bina
     1, 3          1   0   1
     2, 3          1   1   0
     1, 2, 3       1   1   1
-    
 
 So if we iterate from 1 to 8 (2 \*\* 3, 3 being the set length), turn the number binary, and use each binary digit as a flag to determine what elements to include in each subset, we can easily generate the complete power set, including the empty set.
 
@@ -514,20 +475,18 @@ To remove the duplicates, we can turn each subset into a hash key, and set the v
     
         return Object.keys(ps).sort(cmp);
     }
-    
 
 Results:
 
     powerSet([1,2,2])
     
     ["", "1", "2", "1,2", "2,2", "1,2,2"]
-    
 
 > 4) Also from Facebook:
-> 
+>
 > Write a function which returns the square root of a given number up to a precision of 0.0001. Only arithematic operations like addition, subtraction, division and multiplication are allowed.
 
-Wikipedia has a [nice article](https://web.archive.org/web/20170702094845/http://en.wikipedia.org/wiki/Methods%5Fof%5Fcomputing%5Fsquare%5Froots) on manual methods of computing square roots. Back in the days before Javascript was fast, I created a script called "CMath" (C being the first letter in Curtis), which performed math on string objects, including square roots, computing pi and e, and arbitrary precision decimals.
+Wikipedia has a [nice article](https://en.wikipedia.org/wiki/Square_root_algorithms) on manual methods of computing square roots. Back in the days before Javascript was fast, I created a script called "CMath" (C being the first letter in Curtis), which performed math on string objects, including square roots, computing pi and e, and arbitrary precision decimals.
 
 This was before I was anything approaching a competent developer, and I did it solely for fun, not to solve any problem I was running into. The square root method I used is on the above Wikipedia page under "Decimal (base 10)". Essentially, you treat it as a long division problem, with the twist of building the next divisor digit based on 20x the current solution, and pulling down two digits at a time from the dividend. Here's an example of taking the square root of 1800:
 
@@ -593,7 +552,6 @@ Here's my implementation of that method in PHP, which takes copious advantage of
     print "$ans\n";
     
     ?>
-    
 
 Results:
 
@@ -604,34 +562,29 @@ Results:
     $ php sqrt.php 2
     1.4142
     $
-    
 
 This method isn't exactly intuitive, and recalling the specifics without a reference might be a problem, however it's easy to build an equivalent solution from first principles. Simply, we're looking for the square root S of a number N, so a formula to express that without a radix is:
 
     S^2 = N
-    
 
 We're also looking to build that up one part at a time with A's and B's, where:
 
     (A + B)^2 = S^2
-    
 
 A simple algebraic expansion of the left side of that equation it:
 
     A^2 + 2AB + B^2 = S^2
-    
 
 In fact, the `2AB` is where our 20x comes from above. If A is a digit of the solution, and B another, then in reality A is in a decimal place with 10 times the weight of B, e.g., digits "2" and "4" really represent "20" and "4", or "200" and "40".
 
 In the PHP solution above, our partial solution A is fed into the division problem as `A^2 + 2A`. To get to the correct equation, we need to take the `2A` part and add a little more to it:
 
     (2A + B) * B = 2AB + B^2
-    
 
 ...which is exactly what the PHP solution above does. So this is another example of replacing a Google search with some basic maths to arrive at the same algorithm.
 
 > 5) From Goldman sachs:
-> 
+>
 > A standard chess knight (it moves in its standard way i.e. L shaped OR 2.5 moves) is sitting at the position a1 on an N x N chess board. What is the minimum number of moves it will take to reach the diagonally opposite corner? P.S. - If it were a 8 x 8 chess board, the final destination for the knight would be h8
 
 This is a critical thinking problem, and doesn't explicity call for any code. Restating the question, if my chessboard is N squares on a side, how many optimal moves will it take to get a knight from one corner to the opposite one? On the off chance you're unfamiliar with chess, a knight move is two vertical squares + one horizontal, or two horizontals plus one vertical.
@@ -653,14 +606,12 @@ Optimal moves for board of size:
                                             0........  ..........  .1.........
                                                        0.........  ...........
                                                                    0..........
-    
 
 Our optimal move count is always even, and stays the same for three board lengths in a row, making the math much easier than the verification. Now, what's up with a 3 x 3 board?
 
     .14
     3..
     0.2
-    
 
 By the previous equation, it should take two moves to move the knight from corner to corner. Unfortunately, though, you can't actually fit a double-move on the board, as that would put the knight here:
 
@@ -668,7 +619,6 @@ By the previous equation, it should take two moves to move the knight from corne
     .1.
     ...
     0..
-    
 
 So the math is pretty simple, and doesn't beg to be turned into code, but since the question was from a coding interview, I'll throw it into a simple Java class, taking advantage of Java's strong typing to find the size without needing to round:
 
@@ -696,7 +646,6 @@ So the math is pretty simple, and doesn't beg to be turned into code, but since 
       }
     
     }
-    
 
 Results:
 
@@ -717,7 +666,6 @@ Results:
     Board Edge length: 17, Optimal move count: 12
     Board Edge length: 18, Optimal move count: 12
     Board Edge length: 19, Optimal move count: 12
-    
 
 It's tempting to include printouts for the actual optimal moves, since if you look at my manual method above, I hashed out a simple algorithm that wouldn't be hard to implement. However, it's easy to overreach to try to look a little cooler or impressive. Experience has calmed me some, and while I'm confident I could have a working solution in a pass or two, I'm not cocky enough to push the issue in an interview.
 
@@ -727,5 +675,4 @@ So those are some of the coding answers I may have been able to give, had I been
 
 Clicking, man... it's pretty damned important.
 
-Enjoy!  
-[Curtis](https://web.archive.org/web/20170702094845/mailto:ceautery@gmail.com)
+Enjoy!
