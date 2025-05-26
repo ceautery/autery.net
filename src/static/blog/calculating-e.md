@@ -50,7 +50,7 @@ Q) What the hell is a float, really?
 
 In IEEE 754, a double-precision float is a sign bit, 11 exponent bits offset by -1023, and 52 mantissa bits, expressed by this equation:
 
-`$$-1^\sign * 2^\exp-1023 * 1.\mantissa`
+`$-1^{\text{sign}} \times 2^{\text{exp}-1023} \times 1.\text{mantissa}$`
 
 ...and for the low cost of $89, you can independently verify that from IEEE. As a cost-saving measure, I took the risky position of just [trusting Wikipedia](http://en.wikipedia.org/wiki/Double-precision%5Ffloating-point%5Fformat).
 
@@ -65,15 +65,15 @@ Starting very simply, let's look at the float representation of 1.
     Mantissa:    0
     
 
-The `$$-1^\sign` expression may be awkward if you are more of a programmer than a maths nerd. If that's the case, think of the sign bit as an "isNegative" flag. When the flag is 0, the expression evaluates to 1 (positive, i.e., isNegative is false, anything raised to 0 is 1), and when the flag is 1, the expression evaluates to -1 (raising to 1 is an identity operation). The results of that expression are then multiplied in with the results of the exponent and mantissa expressions, either leaving them alone or negating them, depending on the sign bit's value.
+The `$-1^{\text{sign}}$` expression may be awkward if you are more of a programmer than a maths nerd. If that's the case, think of the sign bit as an "isNegative" flag. When the flag is 0, the expression evaluates to 1 (positive, i.e., isNegative is false, anything raised to 0 is 1), and when the flag is 1, the expression evaluates to -1 (raising to 1 is an identity operation). The results of that expression are then multiplied in with the results of the exponent and mantissa expressions, either leaving them alone or negating them, depending on the sign bit's value.
 
-The exponent value given in the float is offset by -1023, so if I want a calculated exponent of 0 (so that the mantissa is multiplied by `$$2^0 = 1`), I use a real float of 1023. The equation for the float is then:
+The exponent value given in the float is offset by -1023, so if I want a calculated exponent of 0 (so that the mantissa is multiplied by `$2^0 = 1$`), I use a real float of 1023. The equation for the float is then:
 
-`$$-1^0 × 2^0 × 1.0`
+`$-1^0 \times 2^0 \times 1.0$`
 
 ...or...
 
-`1 × 1 × 1.0`
+`$1 \times 1 \times 1.0$`
 
 The content of the float's 64 bits then, is:
 
@@ -100,15 +100,15 @@ Binary contents:
      C00 0000000000000
     
 
-If you ever find yourself looking at bit values for floats, a good rule to remember is if only the first exponent bit is set (making the hex representation start with 400 or C00), that represents an exponent of 1, and an exponent expression of `$$2^1`, or 2. The equation for this float is:
+If you ever find yourself looking at bit values for floats, a good rule to remember is if only the first exponent bit is set (making the hex representation start with 400 or C00), that represents an exponent of 1, and an exponent expression of `$2^1$`, or 2. The equation for this float is:
 
-`$$-1^1 × 2^1 × 1.0`
+`$-1^1 \times 2^1 \times 1.0$`
 
 ...or...
 
-`-1 × 2 × 1.0`
+`$-1 \times 2 \times 1.0$`
 
-**Decimal 0.4375 (`$${7}/{16}`)**
+**Decimal 0.4375 (`$\frac{7}{16}$`)**
 
     Exp: 1021 (-2)
     Mantissa: 110...
@@ -121,11 +121,11 @@ If you ever find yourself looking at bit values for floats, a good rule to remem
      3FD C000000000000
     
 
-The ellipse after "110" I use to refer to 0, or, "here's where there's nothing else but repeating zeroes in the mantissa". So `$${7}/{16}` is being represented here as binary `$$1.11 * 2^-2`, or binary .0111. So what does that mean exactly?
+The ellipse after "110" I use to refer to 0, or, "here's where there's nothing else but repeating zeroes in the mantissa". So `$\frac{7}{16}$` is being represented here as binary `$1.11 \times 2^{-2}$`, or binary .0111. So what does that mean exactly?
 
 You already know how decimal fractions work: Each digit is worth a tenth of the one on it's left. .07 is a tenth the size of .7. In binary, each digit is worth half the one on its left, so .1 is half of 1, .01 is half of .1 (and a quarter of 1), etc. So our .0111 is:
 
-`$${0}/{2} + {1}/{4} + {1}/{8} + {1}/{16} = {4}/{16} + {2}/{16} + {1}/{16} = {7}/{16}`
+`$\frac{0}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} = \frac{4}{16} + \frac{2}{16} + \frac{1}{16} = \frac{7}{16}$`
     
 
 **Decimal 43,046,721**
@@ -149,7 +149,7 @@ Anyway, as a power of 3, the number requires more binary ones to express than yo
 
 That results in 26 binary digits, which is expressible in float-speak as:
 
-`$$2^25 × 1.0100100001101011101000001`
+`$2^{25} \times 1.0100100001101011101000001$`
 
 ...and adding back in the 1023 offset on the exponent gives us 1048. Using our Javascript convertulatorizer shows us the binary:
 
@@ -198,30 +198,30 @@ What causes that is a rounding error necessary to represent a base 10 fraction i
 
 Note how the last digits repeat the sequence 2, 4, 8, 6. Nothing ends with 0, which means there is no way to express exactly one tenth using binary fractions. The closest you can come is binary .00011, or:
 
-`$${1}/{16} + {1}/{32} + {1}/{256} + {1}/{512} + {1}/{4096} + {1}/{8192}...`
+`$$\frac{1}{16} + \frac{1}{32} + \frac{1}{256} + \frac{1}{512} + \frac{1}{4096} + \frac{1}{8192}...$`
     
 
 This can be simplified to:
 
-`$${3}/{32} + {3}/{512} + {3}/{8192} + {3}/{131,072}...`
+`$$\frac{3}{32} + \frac{3}{512} + \frac{3}{8192} + \frac{3}{131,072}...$`
     
 
-Does this really repeat by adding 3/(next power of 2 ending in 2)? Yes, which I'll demonstrate. To start with, subtract one tenth by three thirty-seconds:
+Does this really repeat by adding `$3 \div \text{(next power of 2 ending in 2)}$`? Yes, which I'll demonstrate. To start with, subtract one tenth by three thirty-seconds:
 
-`$${1}/{10} - {3}/{32} = {32}/{320} - {30}/{320} = {2}/{320} = {1}/{160}`
+`$$\frac{1}{10} - \frac{3}{32} = \frac{32}{320} - \frac{30}{320} = \frac{2}{320} = \frac{1}{160}$`
     
 
-The difference is `$${1}/{160}` or `$${1}/{(32 × 5)}`. Now watch what happens when you subtract .1 by `$$({3}/{32} + {3}/{512})`. First, let's simplify our subtrahend:
+The difference is `$\frac{1}{160}$` or `$\frac{1}{(32 \times 5)}$`. Now watch what happens when you subtract .1 by `$(\frac{3}{32} + \frac{3}{512})$`. First, let's simplify our subtrahend:
 
-`$${3}/{32} = {48}/{512}` so `$${3}/{32} + {3}/{512} = {51}/{512}`
+`$$\frac{3}{32} = \frac{48}{512} \text{ so } \frac{3}{32} + \frac{3}{512} = \frac{51}{512}$`
     
 
 Now do the subtraction:
 
-`$${1}/{10} - {51}/{512} = {512}/{5120} - {510}/{5120} = {2}/{5120} = {1}/{2560}`
+`$$\frac{1}{10} - \frac{51}{512} = \frac{512}{5120} - \frac{510}{5120} = \frac{2}{5120} = \frac{1}{2560}$`
     
 
-You are left with `$${1}/{2560}`, or `$${1}/{(512 × 5)}`, which again is 5 times the fractional place you were subtracting with. As you keep going, you remain `$${1}/{(5 × current fraction)}` away from one tenth. Once we get to the end of our 52 mantissa digits, some sort of rounding needs to take place. Javascript itself can tell you how it does the rounding:
+You are left with `$\frac{1}{2560}$`, or `$\frac{1}{(512 \times 5)}$`, which again is 5 times the fractional place you were subtracting with. As you keep going, you remain `$\frac{1}{(5 \times \text{current fraction})}$` away from one tenth. Once we get to the end of our 52 mantissa digits, some sort of rounding needs to take place. Javascript itself can tell you how it does the rounding:
 
     .codez
     __>__ _(.1).toString(2)_
@@ -230,7 +230,7 @@ You are left with `$${1}/{2560}`, or `$${1}/{(512 × 5)}`, which again is 5 time
 
 The last "1" should have been "011", but was rounded up so that the resulting binary fraction could fit in the mantissa. This means that .1 to Javascript means:
 
-`$${3,602,879,701,896,397}/{36,028,797,018,963,968}`
+`$$\frac{3,602,879,701,896,397}{36,028,797,018,963,968}$`
 
 As far as estimation goes, being a couple quadrillionths off isn't half bad, however it happens to be just outside of the decimal range Javascript can display. There are a handful of additions between two float64 estimations of decimal digits that, when added together, are under this threshold, and Javascript (or your language of choice) exposes the fact that it's just been estimating all this time.
 
@@ -253,7 +253,7 @@ The hex representation of the mantissa is very interesting. Binary 1001 = hex 9.
 
 ### Calculating _e_
 
-_e_ to 50 digits is 2.71828182845904523536028747135266249775724709369995, however a float64 can't allocate that many decimal digits of precision. Since our mantissa is 52 binary bits, that gives us `$$\Log_10 2 * 52 = 15.65355977452702` decimal digits of precision, matching the number of decimal digits in the Math.E Javascript constant:
+_e_ to 50 digits is 2.71828182845904523536028747135266249775724709369995, however a float64 can't allocate that many decimal digits of precision. Since our mantissa is 52 binary bits, that gives us `$\log_{10} 2 \times 52 = 15.65355977452702$` decimal digits of precision, matching the number of decimal digits in the Math.E Javascript constant:
 
     > Math.E
       2.718281828459045
@@ -261,7 +261,7 @@ _e_ to 50 digits is 2.71828182845904523536028747135266249775724709369995, howeve
 
 One method of calculating _e_ is as follows:
 
-![](/images/e-formula.png)
+`$$\lim_{n \to \infty} (1 + \frac{1}{n})^n$`
 
 In English, _e_ is the limit as n approaches infinity of 1 and an nth raised to the nth power. You can see below how progressively larger values for n begin to converge on the value above:
 
@@ -280,7 +280,7 @@ In English, _e_ is the limit as n approaches infinity of 1 and an nth raised to 
       __2.7182816939803724__
     
 
-How high, then, do we need to go to reach the precision of the built-in constant? The answer is unsurprising: `$$2^52`. Javascript is capable of representing higher values (in fact, it can go as high as `$$2^1023`), however that's the limit at which it maintains unit-accuracy. For example:
+How high, then, do we need to go to reach the precision of the built-in constant? The answer is unsurprising: `$2^{52}$`. Javascript is capable of representing higher values (in fact, it can go as high as `$2^{1023}$`), however that's the limit at which it maintains unit-accuracy. For example:
 
     .codez
     __>__ _Math.pow(2, 52)_
@@ -305,28 +305,28 @@ When you raise 2 to the 53rd or higher power, you can no longer maintain accurac
       __1__
     
 
-So `$$2^52` is the limit of scale and accuracy. Let's plug that into the above e function:
+So `$2^{52}$` is the limit of scale and accuracy. Let's plug that into the above e function:
 
     .codez
     __>__ _e(Math.pow(2, 52))_
     __2.718281828459045__
     
 
-That exactly matches Math.E, and is accurate to the mathematical constant _e_ within `$$2.3 × 10^-16`. If we move n up or down by just 1, we lose accuracy:
+That exactly matches Math.E, and is accurate to the mathematical constant _e_ within `$2.3 \times 10^{-16}$`. If we move n up or down by just 1, we lose accuracy:
 
     .codez
     __>__ _e(Math.pow(2, 52) + 1)_
       __2.7182818284590455__
     
 
-This gives us an extra digit, but the accuracy is slightly less. We're off by `$$2.6 × 10^-16`
+This gives us an extra digit, but the accuracy is slightly less. We're off by `$2.6 \times 10^{-16}$`
 
     .codez
     __>__ _e(Math.pow(2, 52) - 1)_
       __2.718281828459044__
     
 
-As expected, going lower, while maintaining float64 precision, is less accurate according to the limit equation. In this case, the discrepancy is `$$1.2 × 10^-15`
+As expected, going lower, while maintaining float64 precision, is less accurate according to the limit equation. In this case, the discrepancy is `$1.2 \times 10^{-15}$`
 
 So that's _e_, Javascript numbers, double precision 64 bit binary floats, and behind the scenes type casts. I'll leave you with a quick reason not to try to implement this with bitshifting instead of Math.pow(). I mentioned above that the rules for bitshifting in Javascript imply they are accurate only when the number in question can be cast into a 32 bit int. Observe what happens with a larger number:
 
