@@ -1,6 +1,6 @@
 Recently I've been checking out coding tutorial sites, including Hour of Code, Khan Exercises, Codecademy, freeCodeCamp (fCC). This last site interested me because of its promise to hook budding coders up with nonprofits, and also because their codebase is on GitHub, under active development, and references modern libraries and tools (D3/CodePen, for instance).
 
-The fCC tutorial includes incremental instructions on how to write basic HTML and JavaScript, challenges to solve, and links to Wikipedia pages or other sources on topics that will be needed for the exercise. When presented with a problem, you type JavaScript code to solve it right into the page and submit it, where a number of test assertions are run against your code. For example, the [Symmetric Difference](http://www.freecodecamp.com/challenges/bonfire-symmetric-difference) algorithm problem looks like this:
+The fCC tutorial includes incremental instructions on how to write basic HTML and JavaScript, challenges to solve, and links to Wikipedia pages or other sources on topics that will be needed for the exercise. When presented with a problem, you type JavaScript code to solve it right into the page and submit it, where a number of test assertions are run against your code. For example, the [Symmetric Difference](https://www.freecodecamp.org/learn/coding-interview-prep/algorithms/find-the-symmetric-difference) algorithm problem looks like this:
 
 .hero
 ![](/images/23415855964%5F3bd10273be%5Fc.jpg)
@@ -11,7 +11,7 @@ fCC appears to be successful at what it attempts. It has an active community, ma
 
 ### Algorithm challenge: permutations
 
-One of the advanced algorithm challenges on fCC is called [No repeats please](http://www.freecodecamp.com/challenges/bonfire-no-repeats-please). It appears to be a simple combinatorics problem, but is a little more in-depth than it appears. Here is the text of the problem, and the test cases:
+One of the advanced algorithm challenges on fCC is called [No repeats please](https://www.freecodecamp.org/learn/coding-interview-prep/algorithms/no-repeats-please). It appears to be a simple combinatorics problem, but is a little more in-depth than it appears. Here is the text of the problem, and the test cases:
 
 > Return the number of total permutations of the provided string that don't have repeated consecutive letters.
 > 
@@ -115,9 +115,9 @@ After playing with various forumlas until my eyes crossed, the best I came up wi
     9! - (6! * 260) = 175680
     
 
-...but finding the significance of 80, 128, 188, and 260 eluded me, so I gave up trying to blindly churn through numbers, and turned to the [OEIS](http://oeis.org/), the On-line Encyclopedia of Integer Sequences, which existed prior to the late-90's consumer Internet boom, hence 'on-line' is hyphenated unironically.
+...but finding the significance of 80, 128, 188, and 260 eluded me, so I gave up trying to blindly churn through numbers, and turned to the [OEIS](https://oeis.org/), the On-line Encyclopedia of Integer Sequences, which existed prior to the late-90's consumer Internet boom, hence 'on-line' is hyphenated unironically.
 
-After some searching, I found 240 and 1968 in entry [A173841](http://oeis.org/A173841), the number of permutations of 1 through N where no adjacent pair sums to N+1. A couple entries down, 17760 and 175680 were found in a similar sequence, [A173843](http://oeis.org/A173843), where no pairs summed to N+3. The formulas were simple, and I was able to combine them to create a generic rule that applied to all of the test sequences I had generated so far:
+After some searching, I found 240 and 1968 in entry [A173841](https://oeis.org/A173841), the number of permutations of 1 through N where no adjacent pair sums to N+1. A couple entries down, 17760 and 175680 were found in a similar sequence, [A173843](https://oeis.org/A173843), where no pairs summed to N+3. The formulas were simple, and I was able to combine them to create a generic rule that applied to all of the test sequences I had generated so far:
 
     var fac = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800, 479001600, 6227020800, 87178291200, 1307674368000, 20922789888000, 355687428096000, 6402373705728000];
     function binomial(n, k) {
@@ -205,7 +205,7 @@ After some experimentation, I found that the numbers all divided evenly by the f
     [6, 20, 48, 96, 170, 276, 420, 608, 846, 1140, 1496, 1920, 2418]
     
 
-Searching for that sequence on OEIS didn't return an existing entry, but did run some math on the sequence and displayed the message "Your sequence appears to be: +1x3 + 1x2 + 4x". Since the first value is from n=5, "x" is n-4. Using that, we can ask Wolfram Alpha to verify our results [with a table](http://www.wolframalpha.com/input/?i=Table%5B%28n-3%29%21+%2A+%28%28n-4%29%5E3+%2B+%28n-4%29%5E2+%2B+4%28n-4%29%29%2C+%7Bn%2C+5%2C+12%7D%5D):
+Searching for that sequence on OEIS didn't return an existing entry, but did run some math on the sequence and displayed the message "Your sequence appears to be: +1x3 + 1x2 + 4x". Since the first value is from n=5, "x" is n-4. Using that, we can ask Wolfram Alpha to verify our results [with a table](https://www.wolframalpha.com/input?i=Table%5B%28n-3%29%21+*+%28%28n-4%29%5E3+%2B+%28n-4%29%5E2+%2B+4%28n-4%29%29%2C+%7Bn%2C+5%2C+12%7D%5D):
 
 ![](/images/24044066025%5Fbb2e3fc661%5Fz.jpg)
 
@@ -213,9 +213,9 @@ After verifying the equation, I generated the sequence up to 17 values (n from 5
 
 ### Better brute-forcing
 
-Since I could find no single formula for all possible inputs, my original solution of brute force iterating was the best option. My method of generating all the permutations was correct, but bloated. A better method is mentioned on the [fCC wiki page](https://github.com/FreeCodeCamp/FreeCodeCamp/wiki/Bonfire-No-Repeats-Please) for this problem: Heap's Algorithm.
+Since I could find no single formula for all possible inputs, my original solution of brute force iterating was the best option. My method of generating all the permutations was correct, but bloated. A better method is mentioned on the (now deprecated) [fCC wiki page](https://github.com/freeCodeCamp/wiki/blob/master/deprecated%20wiki/Algorithm-No-Repeats-Please.md) for this problem: Heap's Algorithm.
 
-B. R. Heap, who has thusfar resisted my attempts to identify him or her, published [several papers](https://scholar.google.com/scholar?q=b.r.+heap) on ferromagnetism, group theory, and the fortran language in the 1960s. In a 1963 article in The Computer Journal titled [Permutations by interchanges](http://comjnl.oxfordjournals.org/content/6/3/293.full.pdf), Heap introduced a permutation generator that uses single item swaps in a particular order.
+B. R. Heap, who has thusfar resisted my attempts to identify him or her, published [several papers](https://scholar.google.com/scholar?q=b.r.+heap) on ferromagnetism, group theory, and the fortran language in the 1960s. In a 1963 article in The Computer Journal titled [Permutations by interchanges](https://academic.oup.com/comjnl/article-abstract/6/3/293/360213), Heap introduced a permutation generator that uses single item swaps in a particular order.
 
 The algorithm is very efficient, is cited in [45 other papers](https://scholar.google.com/scholar?cites=13253158272816423306), and made it's way into Knuth's section of combinatorial algorithms:
 

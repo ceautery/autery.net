@@ -5,7 +5,7 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
-local skip_domains=("stackoverflow.com" "pubs.aip.org" "peacemaker.un.org")
+local skip_domains=("stackoverflow.com" "pubs.aip.org" "peacemaker.un.org" "academic.oup.com")
 local get_domains=("audible.com")
 
 # Use ag to find all markdown files
