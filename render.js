@@ -1,5 +1,7 @@
+import fs from 'fs'
 import marked from 'marked'
-import katex from 'katex';
+import katex from 'katex'
+import Handlebars from 'handlebars'
 
 const renderer = {
   // Add a CSS class to a <p> block, with special handling for the "tip" class.
@@ -73,26 +75,25 @@ const renderer = {
 
 marked.use({ renderer })
 
-function render(template, page) {
-  // Start a markdown file with some Open Graph tags, and they'll be rendered as
-  // meta tags in the rendered HTML file's <head>
-  //
-  // Example:
-  // og:title My Cool Blog Entry
-  // ...becomes...
-  // <meta property="og:title" content="My Cool Blog Entry">
+function getTag(line) {
+  const [_match, property, content] = line.match(/^(og:\w+) (.+)/)
+  return { property, content }
+}
+
+function getTags(metas) {
+  return metas[0].match(/.+/g).map(getTag)
+}
+
+function render(template, page, filename) {
+  const isAbout = /about\.md/.test(filename)
+  const hasMath = /`\$/.test(page)
   const metas = page.match(/^(og:.+\n)+/)
+  const tags = metas ? getTags(metas) : []
+  const offset = metas ? metas[0].length + 1 : 0
+  const article = marked(page.slice(offset))
 
-  if (metas) {
-    const tags = metas[0]
-      .match(/.+/g)
-      .map(m => m.replace(/^(og:\w+) (.+)/, `<meta property="$1" content="$2">\n`))
-      .join('')
-    const offset = metas[0].length + 1
-    return template.replace('%%head', tags).replace('%%article', marked(page.slice(offset)))
-  }
-
-  return template.replace('%%head', '').replace('%%article', marked(page))
+  const compiled = Handlebars.compile(template)
+  return compiled({isAbout, hasMath, tags, article})
 }
 
 export { render }

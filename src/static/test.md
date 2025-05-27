@@ -2,11 +2,7 @@
 
 Basic image: ![](/images/21976725894_46655269bf_z.jpg)
 
-Quadratic equation: `$${-b ± √[b^2 - 4ac]}/{2a}` line continued
-
-One and one-half: `$$1 {1}/{2}`
-
-Vowels as math characters: `$$AEIOU aeiou`
+Quadratic equation: `$$\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$`
 
 Image with attribution tooltip on hover:
 
