@@ -1,6 +1,6 @@
 A few years back, I stumbled across [this video](https://www.youtube.com/watch?v=a9xAKttWgP4) while looking for something new to geek out about:
 
-It shows a man live-coding Conway's Game of Life as a way of introducing the viewer to the APL language. He seemlessly types the greek characters iota and omega, set theory symbols, and unicode symbols that are specific to APL, such as a tilde with an umlaut over it. He expresses concepts such as rotation of columns and rows around a matrix's axes, outer products of logic operations, and shows us how flexible the APL language is at doing things like generating a list of boolean matrices that can be combined to get a cell's neighbor count. He ends up with essentially an abstract one-liner that can take any Life board and return its next generation. The end result is similar to, but not exactly, this output from a session of mine on the [repl.it](https://repl.it/) site:
+It shows a man live-coding Conway's Game of Life as a way of introducing the viewer to the APL language. He seemlessly types the greek characters iota and omega, set theory symbols, and unicode symbols that are specific to APL, such as a tilde with an umlaut over it. He expresses concepts such as rotation of columns and rows around a matrix's axes, outer products of logic operations, and shows us how flexible the APL language is at doing things like generating a list of boolean matrices that can be combined to get a cell's neighbor count. He ends up with essentially an abstract one-liner that can take any Life board and return its next generation. The end result is similar to, but not exactly, this output from a session of mine on the [replit](https://replit.com/) site:
 
 ![](/images/24610510689%5Fc01d59f6c9%5Fc.jpg)
 
@@ -12,7 +12,7 @@ Assumedly there are supposed to be more backslashes in there somewhere. To make 
 
 My point isn't to fault the people who created this content, or disparage Dyalog's business model, because everything starts out this way. Tools to support a language eventually become open and free, but don't always start out that way. Documentation gets tuned up over time by the energy of users, but starts out incomplete. My conjecture is that there is simply not enough interest in this wonderful language to hit an Internet critical mass, which would give APL the same level of respect and coverage that more traditional languages enjoy. Despite this, a determined individual can sort out the basics with modest effort, without opening his or her wallet.
 
-I settled on the [GNU implementation](https://www.gnu.org/software/apl/), for the dual reasons that it is free, and implements most of ISO 13751. My main sources of information were the above YouTube video, the [GNU info page](https://www.gnu.org/software/apl/apl.html), the Wikipedia page on APL [syntax and symbols](https://en.wikipedia.org/wiki/APL%5Fsyntax%5Fand%5Fsymbols), and Ken Iverson's [original paper](http://www.jsoftware.com/papers/APL.htm) on the concepts that eventually became the language, back when he was searching for a more pragmatic approach to teaching mathematics, and ended up accidentally inventing functional programming.
+I settled on the GNU implementation, for the dual reasons that it is free, and implements most of ISO 13751. My main sources of information were the above YouTube video, the [GNU info page](https://www.gnu.org/software/apl/apl.html), the Wikipedia page on APL [syntax and symbols](https://en.wikipedia.org/wiki/APL%5Fsyntax%5Fand%5Fsymbols), and Ken Iverson's [original paper](https://www.jsoftware.com/papers/APL.htm) on the concepts that eventually became the language, back when he was searching for a more pragmatic approach to teaching mathematics, and ended up accidentally inventing functional programming.
 
 I currently use a MacBook with iTerm2 as my primary terminal program. Homebrew made the GNU interpreter as easy to build as "brew install gnu-apl". iTerm allows easy keyboard mapping (with the caveat that too many non-ASCII symbols in the buffer makes fontd blow a gasket, bringing performance to a crawl), so I set about copy/pasting symbols from docs as I needed them into iTerm hotkey definitions, and ended up with a fairly complete set:
 
@@ -391,7 +391,7 @@ Now, let's see how many primes are less than two thousand, and how many millisec
     2703
     
 
-The [How many primes are there?](https://primes.utm.edu/howmany.html) page assures me that, indeed, 1,229 is the correct answer. It took our process close to 3 seconds to figure that out, though. What happens, then, if I select from only the current primes that are less than or equal to the square root of our candidate number? A quick modification to the function sorts out the omegas less than alpha to the 1/2 power:
+The [How many primes are there?](https://t5k.org/howmany.html) page assures me that, indeed, 1,229 is the correct answer. It took our process close to 3 seconds to figure that out, though. What happens, then, if I select from only the current primes that are less than or equal to the square root of our candidate number? A quick modification to the function sorts out the omegas less than alpha to the 1/2 power:
 
           start ← ⎕ai[2]
           ⍴ ⊃ { ⍵, (^ / 0 < ((⍵ ≤ ⍺ * .5)/⍵) | ⍺ ) / ⍺ } / ⌽ 1 ↓ ⍳ 10000
@@ -413,7 +413,7 @@ Close to a minute. A little detail to finding a good algorithm netted a 60-fold 
 
 ### Text files, finding credit card numbers, and Luhn's algorithm
 
-APL does have some pragmatic utility above creating mathematical lists. A standard GNU-APL install comes with modules for file processing, and for connecting to a SQLite database. In this example, I'm going to pull some credit card numbers off of the [Paypal test CC number page](https://www.paypalobjects.com/en%5FUS/vhelp/paypalmanager%5Fhelp/credit%5Fcard%5Fnumbers.htm).
+APL does have some pragmatic utility above creating mathematical lists. A standard GNU-APL install comes with modules for file processing, and for connecting to a SQLite database. In this example, I'm going to pull some credit card numbers off of the [Paypal test CC number page](https://www.paypalobjects.com/en_GB/vhelp/paypalmanager_help/credit_card_numbers.htm).
 
 To start with, here's the syntax for loading the FILE\_IO module:
 
@@ -701,6 +701,6 @@ As long as the scale of the bright/dark values is the same, this will give corre
 
 My contrast function output the same result for all three input styles... which by the way shows a contrast that doesn't meet the 4.5:1 ratio that WCAG recommends, meaning I'd need to adjust those colors to get a government website certified for accessibility.
 
-The barrier to entry for APL may be pretty daunting, but the payoff is pretty dramatic. If you're interested in the language, but want something more portable, you may want to check out the [J language](http://www.jsoftware.com/), an ASCII-only extension of APL. Ken Iverson was also involved in the J language prior to his death.
+The barrier to entry for APL may be pretty daunting, but the payoff is pretty dramatic. If you're interested in the language, but want something more portable, you may want to check out the [J language](https://www.jsoftware.com/), an ASCII-only extension of APL. Ken Iverson was also involved in the J language prior to his death.
 
 I think that wraps it up for now. I hope you enjoyed this brief glimpse at a language I'm growing very fond of.

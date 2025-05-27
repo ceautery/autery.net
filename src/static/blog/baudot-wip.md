@@ -109,11 +109,11 @@ Six of the codes were meant to convey status information, or "control codes" - s
 ![](/images/chappe_codebook.png)
 [ExtraitDuVocabulaire](https://commons.wikimedia.org/wiki/File:ExtraitDuVocabulaire.JPG)
 by [Anne Goldenberg](https://commons.wikimedia.org/wiki/User:AnneGoldenberg)
-is licensed under [GFDL-1.2-or-later](https://en.wikipedia.org/wiki/en:GNU_Free_Documentation_License)
+is licensed under [GFDL-1.2-or-later](https://en.wikipedia.org/wiki/GNU_Free_Documentation_License)
 
 When Napoleon came to power, he made use of these towers to communicate with his army an order of magnitude faster than the next quickest option, delivery of physical letters via horseback. This method of communication was very timely, since France's neighbors had taken a hostile stance towards them, worried about revolution spreading into their countries and their own monarchs getting their heads lopped off.
 
-Napoleon found the Chappe telegraph network so useful that he recruited Claude's brother Abraham to design a telegraph that could [communicate across the English channel](https://shannonselin.com/2020/05/chappe-semaphore-telegraph), and a mobile telegraph that could be used in a Russia compaign, which was unworkable with the tools Abraham had to work with.
+Napoleon found the Chappe telegraph network so useful that he recruited Claude's brother Abraham to design a telegraph that could [communicate across the English channel](https://shannonselin.com/2020/05/chappe-semaphore-telegraph/), and a mobile telegraph that could be used in a Russia compaign, which was unworkable with the tools Abraham had to work with.
 
 Why Abraham and not Claude? Sadly, Claude suffered from depression, not helped by the strain of his contemporaries competing for attention, declaring that they had invented the telegraph first, or made a better one. Ultimately Claude committed suicide. His gravesite has a replica of a Chappe telegraph, with its indicator arms set to the "at rest" position.
 

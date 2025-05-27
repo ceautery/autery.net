@@ -21,7 +21,7 @@ The odd quote above is from one of Gardner's mathematical puzzles columns in Sci
 
 _e_ is, of course, the base of natural logarithms, the number representing 100% interest compounded continuously, and appears in a host of other maths and natural phenomena. This isn't a detailed account of _e_ and its uses, but rather an explanation of what's going on under the hood when calculating _e_ using IEEE-754 double-precision binary floating points - the only number format used in Javascript.
 
-First off, Yes: Javascript doesn't have user-accessible integers. At all. It only has a primitive data type "number", represented by 64 bit floats, that users can manipulate. Curiously, the [ECMA 262 standard](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf) for Javascript calls for "abstract operations" which convert user accessible numbers to and from internal representations of signed or unsigned integers for various operations.
+First off, Yes: Javascript doesn't have user-accessible integers. At all. It only has a primitive data type "number", represented by 64 bit floats, that users can manipulate. Curiously, the [ECMA 262 standard](https://www.ecma-international.org/wp-content/uploads/ECMA-262.pdf) for Javascript calls for "abstract operations" which convert user accessible numbers to and from internal representations of signed or unsigned integers for various operations.
 
 One of the built-in expressions that employs that is bit-shifting, which according to the spec converts the left and right sides of the expression to signed and unsigned 32 bit integers, respectively, e.g.:
 
@@ -52,7 +52,7 @@ In IEEE 754, a double-precision float is a sign bit, 11 exponent bits offset by 
 
 `$-1^{\text{sign}} \times 2^{\text{exp}-1023} \times 1.\text{mantissa}$`
 
-...and for the low cost of $89, you can independently verify that from IEEE. As a cost-saving measure, I took the risky position of just [trusting Wikipedia](http://en.wikipedia.org/wiki/Double-precision%5Ffloating-point%5Fformat).
+...and for the low cost of $89, you can independently verify that from IEEE. As a cost-saving measure, I took the risky position of just [trusting Wikipedia](https://en.wikipedia.org/wiki/Double-precision%5Ffloating-point%5Fformat).
 
 There are special cases for the min and max exponents (subnormals and infinity/NaN) which I won't go over, but for all other exponents the above equation is used. Let's go over a few examples:
 
