@@ -571,7 +571,7 @@ Much better. I took out the style guide, and changed the example to function mor
 
 ## Writing a tool
 
-Open WebUI supports tool calling (RAG). There are a variety of community-written tools that you can import, or you can [develop your own](https://docs.openwebui.com/features/plugin/tools/development). Tools are python scripts that Open WebUI executes. They provide an interface description, which gets passed to the model. The model can then reply with which tool, if any, it wants to use to answer the user's question, and what parameters to pass to it.
+Open WebUI supports tool calling (RAG). There are a variety of community-written tools that you can import, or you can [develop your own](https://docs.openwebui.com/features/plugin/tools/development/). Tools are python scripts that Open WebUI executes. They provide an interface description, which gets passed to the model. The model can then reply with which tool, if any, it wants to use to answer the user's question, and what parameters to pass to it.
 
 I scaffolded up a proof of concept tool to query the Project Gutenberg database by means of an API at [gutendex.com](https://gutendex.com/). It's very simple, just choosing one of two query params ("search" or "topic"), and doing an HTTP GET. Here's what I came up with:
 

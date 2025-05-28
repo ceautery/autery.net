@@ -266,7 +266,7 @@ But importantly, it sends origin requests to the `serve-blog` Lambda function. T
 
 ![](/images/serverless/09-cf-behavior-2.png)
 
-Here's some of the Lambda function itself. It's minimized by Webpack, including the code to read raw data from S3 buckets, and the `marked` markdown processor, weighing the entire function in at 260k. [My part](https://github.com/ceautery/autery.net/blob/master/src/index.js) of that is a paltry 4k.
+Here's some of the Lambda function itself. It's minimized by Webpack, including the code to read raw data from S3 buckets, and the `marked` markdown processor, weighing the entire function in at 260k. [My part](https://github.com/ceautery/autery.net/blob/ba77484deb11e71d721cac60e9e4577bd5769de6/src/index.js) of that is a paltry 4k. (Or at least, it was. Since writing this entry, I've made a number of changes to the blog engine, including moving this file to "render.js" in the root project directory, and importing better templating and math libraries.)
 
 ![](/images/serverless/10-lambda-wp-src.png)
 

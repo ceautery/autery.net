@@ -22,7 +22,7 @@ There exists a website, [example.com](http://example.com), which is exactly what
 
 ![example.com on a mobile browser](/images/example-mobile.png)
 
-The lack of a rounded border and larger grey background on the mobile version is done with a simple stylesheet rule, which we'll touch on very briefly below. It's beyond the scope of this post to teach web development, and besides, a better resource than I could write already exists, the Mozilla Developer Network's excellent series [Getting started with the Web](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web).
+The lack of a rounded border and larger grey background on the mobile version is done with a simple stylesheet rule, which we'll touch on very briefly below. It's beyond the scope of this post to teach web development, and besides, a better resource than I could write already exists, the Mozilla Developer Network's excellent series [Getting started with the Web](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website).
 
 What follows is a shell session log of me downloading the example.com web page using the most primitive of tools: Telnet and manually-entered HTTP commands. I'm using the iTerm 2 terminal emulator on a MacBook using the default Bash shell. If you're not familiar with all those terms, the table above has some Wikipedia links to them, but if you don't want to get sidetracked looking things up now, it's enough to know that I'm using keyboard commands to do the same thing a web browser does.
 
@@ -204,9 +204,9 @@ Let's take a closer look at example.com's stylesheet:
     }
     </style>    
 
-In a stylesheet, each setting starts with a [selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors), followed by a block of parameters delimited by curly-braces - `{` and `}`. If my setting was `div { display: none; }`, then all the "div" HTML blocks of my page would be hidden.
+In a stylesheet, each setting starts with a [selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors), followed by a block of parameters delimited by curly-braces - `{` and `}`. If my setting was `div { display: none; }`, then all the "div" HTML blocks of my page would be hidden.
 
-On example.com, there are two competing settings for the page's main body and it's div tag. The second block of settings is inside of a [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries) that fires for any browser whose width is 700 pixels or less. Try it out - head on over to [example.com](http://example.com/), and shrink the page until the left and right borders touch the white box.
+On example.com, there are two competing settings for the page's main body and it's div tag. The second block of settings is inside of a [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries) that fires for any browser whose width is 700 pixels or less. Try it out - head on over to [example.com](http://example.com/), and shrink the page until the left and right borders touch the white box.
 
 Stylesheets are a whole field of study, so I won't get too deep into them right now. If you want a puzzle to unravel outside the scope of this post, figure out why some of the colors above are defined with 6 hex characters, and others with just 3.
 
@@ -232,7 +232,7 @@ Lastly, under the heading text are a couple of paragraph definitions, one with p
 |:-------------------------------------------------------|:-------------------------------------------------------------------------------------------------|
 | [Dig](https://en.wikipedia.org/wiki/Dig_%28command%29) | [TLS](https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security)            |
 | [OpenSSL](https://en.wikipedia.org/wiki/OpenSSL)       | [OSI model](https://en.wikipedia.org/wiki/OSI_model)                                             |
-|                                                        | [X509 certificates](https://developer.mozilla.org/en-US/docs/Mozilla/Security/x509_Certificates) |
+|                                                        | [X509 certificates](https://web.archive.org/web/20210610092146/https://developer.mozilla.org/en-US/docs/Mozilla/Security/x509_Certificates) |
 
 Connections over the Internet between two machines are pretty abstract. They combine everything from the cord plugged into your router (or the Wifi signal to it), to how bytes are delimited, to how your local network card's address is mapped to an Internet address, to how packets are acknowledged, to how files are reassembled from the parts the sender breaks them into, to how your web browser interprets and displays all the files it receives. These connections and behaviors are defined in scores of protocol definitions and display standards, where each protocol exists on (at least) one layer of the "Open Systems Interconnection" (or OSI) model.
 
@@ -440,19 +440,19 @@ After the key exchange, the rest of the OpenSSL session behaves just like the Te
 |:-----------------------------------------------------------------------|:------------------------------------------------------|
 | [API](https://en.wikipedia.org/wiki/Application_programming_interface) | [Chrome](https://en.wikipedia.org/wiki/Google_Chrome) |
 | [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)  |
-| [AJAX](https://developer.mozilla.org/en-US/docs/AJAX)                  |
+| [AJAX](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests)                  |
 | [JSON](https://en.wikipedia.org/wiki/JSON)                             |
-| [Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) |
+| [Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions) |
 
 "API" is a nebulous term that programmers use to mean a few different things. The name the acronym stands for, Application Programming Interface, doesn't really clear things up.
 
 At it's core, an API is a list of commands that something can call. Web browsers provide some features, like AudioBuffer, or SpeechRecognitionResult, that can be accessed from the Javascript programming language directly. The browser talks to your operating system with system commands to allocate memory, draw windows on the screen, and request access to an Internet connection. Web sites sometimes provide answers to questions - what's my account balance? how many messages are in my inbox? - without rendering an entire HTML page, but instead returning just a chunk of data that the browser does something with. All of these are examples of making API calls.
 
-The site [teleport.org](https://teleport.org/), which provides data on cities intended to help people decide where to move, has a search box where you can type in a city name, and get a list of matching names to choose from. Here I am using that to search for London:
+The site teleport.org (defunct as of late 2023), which provides data on cities intended to help people decide where to move, has a search box where you can type in a city name, and get a list of matching names to choose from. Here I am using that to search for London:
 
 ![a teleport.org search for london](/images/london.png)
 
-The most likely candidate, London England, is on the top, and then a handful of other Londons show up in different states of the US. Teleport provides a public API that can be called with a city name, which returns a block of JSON data that represents what's in the above list. Their API documentation is available [here](https://developers.teleport.org/api/), and here is an example calling to it from Telnet:
+The most likely candidate, London England, is on the top, and then a handful of other Londons show up in different states of the US. Teleport provides a public API that can be called with a city name, which returns a block of JSON data that represents what's in the above list. Their API documentation is available here (was https://developers.teleport.org/api/), and here is an example calling to it from Telnet:
 
     .codez
     __~ $__ _telnet api.teleport.org 80_
@@ -498,7 +498,7 @@ Clicking the triangles beside object field names will cause Chrome's console to 
 
 ![Expanded JS object](/images/london-obj.png)
 
-In a real web application, I don't want users to have to copy and paste to create an object, or to open a console and start clicking on things. I want it to be able to make an API call, understand how the return object's layout, and do something meaningful with that data. Enter AJAX.
+In a real web application, I don't want users to have to copy and paste to create an object, or to open a console and start clicking on things. I want it to be able to make an API call, understand the return object's layout, and do something meaningful with that data. Enter AJAX.
 
 AJAX literally stands for "Asynchronous Javascript And XML", even though it is more common to receive JSON data than XML. Javascript has an object type called an XMLHttpRequest designed to make HTTP requests without changing the page the browser is on. The return data is available to Javascript to use on the existing page instead. Here is a small bit of Javascript that you can enter into the console to fetch the same data we did above:
 
@@ -511,6 +511,22 @@ After typing those commands into the Javascript console, Chrome's Network tab sh
 
 ![Chrome Network tab](/images/london-network-tab.png)
 
-The next post in this series will dive a little deeper into basic Javascript, and we'll learn how to do something interesting with the teleport data, namely find out how many states in the US have cities named London.
+### Epilogue
 
-See you then!
+When I wrote this in 2017, Teleport was in the process of being purchased by Topia, who later took down the teleport.org site, and then removed its DNS records, something I've never seen before, but nslookup in my experience doesn't lie:
+
+```
+~ # nslookup teleport.org
+Server:		192.168.1.1
+Address:	192.168.1.1#53
+
+** server can't find teleport.org: SERVFAIL
+
+~ #
+```
+
+That makes it pretty hard to test some of what I've written here, and the Ajax API has long been superseded by `fetch`, but I'm leaving this blog entry up anyway because I'm very fond of it. I originally intended it to be part of a "How to write software" series. I backburnered that in favor of working directly with kids. I started coding clubs at schools my kids attended, and we did stuff a lot more fun than basic web programming, like working with Adafruit and Teensy dev boards, making pixel art and designing levels for video games, and writing a choose your own adventure story.
+
+I don't think I'll ever come back to the series as I originally conceived of it, but that's okay. Somewhere in an alternate universe there's an OED-sized treatise of backend app coding that other Curtis is making millions off of. I'm happy for him, but I'm pretty sure I had more fun than him.
+
+Curtis - May 27, 2025

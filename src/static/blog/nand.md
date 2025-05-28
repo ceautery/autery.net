@@ -6,17 +6,17 @@ Famous science personalities were my heroes. From Newton himself playing with eq
 
 These were the giants to be revered, the Atlases holding the world on their shoulders. If only we could all be like them, forgoing our petty disagreements, cults of personality, and clanishness... or so I thought. Later when I realized that the science and maths world contained all of these things, it was quite disillusioning. Yes, even the greats stepped on each other's work, stole each other's credit, and disagreed on basic notation and phraseology of important concepts, particularly as a new field was being developed.
 
-"Sheffer's Stroke" is an example of this kind of thing. Denoted by "|" (or "pipe" as we techies call it), in modern notation it refers to the logical NAND function. _a|b_ is true in all cases where _a_ and _b_ are not both true. However, Henry Sheffer explicitly refers to his proposed function as "neither-nor", false in all cases where _a_ and _b_ are not both false. In his 1913 paper ["A set of five independent postulates for Boolean algebras, with application to logical constants"](http://www.ams.org/journals/tran/1913-014-04/S0002-9947-1913-1500960-1/S0002-9947-1913-1500960-1.pdf), he has this to say:
+"Sheffer's Stroke" is an example of this kind of thing. Denoted by "|" (or "pipe" as we techies call it), in modern notation it refers to the logical NAND function. _a|b_ is true in all cases where _a_ and _b_ are not both true. However, Henry Sheffer explicitly refers to his proposed function as "neither-nor", false in all cases where _a_ and _b_ are not both false. In his 1913 paper ["A set of five independent postulates for Boolean algebras, with application to logical constants"](https://www.ams.org/journals/tran/1913-014-04/S0002-9947-1913-1500960-1/S0002-9947-1913-1500960-1.pdf), he has this to say:
 
 ![](/images/perDef.PNG)
 
-Logic gate diagrams of either NAND or NOR can be used to express most of the definitions in Sheffer's paper by virtue of [De Morgan duality](http://en.wikipedia.org/wiki/De_Morgan%27s_laws). Most, but not all. Specifically, proof IIa:
+Logic gate diagrams of either NAND or NOR can be used to express most of the definitions in Sheffer's paper by virtue of [De Morgan duality](https://en.wikipedia.org/wiki/De_Morgan%27s_laws). Most, but not all. Specifically, proof IIa:
 
 ![](/images/zNand.PNG)
 
 Here _z_ refers to 0, or false, where _u_ (unity/unary) is 1, or true. If z refers to 0, then IIa only works for NOR.
 
-Jean Nicand, however, found a reason for preferring NAND. In his 1917 paper, ["A Reduction in the Number of Primitive Propositions of Logic"](http://en.wikisource.org/wiki/A_Reduction_in_the_number_of_the_Primitive_Propositions_of_Logic), the following paragraphs which suggested an alternate function should be assigned to the stroke:
+Jean Nicand, however, found a reason for preferring NAND. In his 1917 paper, ["A Reduction in the Number of Primitive Propositions of Logic"](https://en.wikisource.org/wiki/A_Reduction_in_the_number_of_the_Primitive_Propositions_of_Logic), the following paragraphs which suggested an alternate function should be assigned to the stroke:
 
 ![](/images/whyNand.PNG)
 
