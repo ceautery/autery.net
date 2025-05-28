@@ -13,7 +13,7 @@ if [[ -v BLOG_BUCKET && -v BLOG_DISTRO_ID ]]; then
     invalidation_paths_str='--paths "/*"'
   fi
 
-  aws cloudfront create-invalidation --distribution-id $BLOG_DISTRO_ID $invalidation_paths_str
+  echo "aws cloudfront create-invalidation --distribution-id $BLOG_DISTRO_ID $invalidation_paths_str"
 else
   echo 'Set BLOG_BUCKET and BLOG_DISTRO_ID variables first'
 fi
