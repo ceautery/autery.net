@@ -1,5 +1,5 @@
 import fs from 'fs'
-import marked from 'marked'
+import { marked } from 'marked'
 import katex from 'katex'
 import Handlebars from 'handlebars'
 
@@ -12,7 +12,9 @@ const renderer = {
   // [Source image desc](https://source.image/location.png)
   // by [Owner](https://owner.profile/)
   // is licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en)
-  paragraph(text) {
+  paragraph({ tokens }) {
+    const text = this.parser.parseInline(tokens)
+
     const match = text.match(/^\.(\w+)\n(.+)/s)
     if (match == null) return false
 
@@ -29,7 +31,7 @@ const renderer = {
   // Add a CSS class to a <pre> block, allow markdown for inline strong/em (__text__, _text_)
   // Coupled with the .codez definitions in style.css, this allows simple color schemes for shell sessions.
   // I use it to differentiate the shell prompt, user input, and output of commands.
-  code(text) {
+  code({ text }) {
     const match = text.match(/^\.(\w+)\n(.+)/s)
     if (match == null) return false
 
@@ -56,7 +58,7 @@ const renderer = {
   //
   // Example:
   // `$\frac{1}{2}$`
-  codespan(text) {
+  codespan({ text }) {
     if (!text.startsWith('$')) return false
 
     const displayMode = text.startsWith('$$')
@@ -65,7 +67,9 @@ const renderer = {
   },
 
   // Open external links in a new tab
-  link(href, title, text) {
+  link({ href, title, tokens }) {
+    const text = this.parser.parseInline(tokens)
+
     if (!href.startsWith('http')) return false
 
     return title ? `<a href="${href}" title="${title}" target="_blank">${text}</a>`
